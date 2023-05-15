@@ -38,7 +38,7 @@ index.use(express.urlencoded({ extended: true }));
 index.use(cookieParser());
 
 //setup static folder for serving static files in Express
-index.use(express.sttic(path.join(__dirname, 'public')));
+index.use(express.static(path.join(__dirname, 'public')));
 
 
 // routes setup (pls focus team while filling this )
