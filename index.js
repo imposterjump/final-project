@@ -5,8 +5,10 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 
+
+
 // importing routes from files 
-import index_router from "./routes/home.js";
+import home_router from "./routes/home.js";
 import admin_user_management_router from "./routes/admin-user-management.js";
 import admin_product_management_router from "./routes/admin-product-management.js";
 
@@ -43,7 +45,7 @@ index.use(express.static(path.join(__dirname, 'public')));
 
 // routes setup (pls focus team while filling this )
 
-index.use('/', index_router);
+index.use('/', home_router);
 index.use('/admin-user-management', admin_user_management_router);
 index.use('/admin-product-management', admin_product_management_router);
 
