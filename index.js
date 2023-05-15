@@ -29,7 +29,7 @@ let index = express();
 index.set('views', path.join(__dirname, "views"));
 index.set("view engine", "ejs");
 
-
+//
 index.use(logger("common"));
 index.use(express.json());
 
