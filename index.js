@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 import home_router from "./routes/home.js";
 import admin_user_management_router from "./routes/admin-user-management.js";
 import admin_product_management_router from "./routes/admin-product-management.js";
+import jackets_router from "./routes/jackets.js";
 
 // gettingg project path and displaying it 
 export const __filename = fileURLToPath(
@@ -48,6 +49,7 @@ index.use(express.static(path.join(__dirname, 'public')));
 index.use('/', home_router);
 index.use('/admin-user-management', admin_user_management_router);
 index.use('/admin-product-management', admin_product_management_router);
+index.use('/jackets', jackets_router);
 
 
 
