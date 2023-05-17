@@ -1,6 +1,8 @@
 import index from '../index.js';
 import { createServer } from 'http';
 import dotenv from 'dotenv'
+import mongoose from 'mongoose';
+
 dotenv.config()
 
 /**
@@ -13,13 +15,17 @@ index.set('port', PORT);
 index.set('host', HOST);
 index.set('env', process.env.ENV);
 
-//creating server 
+const dbURI = 'mongodb+srv://boomy:25102002@cluster0.lfldchi.mongodb.net/projectdatabase?retryWrites=true&w=majority';
 
+//creating server 
 const server = createServer(index);
 
-// open listenning to the port to listen to requests 
+// connecting to  database and if success then listen to the port so the server doesnt work if failed to connect to database 
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(result => server.listen(PORT))
+    .catch(err => console.log(err));
 
-server.listen(PORT);
+
 
 // making sure that everything is working and traking in console debbuging 
 server.on('error', onError);
