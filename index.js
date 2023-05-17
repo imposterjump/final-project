@@ -23,6 +23,7 @@ import sign_up_router from "./routes/sign-up.js";
 import product_router from "./routes/product.js";
 import cart_router from "./routes/cart.js";
 import account_router from "./routes/account.js";
+import about_router from "./routes/about.js";
 
 // gettingg project path and displaying it 
 export const __filename = fileURLToPath(
@@ -57,8 +58,9 @@ index.use(express.static(path.join(__dirname, 'public')));
 
 
 // routes setup (pls focus team while filling this )
-//home page
+//home and about pages
 index.use('/', home_router);
+index.use('/about', about_router);
 
 //admin pages
 index.use('/admin-homepage', admin_homepage_router);
