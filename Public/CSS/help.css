@@ -1,0 +1,224 @@
+html,body{
+    margin: 0;
+  }
+  
+  .tabs-container {
+      font-family: "Roboto", sans-serif;
+      max-width: 1400px;
+      min-height: 550px;
+      margin: 30px auto;
+      display: flex;
+      box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tabs-container .tabs {
+      width: 300px;
+      background:white;
+      color:black;
+      text-transform: uppercase;
+      text-align: center;
+      font-family:Impact,'Arial Narrow Bold', sans-serif
+    }
+    .tabs-container .tabs .tab {
+      padding: 24px 32px;
+      margin: auto;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .tabs-container .tabs .tab.active {
+      background-color: aquamarine;
+      color:black;
+     
+    }
+    
+    
+    .tabs-container .content-container .content {
+      display: none;
+      padding: 32px;
+    }
+    
+    .tabs-container .content-container .content.active {
+      display: block;
+    }
+    
+    .tabs-container .content-container p {
+      line-height: 2;
+    }
+    
+    h5{
+     
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style:italic;
+    cursor: pointer;
+    font-size: 17px;
+    
+    }
+    .tab:hover ,h5:hover{
+      color:aquamarine;
+      
+    }
+    p{
+    
+      font-size: 15px;
+      
+      font-family: 'Abel';
+    }
+    
+    body{
+      background-color:white;
+    }
+    
+    
+    a:hover
+    {
+    color: aquamarine;
+    }
+    
+    
+    h2 {
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin: 0 0 20px;
+      cursor: pointer;
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    
+    }
+    .mySlides{
+        display:none;
+    }
+    
+    
+    
+    
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #0f2130;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0px;
+        column-count: 2;
+        align-items: center;
+        margin-left:10%;
+    }
+    
+    .child {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      font-size: 30px;
+      width: 500px;
+      height:500px;
+      text-align: center;
+      margin: 10%;
+    }
+    
+    .Contact-Container
+    {
+      align-items: center;
+    }
+    
+    .Contact1
+    {
+      float:left;
+      width: 33%;
+      height: 200px;
+      
+      
+      
+    }
+    
+    .Contact2
+    {
+      float: left;
+      width: 33%;
+      align-content: center;
+    }
+    
+    .Contact3
+    {
+      float: right;
+      width: 33%;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0f2130;
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 0;
+      opacity: 85%;
+    }
+    
+    li {
+      float: right;
+    }
+    
+    li a {
+      
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    li a:hover {
+      background-color: #111;
+    }
+    
+    .logo img
+      {
+       position:absolute;
+       margin-top: 10px;
+       margin-left: 70px;
+      }
+    
+    .span
+    {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
