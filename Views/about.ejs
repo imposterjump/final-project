@@ -37,13 +37,13 @@
       </ul>
 
       <video autoplay loop muted playsinline >
-        <source src="Images/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+        <source src="images\Untitled video - Made with Clipchamp.mp4" type="video/mp4" >
         Your browser does not support the video tag.
       </video>
         <h3 style="margin-top: 100px;">Constructed to perfection and responsibly built for the long haul. We’ve taken 10 years of feedback and are doubling down on our commitment to building the best possible clothing while pledging to limit our environmental impact. From fiber to fabric to factory to end functionality, Taylor Stitch has grown from a need for products without limitations that could handle chopping wood, surf sessions, snagging trout, or simply heading to the office. On top of making the world’s best apparel, we’re asking questions about how we can protect wild, forever.</h2>
    <hr>
         <div class="container">
-            <img src="Images/shirt.jpg" alt="shirt" class="images">
+            <img src="images\shirt.jpg" alt="shirt" class="images">
             <div >
               <h2 >Products That Wear in Not Out</h2>
               <p>We’ve always considered ourselves a shirting company at our very core. Always have. Always will. In fact, when we were just getting our vision for Taylor Stitch off the ground ten years ago, we turned to the country’s oldest family of shirtmakers to learn from the very best. And we were spared no lesson of construction—from fit and balance to the importance of French seams to why 22 stitches-per-inch matters on a shirt.</p>
@@ -52,7 +52,7 @@
           </div >
 
           <div class="container">
-            <img src="Images/pexels-karolina-grabowska-4210863.jpg" alt="fab" class="images">
+            <img src="images\pexels-karolina-grabowska-4210863.jpg" alt="fab" class="images">
             <div >
               <h2 >Fabrics</h2>
               <p>It’s about protecting our places. No matter where you live, we only have one world to care for. We’re committed to using recycled and regenerative fibers wherever possible This will help lower water usage, get rid of chemicals and pesticides which harm workers and leach into the rivers and help close the loop to create a cradle to cradle supply chain. It’s going to take some time but we hope everyone joins us.</p>
@@ -60,13 +60,13 @@
 
         </div>
         <div class="container">
-            <img src="Images/third.jpg" alt="thirdphoto" class="images">
+            <img src="images\third.jpg" alt="thirdphoto" class="images">
             <div >
                 <h2  > Factories</h2>
                 <p>Responsibly built for the long haul—we can’t do it alone. Our construction partners are joining us in our commitment to challenge the way the clothing industry operates. From sourcing to sewing, they’re the best in the business.</p>
             </div>
         </div>
-        <div class="container"><img src="Images/forth.jpg" alt="thirdphoto" class="images">
+        <div class="container"><img src="images\forth.jpg" alt="thirdphoto" class="images">
             <div >
                 <h2  >WILD FOREVER</h2>
                 <p>A happy blend of education, volunteering, building community and having some fun together. We’ll be partnering with other companies who share our values, awesome customers, and local organizations to have no bad days. We’ll do things like blaze trails, clean up trash, help out on a farm and whatever else our community wants to learn about and participate in.</p>
@@ -74,14 +74,14 @@
             </div>
                 <div class="slideshow-container" style="padding: 150px;">
                     <div class="mySlides fade">
-                      <img src="Images/slide 1.jpg" style="width:100%">
+                      <img src="images\slide 1.jpg" style="width:100%">
                     </div>
                   
                     <div class="mySlides fade">
-                      <img src="Images/slide2.jpg" style="width:100%">
+                      <img src="images\slide2.jpg" style="width:100%">
                     </div>
                     <div class="mySlides fade">
-                        <img src="Images/slide 3.jpg" style="width:100% " >
+                        <img src="images\slide 3.jpg" style="width:100% " >
                       </div>
                     </div>
                     <div class = "Contact-container">
@@ -117,287 +117,5 @@
     </div>
                 
                   </body>
-  <link rel="stylesheet" href="about.css">
-  <script>
-    let myIndex = 0;
-    function slides()
-    {
-        let images = document.getElementsByClassName("mySlides");
-        for(let i = 0; i < images.length;i++){
-            images[i].style.display = "none";
-        }
-        if (myIndex > images.length-1){
-            myIndex = 0;
-        }
-        images[myIndex].style.display = "block";
-        myIndex++;
-        setTimeout(slides,4000);
-    }
-
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-      }
-      
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
-    const containers = document.querySelectorAll('.container');
-
-function checkScroll() {
-  containers.forEach(container => {
-    const containerTop = container.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (containerTop < windowHeight - 100) {
-      container.classList.add('show');
-    }
-  });
-}
-
-window.addEventListener('scroll', checkScroll);
-     var slideIndex = 0;
-  showSlides();
-
-
-  function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-    slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 3000); 
-  };
-  
-
-  </script>
-  <style>
-    video {
-    max-width: 100%;
-    height: auto;
-    width: 100%;
-  }
-  .shirt {
-    float: left;
-    margin-right: 20px;
-    max-width: 50%;
-  }
-  
-  .textshirt {
-    margin-left: 25%;
-  }
-  .images{
-    resize: auto;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
- 
-  }
- 
-  
-  .images {
-    flex: 1;
-    margin-right: 30px;
-    margin-top: 200px;
-    display: grid;
-
-  }
-  .mySlides fade {
-    display: grid;
-    flex: 1;
-  }
-  
-  .txt {
-    flex: 1;
-  
-  }
-
-  h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    font-family: Georgia, serif;
-    font-style: italic;
-    
-  }
-  h3{
-   
-    justify-content: center;
-    text-align: center;
-
-font-family:  serif;
-font-style: italic;
-letter-spacing: 0;
-line-height: 1.5;
-font-size:22px ;
-position: relative;
-}
-
-  
-  
-  p {
-    font-size: 22px;
-    line-height: 1.5;
-    font-family: serif;
-   
-  }
- .slideshow-container{
-    position: relative;
-    top: 200px;
-    display: grid;
-    flex: 1;
-    z-index: 0;
-    margin: 100px;
- }
- .mySlides{
-  display:none;
-}
-
-html,body{
-margin: 0;
-}
-
-
-.sidenav {
-height: 100%;
-width: 0;
-position: fixed;
-z-index: 1;
-top: 0;
-left: 0;
-background-color: #0f2130;
-overflow-x: hidden;
-transition: 0.5s;
-padding-top: 60px;
-}
-
-.sidenav a {
-padding: 8px 8px 8px 32px;
-text-decoration: none;
-font-size: 25px;
-color: #818181;
-display: block;
-transition: 0.3s;
-}
-
-.sidenav a:hover {
-color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-position: absolute;
-top: 0;
-right: 25px;
-font-size: 36px;
-margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-.sidenav {padding-top: 15px;}
-.sidenav a {font-size: 18px;}
-}
-
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0px;
-  column-count: 2;
-  align-items: center;
-  margin-left:10%;
-}
-
-.child {
-background-color: rgba(255, 255, 255, 0.8);
-border: 1px solid rgba(0, 0, 0, 0.8);
-padding: 10px;
-font-size: 30px;
-width: 500px;
-height:500px;
-text-align: center;
-margin: 10%;
-}
-
-.Contact-Container
-{
-align-items: center;
-
-}
-mySlides fade{
-  margin-top: 100px;
-}
-
-.Contact1
-{
-float:left;
-width: 33%;
-height: 200px;
-
-
-
-}
-
-.Contact2
-{
-float: left;
-width: 33%;
-align-content: center;
-}
-
-.Contact3
-{
-float: right;
-width: 33%;
-}
-
-ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #0f2130;
-position: -webkit-sticky; /* Safari */
-position: sticky;
-top: 0;
-opacity: 85%;
-}
-
-li {
-float: right;
-}
-
-li a {
-
-display: block;
-color: white;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-li a:hover {
-background-color: #111;
-}
-
-.logo img
-{
- position:absolute;
- margin-top: 10px;
- margin-left: 70px;
-}
-
-.span
-{
-margin-top: 15px;
-margin-left: 15px;
-}
-
-  </style>
+  <link rel="stylesheet" href="CSS\about.css">
+<script src="js\about.js"></script>
