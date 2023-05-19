@@ -24,7 +24,7 @@ import product_router from "./routes/product.js";
 import cart_router from "./routes/cart.js";
 import account_router from "./routes/account.js";
 import about_router from "./routes/about.js";
-
+import help_router from "./routes/help.js";
 // gettingg project path and displaying it 
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -80,6 +80,7 @@ index.use('/signin', sign_in_router);
 index.use('/signup', sign_up_router);
 index.use('/account', account_router);
 index.use('/cart', cart_router);
+index.use('/help', help_router);
 //port
 const port = 3000;
 index.listen(port, () => {
