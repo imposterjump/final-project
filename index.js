@@ -80,6 +80,10 @@ index.use('/signin', sign_in_router);
 index.use('/signup', sign_up_router);
 index.use('/account', account_router);
 index.use('/cart', cart_router);
-
+//port
+const port = 3000;
+index.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 export default index;
