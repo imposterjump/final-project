@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body style="background-color:white></body>
+<head>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="\CSS\adminhome.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
+ 
+    
+</head>
+
+
+<body class="mybody" >
+
+   
+  <ul>
+    <div class="logo"><a href="#"><img src = ></a></div>
+    <span style="margin-left:15px;font-size:40px;cursor:pointer;color:white;" onclick="openNav()">&#9776; </span>
+    
+   
+   <li>
+      <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="dashboard-home.html">Home</a>
+      <a href="dashboard-user-managment.html">User Management</a>
+      <a href="dashboard-product-management.html">Product management</a>
+      <a href="#">Sign out</a>
+    
+  </li>
+    </ul>
+   
+    
+  
+    <div class="dashboard">
+      
+      <div class="top">
+        
+        <span class="rectangle2" >
+          <h4>Number Of Orders</h4>
+          <canvas id="donutChart"></canvas>
+          <p style="font-size: 40px;">730</p> <span style="font-size: 40px;"class="green-arrow"><p3 > &#x25B2 </p3></span><p2 style="font-size: 38px;"> + 36 </p2>
+        </span>
+       
+        <span class="rectangle2">
+          <h3>Number of Visitors Today</h3>
+          <canvas id="donutChart2"></canvas>
+           <p1 style="font-size: 40px;">36 </p1> <div style="font-size: 40px;"class="green-arrow2"><p5 style="font-size: 40px;"> &#x25B2 </p5></div><p6 style="font-size: 38px;" > + 9 </p6>
+          </span>
+         
+
+      </div>
+
+   
+      <div class="center">
+        <span class="rectangle"><h3>Total Sales</h3>
+          <p style="font-size: 30px;">730</p> <span style="font-size: 28px;"class="green-arrow3"><p3 > &#x25B2 </p3></span><p2 > + 36 </p2>
+        </span> 
+        <span class="rectangle"><h3>Revenue</h3>
+          <p style="font-size: 30px;">730</p> <span style="font-size: 28px;"class="green-arrow4"><p3 > &#x25B2 </p3></span><p2 > + 36 </p2>
+        </span>
+
+        <span class="rectangle"><h3>To Be Fulfilled</h3>
+          <p style="font-size: 30px;">730</p> <span style="font-size: 28px;"class="green-arrow5"><p3 > &#x25B2 </p3></span><p2 > + 36 </p2>
+        </span>
+      </div>
+      <div class="bottom">
+        <span class="rectangle3"><h3>Top selling products</h3>
+          <div class="chart-container">
+            <div class="chart-bar" data-value="Product 1"></div>
+            <div class="chart-bar" data-value="product 2"></div>
+            <div class="chart-bar" data-value="product 3"></div>
+            <div class="chart-bar" data-value="Product 4"></div>
+            <div class="chart-bar" data-value="product 5"></div>
+          </div>
+      </div>
+    </div>   
+  
+
+   
+     
+    
+          
+           
+          
+
+           
+
+    
+
+
+
+    <script src="\js\adminhome.js"></script>
+</body>
+
+
+
+
+</html>
