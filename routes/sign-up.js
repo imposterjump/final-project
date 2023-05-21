@@ -1,5 +1,6 @@
 import { Router } from 'express';
 var router = Router();
+import users from "../models/users.js"
 
 router.get('/', function(req, res, next) {
     res.render('signup', {
@@ -9,14 +10,21 @@ router.get('/', function(req, res, next) {
 });
 
 // create a user or sign up 
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
     const default_type = "user";
-    const user = new users({
-        username: req.body.username,
-        password: req.body.password,
-        Type: default_type,
-        email: req.body.email,
-        phone_number: req.body.phone
+
+    let un = req.body.username;
+    let pw = req.body.password;
+    let pn = req.body.phone;
+    let em = req.body.email;
+    console.log("infos : pn + pw + un + em");
+
+    const user = await users.create({
+        username: un,
+        password: pw,
+        type: default_type,
+        email: em,
+        phone_number: pn
     })
     user.save()
         .then(result => {
@@ -25,6 +33,7 @@ router.post('/', (req, res) => {
         })
         .catch(err => {
             console.log(err);
+
         });
 
 });
