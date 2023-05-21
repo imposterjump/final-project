@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const users_schema = new Schema({
-    UserName: {
+    username: {
         type: String,
         required: true,
     },
@@ -14,9 +14,14 @@ const users_schema = new Schema({
         required: true
     },
 
-    Type: {
+    type: {
         type: String,
         required: true
+    },
+    phone_number: {
+        type: String,
+        required: true
+
     },
 }, { timestamps: true });
 
