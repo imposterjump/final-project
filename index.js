@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 import fileUpload from "express-fileupload";
+import users from "./models/users.js"
 
 
 
@@ -84,7 +85,7 @@ index.use('/help', help_router);
 //port
 const port = 3000;
 index.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
 
 export default index;
