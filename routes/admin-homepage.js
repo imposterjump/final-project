@@ -2,7 +2,7 @@ import { Router } from 'express';
 var router = Router();
 
 router.get('/', function(req, res, next) {
-    res.send('adminhome');
+    res.render('adminhome');
 });
 
 export default router;

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="chat-icon" onclick="openChat()">
+    <img src="images\chat logo.png" alt="Chat Icon">
+  </div>
+  
+  <div class="chat-window">
+    <div class="header">
+      <span class="title">Chat Bot</span>
+      <button class="close-btn" onclick="closeChat()">Close</button>
+    </div>
+    <div class="chat-container">
+      <iframe id="chat-iframe" width="100%" height="100%" allow="microphone;" src=""></iframe>
+      <div class="opening-message">
+        <p>Hello, how can I help you today?</p>
+      </div>
+    </div>
+    <!-- Added close button -->
+    <div class="close-button">
+      <button class="black-button" onclick="closeChat()">X</button>
+    </div>
+  </div>
+
+  <script>
+    function openChat() {
+      var iframe = document.getElementById('chat-iframe');
+      iframe.src = "https://console.dialogflow.com/api-client/demo/embedded/d19734b5-b865-4a41-9747-61a06402c8c2";
+      document.querySelector('.chat-window').style.display = 'block';
+      document.querySelector('.chat-icon').style.display = 'none';
+    }
+
+    function closeChat() {
+      var iframe = document.getElementById('chat-iframe');
+      iframe.src = "";
+      document.querySelector('.chat-window').style.display = 'none';
+      document.querySelector('.chat-icon').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+<style>
+  /* Existing styles */
+
+  .chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+  .chat-icon img {
+    width: 45px; 
+    height: auto;
+  }
+
+  .chat-window {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9998;
+  }
+
+  .header {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .close-btn {
+    float: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .chat-container {
+    width: 100%;
+    height: calc(100% - 65px); 
+    position: relative;
+  }
+
+  iframe {
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Added styles */
+
+  .close-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .black-button {
+    background-color: transparent;
+    color: darkslategray;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 24px;
+   top: -40px;
+  }
+
+  .opening-message {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    padding: 10px;
+  }
+</style>
