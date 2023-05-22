@@ -10,22 +10,20 @@ router.get('/', function(req, res, next) {
 });
 
 // create a user or sign up 
-router.post('/', async(req, res) => {
+router.post('/', (req, res) => {
+
     const default_type = "user";
 
-    let un = req.body.username;
-    let pw = req.body.password;
-    let pn = req.body.phone;
-    let em = req.body.email;
-    console.log("infos : pn + pw + un + em");
 
-    const user = await users.create({
-        username: un,
-        password: pw,
+    console.log("infos : " + req.body.username + req.body.pw + req.body.email + req.body.phone)
+
+    const user = new users({
+        username: req.body.username,
+        password: req.body.pw,
         type: default_type,
-        email: em,
-        phone_number: pn
-    })
+        email: req.body.email,
+        phone_number: req.body.phone
+    });
     user.save()
         .then(result => {
             console.log(result + "added user ");
