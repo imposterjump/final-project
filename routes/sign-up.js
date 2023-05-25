@@ -26,8 +26,8 @@ router.post('/', (req, res) => {
     });
     user.save()
         .then(result => {
-            console.log(result + "added user ");
-            res.render('/');
+            console.log(result + "added user");
+            res.render('HomePage');
         })
         .catch(err => {
             console.log(err);

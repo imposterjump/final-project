@@ -1,8 +1,20 @@
 import { Router } from 'express';
 var router = Router();
+import users from "../models/users.js"
 
 router.get('/', function(req, res, next) {
-    res.send('i am here 4 you ya 8aly  akalemak men el admin user management  page ');
+
+    users.find()
+        .then(result => {
+            console.log(result);
+            res.render('admin_user_controls', { users: result });
+            // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+
 });
 
 export default router;
