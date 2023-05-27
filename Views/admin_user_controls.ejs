@@ -16,7 +16,7 @@
 </head>
 <script src="/js/admin_user.js"></script>
 
-<body>
+<body id="body">
 
     <ul>
         <div class="logo">
@@ -41,14 +41,17 @@
     <h1 class="title">welcome to users management tool </h1>
     <br>
     <div class="searchbar_div">
-        <input type="text" class="searchbar" id="search_bar_users" placeholder="Search for a user with username..">
-        <button class="buttons" onclick="user_search()">Search</button>
+        <form action="/admin-user-management/search" method="post">
+            <input type="text" class="searchbar" id="search_bar_users" name="search_bar_users" placeholder="Search for a user with username..">
+            <input type="submit" value="search" class="buttons">
+        </form>
+
     </div>
 
     <div class="user-container" id="userscontainer">
 
 
-        <% if (users.length> 0) { %>
+        <% if (users.length > 0) { %>
 
             <% users.forEach(user=> { %>
                 <div class="user-container" id=" <%= user.username %>">
@@ -84,7 +87,8 @@
             
             else { %>
 
-                        <p>There are users till now to display...</p>
+                        <p>There but there is zero users to display ...</p>
+
                         <% } %>
 
 
