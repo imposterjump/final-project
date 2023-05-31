@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body style="background-color:#f7e7ce;"></body>
+<!--HEADER STARTS HERE -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin_user.css">
+    <title>User management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<script src="/js/admin_user.js"></script>
+
+<body id="body">
+
+    <ul>
+        <div class="logo">
+            <a href="#"><img src="C:\Users\Yahia Eissa\Documents\GitHub\project-el-8alaba\Images\LOGOIHF.png"></a>
+        </div>
+        <span style="margin-left:15px;font-size:40px;cursor:pointer;color:white;" onclick="openNav()">&#9776; </span>
+
+        <li>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="dashboard-home.html">Home</a>
+                <a href="dashboard-user-managment.html">User Management</a>
+                <a href="dasgboard-product-management.html">Product management</a>
+                <a href="Analytics.html">Analytics</a>
+                <a href="#">Sign out</a>
+
+        </li>
+
+
+    </ul>
+
+    <h1 class="title">welcome to users management tool </h1>
+    <br>
+    <div class="searchbar_div">
+        <form action="/admin-user-management/search" method="post">
+            <input type="text" class="searchbar" id="search_bar_users" name="search_bar_users" placeholder="Search for a user with username..">
+            <input type="submit" value="search" class="buttons">
+        </form>
+
+    </div>
+
+    <div class="user-container" id="userscontainer">
+
+
+        <% if (users.length > 0) { %>
+
+            <% users.forEach(user=> { %>
+                <div class="user-container" id=" <%= user.username %>">
+                    <table class="customers">
+
+
+                        <tr>
+                            <td>
+                                Username:
+                                <%= user.username %>
+                            </td>
+                            <td>
+                                Type:
+                                <%= user.type %>
+                            </td>
+                            <td>
+                                <button type="button" class="buttons" onclick="edit_user('<%= users.username %>') "> edit </button>
+                            </td>
+                            <td>
+                                <button type="button " class="buttons " onclick="delete_user('<%= users.username %>') "> delete </button>
+                            </td>
+                            <td>
+                                <button type="button " class="buttons " onclick="view_more('<%= users.username %>') "> view more </button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <br>
+                <% }) %>
+
+                    <% } 
+            
+            else { %>
+
+                        <p>There but there is zero users to display ...</p>
+
+                        <% } %>
+
+
+
+
+
+
+
+    </div>
+    <div class="formcontainer ">
+        <br>
+        <h1>To add a user pls fill the fields and then submit </h1>
+        <form class="myform ">
+
+            <input type="email " class="inputs " placeholder="Enter Your Email " id="email " name="email " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$ " required>
+            <br>
+
+            <input type="password " class="inputs " placeholder="Enter Your Password " id="password " name="password " minlength="8 " maxlength="16 " required>
+            <br>
+
+            <input type="password " class="inputs " placeholder="confirm Your Password " id="confirm-password " name="confirm-password " minlength="8 " maxlength="16 " required>
+            <br>
+            <label class="phone_label " for="phone ">Phone Number:</label>
+            <div class="input-group ">
+                <select id="country-code " name="country-code ">
+            <option value="1 ">United States (+1)</option>
+            <option value="86 ">China (+86)</option>
+            <option value="91 ">India (+91)</option>
+            <option value="81 ">Japan (+81)</option>
+            <option value="7 ">Russia (+7)</option>
+            <option value="82 ">South Korea (+82)</option>
+            <option value="62 ">Indonesia (+62)</option>
+            <option value="55 ">Brazil (+55)</option>
+            <option value="92 ">Pakistan (+92)</option>
+            <option value="234 ">Nigeria (+234)</option>
+            <option value="880 ">Bangladesh (+880)</option>
+            <option value="33 ">France (+33)</option>
+            <option value="49 ">Germany (+49)</option>
+            <option value="44 ">United Kingdom (+44)</option>
+            <option value="39 ">Italy (+39)</option>
+            <option value="90 ">Turkey (+90)</option>
+            <option value="54 ">Argentina (+54)</option>
+            <option value="20 ">Egypt (+20)</option>
+            <option value="81 ">Japan (+81)</option>
+            <option value="86 ">China (+86)</option>
+            </select>
+                <input type="tel " id="phone " name="phone " pattern="[0-9]{10} " required>
+            </div>
+            <br>
+            <label>
+            <input type="checkbox " class="check " name="agree " required> I agree to the Website's terms and licenses </label>
+            <br>
+            <input type="submit " class="submit " value="ADD USER ">
+        </form>
+    </div>
+
+    <script>
+        // Add a listener to the form submission to check if passwords are matching
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const password = document.querySelector('#password').value;
+            const confirmPassword = document.querySelector('#confirm-password').value;
+
+            // Check if the two passwords match
+            if (password !== confirmPassword) {
+                alert('The two passwords do not match.');
+                event.preventDefault();
+            }
+        });
+    </script>
+
+
+</body>
+<!--BODY ENDS HERE -->
+
+</html>
