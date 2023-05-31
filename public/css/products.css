@@ -30,6 +30,7 @@ html,body{
 }
 .text{
     text-align: left;
+    color: white;
 }
 .column img{
     width: 100%;
@@ -118,6 +119,7 @@ margin-left: 15px;
 .before{
 font-weight: lighter;
 text-decoration:line-through ;
+color: white;
 }
 .after{
 color:darkred;
@@ -163,4 +165,5 @@ left: 50%;
 }
 .types2{
     color: #0f2130;
+    text-align: left;
 }
