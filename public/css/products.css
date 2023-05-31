@@ -22,7 +22,7 @@ html,body{
     flex-basis:30%;
     min-width: 350px;
     margin-bottom: 30px;
-    background-color: #f7e7ce;
+    background-color: white;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -58,7 +58,7 @@ transition: 0.3s;
 }
 
 .sidenav a:hover {
-color: white;
+color: #f1f1f1;
 }
 
 .sidenav .closebtn {
@@ -92,7 +92,7 @@ float: right;
 li a {
 
 display: block;
-color: #f7e7ce;
+color: white;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
