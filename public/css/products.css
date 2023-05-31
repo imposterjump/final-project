@@ -22,7 +22,7 @@ html,body{
     flex-basis:30%;
     min-width: 350px;
     margin-bottom: 30px;
-    background-color: white;
+    background-color: #f7e7ce;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -92,7 +92,7 @@ float: right;
 li a {
 
 display: block;
-color:  #f7e7ce;
+color:  white;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
@@ -130,7 +130,7 @@ list-style-type: none;
 margin: 10px;
 padding: 0;
 overflow: hidden;
-background-color: #f7e7ce;
+background-color: white;
 top: 0;
 display: inline-block;
 font-size: 15pt;
