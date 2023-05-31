@@ -11,6 +11,7 @@ html,body{
     text-align: center;
     column-span: 3;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
 }
 .row{
     display: flex;
@@ -130,7 +131,7 @@ list-style-type: none;
 margin: 10px;
 padding: 0;
 overflow: hidden;
-background-color: white;
+background-color: #f7e7ce;
 top: 0;
 display: inline-block;
 font-size: 15pt;
