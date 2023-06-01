@@ -12,7 +12,7 @@ const SALT_ROUNDS = 10;
 router.get('/', function(req, res, next) {
     res.render('signup', {
         TITLE: 'SIGNUP PAGE',
-        message: ''
+        message: " "
 
     });
 });
