@@ -112,7 +112,6 @@ body {
     hsl(347deg 72% 48%) 89%,
     hsl(0deg 73% 47%) 100%
   );
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
