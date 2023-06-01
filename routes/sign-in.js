@@ -2,7 +2,7 @@ import { Router } from 'express';
 var router = Router();
 
 router.get('/', function(req, res, next) {
-    res.send('signin');
+    res.render('signin');
 });
 
 export default router;
