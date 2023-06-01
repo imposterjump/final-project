@@ -9,39 +9,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/TopNav.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/zhq0vyf.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
     <ul class="upperbar">
-        <div class="logosmall">
-            <a href="#"><img src="/images/TopNav/LogoSmallTrial.png"></a>
+        <div class="logosmall"><a href="#"><img src="/images/TopNav/LogoSmallTrial.png"></a>
         </div>
-
-        <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
-    </ul>
-
-    <ul>
-        <div class="logo">
-            <a href="#"><img src="/images/HomePage/LogoNew.png"></a>
+    
+        <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
+            class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
+    
+      </ul>
+      <ul>
+      <div class="logo"><a href="#"><img
+            src="/images/TopNav/LogoNew.png"></a></div>
+      <div class="topnav" id="myTopnav">
+        <a href="#news">About</a>
+        <a href="#contact">Help</a>
+        <a href="#about">Cart</a>
+        <a href="Shop">Shop</a>
+        <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
         </div>
-
-        <div class="topnav">
-            <a href="/jackets">Jackets</a>
-            <a href="/tops">Tops</a>
-            <a href="/bottoms">Bottoms</a>
-            <a href="/accessories">Accessories</a>
-            <a href="/about">About</a>
-            <div class="rightlinks">
-                <a href="/checkout"><i class="material-icons">&#xe854;</i></a>
-                <!--<li><a href="AccountPage.html"><i class="material-icons">&#xe853;</i></a></li>-->
-                <a class="help" href="/help"><i class="material-icons">&#xe887;</i></a>
-            </div>
-        </div>
-    </ul>
-
-    <ul class="lowerbar">
+        
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+      </ul>
+      <ul class="lowerbar">
         <p class="lowerbartext">Free shipping on orders above US$99</p>
-    </ul>
+    
+      </ul>
 </body>
 
 </html>
