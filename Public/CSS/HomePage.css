@@ -3,43 +3,6 @@ body {
     margin: 0;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 0.25fr 0.25fr;
-    grid-gap: 0px;
-    column-count: 2;
-    align-items: center;
-    margin-left: 20%;
-    margin-right: 10%;
-}
-
-.child {
-    background-color: rgba(255, 255, 255, 0.8);
-    font-size: 30px;
-    text-align: center;
-    margin-top: 2%;
-}
-
-.Contact-Container {
-    align-items: center;
-}
-
-.Contact1 {
-    float: left;
-    width: 33%;
-    height: 200px;
-}
-
-.Contact2 {
-    float: left;
-    width: 33%;
-    align-content: center;
-}
-
-.Contact3 {
-    float: right;
-    width: 33%;
-}
 
 @import url("https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap");
 
@@ -137,12 +100,4 @@ body {
 
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 
-body {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #1A1E23;
-}
 
