@@ -49,64 +49,71 @@
     </div>
 
     <div class="user-container" id="userscontainer">
+        <% if(message !=''){ %>
+
+            <p class="reg_message">
+                <%= message %>
+            </p>
+            <% } %>
 
 
-        <% if (users.length > 0) { %>
-
-            <% users.forEach(user=> { %>
+                <% if (users.length > 0) { %>
 
 
-                <div class="user-container">
-                    <table class="customers">
+                    <% users.forEach(user=> { %>
 
 
-                        <tr>
-                            <td>
-                                Username:
-                                <%= user.username %>
-                            </td>
-                            <td>
-                                Type:
-                                <%= user.type %>
-                            </td>
-                            <td>
-                                <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
-                            </td>
-                            <td>
-                                <button type="button " class="buttons " onclick="delete_user('<%= users.username %>') "> delete </button>
-                            </td>
-                            <td>
-                                <button type="button " class="buttons  " onclick="view_more('<%= users.id %>') "> view more </button>
-                            </td>
+                        <div class="user-container">
+                            <table class="customers">
 
 
-
-
-                        </tr>
+                                <tr>
+                                    <td>
+                                        Username:
+                                        <%= user.username %>
+                                    </td>
+                                    <td>
+                                        Type:
+                                        <%= user.type %>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
+                                    </td>
+                                    <td>
+                                        <button type="button " class="buttons " onclick="delete_user('<%= users.username %>') "> delete </button>
+                                    </td>
+                                    <td>
+                                        <button type="button " class="buttons  " onclick="view_more('<%= users.id %>') "> view more </button>
+                                    </td>
 
 
 
-                    </table>
 
-                    <div class="formcontainer2" id="<%= user.username %>" hidden>
-                        <p>pls fill the information again </p>
-                        <form action="/admin-user-management/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
+                                </tr>
 
-                            <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
-                            <br>
-                            <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-                            <br>
 
-                            <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                            <br>
 
-                            <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                            <br>
-                            <label class="phone_label " for="phone_label">Phone Number:</label>
+                            </table>
 
-                            <div class="input-group ">
+                            <div class="formcontainer2" id="<%= user.username %>" hidden>
+                                <p>pls fill the information again </p>
+                                <form action="/admin-user-management/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
 
-                                <select id="countrycode " name="countrycode ">
+                                    <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
+                                    <br>
+                                    <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
+                                    <br>
+
+                                    <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                                    <br>
+
+                                    <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                                    <br>
+                                    <label class="phone_label " for="phone_label">Phone Number:</label>
+
+                                    <div class="input-group ">
+
+                                        <select id="countrycode " name="countrycode ">
                              <option value="1 ">United States (+1)</option>
                              <option value="86 ">China (+86)</option>
                              <option value="91 ">India (+91)</option>
@@ -129,19 +136,19 @@
                              <option value="86 ">China (+86)</option>
                              </select>
 
+                                    </div>
+                                    <br>
+                                    <input type="text" class="" id="phone " name="phone" required>
+
+                                    <br>
+
+
+                                    <input type="submit" class="submit" value="signup">
+                                </form>
+
+
                             </div>
-                            <br>
-                            <input type="text" class="" id="phone " name="phone" required>
-
-                            <br>
-
-
-                            <input type="submit" class="submit" value="signup">
-                        </form>
-
-
-                    </div>
-                </div>
+                        </div>
 
 
 
@@ -150,16 +157,16 @@
 
 
 
-                <br>
-                <% }) %>
+                        <br>
+                        <% }) %>
 
-                    <% } 
+                            <% } 
             
             else { %>
 
-                        <p>There but there is zero users to display ...</p>
+                                <p>There but there is zero users to display ...</p>
 
-                        <% } %>
+                                <% } %>
 
 
 

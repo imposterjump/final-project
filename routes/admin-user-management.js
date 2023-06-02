@@ -11,7 +11,11 @@ router.get('/', function(req, res, next) {
     users.find()
         .then(result => {
             console.log(result);
-            res.render('admin_user_controls', { users: result });
+            res.render('admin_user_controls', {
+                users: result,
+                TITLE: 'SIGNUP PAGE',
+                message: ''
+            });
             // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch(err => {
@@ -27,7 +31,7 @@ router.post('/search', function(req, res, next) {
         users.find()
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result });
+                res.render('admin_user_controls', { users: result, message: '' });
                 // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
             })
             .catch(err => {
@@ -39,7 +43,7 @@ router.post('/search', function(req, res, next) {
         users.find(query)
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result });
+                res.render('admin_user_controls', { users: result, message: '' });
                 // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
             })
             .catch(err => {
@@ -62,41 +66,61 @@ router.post("/:id", function(req, res, next) {
 
 
 
+
     console.log("infos : " + " username:" +
         req.body.username + " pass:" + req.body.pw + " conf pass:" + req.body.cpw + " email:" + req.body.email + " phone:" + req.body.phone);
 
     if (req.body.username == "" || req.body.pw == "" || req.body.cpw == "" || +req.body.email == "" || req.body.phone == "") {
         counter = false;
-        res.render('signup', {
-            TITLE: 'SIGNUP PAGE',
-            message: 'please you have to fill all the information '
+        users.find()
+            .then(result => {
+                console.log(result);
+                res.render('admin_user_controls', { users: result, message: 'please you have to fill all the information ' });
 
-        });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
 
     } else if (req.body.pw != req.body.cpw) {
         counter = "b";
-        res.render('signup', {
-            TITLE: 'SIGNUP PAGE',
-            message: 'the passwords doesnt match pls try again '
+        users.find()
+            .then(result => {
+                console.log(result);
+                res.render('admin_user_controls', { users: result, message: 'the passwords doesnt match pls try again ' });
 
-        });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
 
     } else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.email) == false) {
         counter = "b";
-        res.render('signup', {
-            TITLE: 'SIGNUP PAGE',
-            message: 'the email is invalid please try again '
+        users.find()
+            .then(result => {
+                console.log(result);
+                res.render('admin_user_controls', { users: result, message: 'the email is invalid please try again' });
 
-        });
+            })
+            .catch(err => {
+                console.log(err);
+            });
 
 
     } else if (/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/.test(req.body.phone) == false) {
         counter = "b";
-        res.render('signup', {
-            TITLE: 'SIGNUP PAGE',
-            message: 'the phone number is invalid pls try again  '
+        users.find()
+            .then(result => {
+                console.log(result);
+                res.render('admin_user_controls', { users: result, message: 'the phone number is invalid pls try again ' });
 
-        });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
     } else {
 
 
@@ -113,7 +137,9 @@ router.post("/:id", function(req, res, next) {
                 phone_number: req.body.phone
             })
             .then(result => {
-                res.redirect('/admin-user-management');
+                res.redirect('/admin-user-management',
+
+                );
             })
             .catch(err => {
                 console.log(err);
