@@ -177,5 +177,6 @@ left: 50%;
     display: inline-block;
     font-size: 16px;
     border-radius: 10px;
+    float: right;
 
 }
