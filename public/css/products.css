@@ -186,4 +186,5 @@ left: 50%;
 .centerednav{
     background-color: whitesmoke;
     position: sticky;
+    z-index: 1;
 }
