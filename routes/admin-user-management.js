@@ -57,7 +57,7 @@ router.post('/search', function(req, res, next) {
 
 
 });
-router.post("/:id", function(req, res, next) {
+router.post("/edit/:id", function(req, res, next) {
 
 
 
@@ -137,7 +137,7 @@ router.post("/:id", function(req, res, next) {
                 phone_number: req.body.phone
             })
             .then(result => {
-                res.redirect('/admin-user-management',
+                res.redirect('/admin-user-management'
 
                 );
             })
@@ -161,6 +161,18 @@ router.post("/:id", function(req, res, next) {
 
 
 
+});
+router.post('/delete/:username', function(req, res, next) {
+
+    users.findOneAndDelete({ username: req.params.username }).then(result => {
+
+            console.log(result);
+            res.redirect('/admin-user-management');
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 export default router;

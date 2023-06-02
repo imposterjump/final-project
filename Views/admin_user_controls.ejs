@@ -80,7 +80,7 @@
                                         <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
                                     </td>
                                     <td>
-                                        <button type="button " class="buttons " onclick="delete_user('<%= users.username %>') "> delete </button>
+                                        <button type="button " class="buttons " onclick="edit_user('<%= user.id %>') "> delete </button>
                                     </td>
                                     <td>
                                         <button type="button " class="buttons  " onclick="view_more('<%= users.id %>') "> view more </button>
@@ -97,7 +97,7 @@
 
                             <div class="formcontainer2" id="<%= user.username %>" hidden>
                                 <p>pls fill the information again </p>
-                                <form action="/admin-user-management/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
+                                <form action="/admin-user-management/edit/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
 
                                     <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
                                     <br>
@@ -146,6 +146,14 @@
                                     <input type="submit" class="submit" value="signup">
                                 </form>
 
+
+                            </div>
+                            <div class="formcontainer2" id="<%= user.id %>" hidden="hidden">
+
+                                <p>are you sure you want to delete ?</p>
+                                <form action="/admin-user-management/delete/<%= user.username %>" method="post">
+                                    <input type="submit" class="submit" value="delete">
+                                </form>
 
                             </div>
                         </div>
