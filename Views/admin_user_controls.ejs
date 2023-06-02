@@ -54,7 +54,9 @@
         <% if (users.length > 0) { %>
 
             <% users.forEach(user=> { %>
-                <div class="user-container" id=" <%= user.username %>">
+
+
+                <div class="user-container">
                     <table class="customers">
 
 
@@ -68,18 +70,37 @@
                                 <%= user.type %>
                             </td>
                             <td>
-                                <button type="button" class="buttons" onclick="edit_user('<%= users.username %>') "> edit </button>
+                                <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
                             </td>
                             <td>
                                 <button type="button " class="buttons " onclick="delete_user('<%= users.username %>') "> delete </button>
                             </td>
                             <td>
-                                <button type="button " class="buttons " onclick="view_more('<%= users.username %>') "> view more </button>
+                                <button type="button " class="buttons  " onclick="view_more('<%= users.id %>') "> view more </button>
                             </td>
+
+
+
+
                         </tr>
 
+
+
                     </table>
+                    <div class="formcontainer2" id="<%= user.username %>" hidden>
+                        <p>i must be hidden tho </p>
+
+
+                    </div>
                 </div>
+
+
+
+
+
+
+
+
                 <br>
                 <% }) %>
 
@@ -98,7 +119,7 @@
 
 
     </div>
-    <div class="formcontainer ">
+    <div class=" formcontainer ">
         <br>
         <h1>To add a user pls fill the fields and then submit </h1>
         <form class="myform ">
