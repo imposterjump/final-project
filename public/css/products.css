@@ -183,8 +183,8 @@ left: 50%;
 .inline{
     display: inline-block;
 }
-.centerednav{
+/*.centerednav{
     background-color: whitesmoke;
     position: sticky;
     z-index: 1;
-}
+}*/
