@@ -168,7 +168,7 @@ left: 50%;
     text-align: left;
 }
 .addbutton{
-    background-color: red;
+    background-color: darkred;
     border: none;
     color: white;
     padding: 10px;
@@ -182,4 +182,8 @@ left: 50%;
 }
 .inline{
     display: inline-block;
+}
+.centerednav{
+    background-color: whitesmoke;
+    position: sticky;
 }
