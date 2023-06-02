@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Product</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 30px auto;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .price-after-info {
+      font-size: 12px;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Edit Product</h1>
+  <form method="POST" action="/edit-product/<%= product._id %>" enctype="multipart/form-data" onsubmit="return validateForm()">
+    <label for="itemName">Item Name:</label>
+    <input type="text" id="itemName" name="itemName" value="<%= product.itemName %>" required>
+    <span class="error-message" id="itemNameError"></span>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required><%= product.description %></textarea>
+    <span class="error-message" id="descriptionError"></span>
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" accept="image/*">
+
+    <label for="sales">Sales (percentage):</label>
+    <input type="number" id="sales" name="sales" value="<%= product.sales %>" required min="0" max="100">
+    <span class="error-message" id="salesError"></span>
+
+    <label for="price_before">Price Before:</label>
+    <input type="number" id="price_before" name="price_before" onchange="calculatePriceAfter()" value="<%= product.price_before %>" required>
+    <span class="error-message" id="priceBeforeError"></span>
+
+    <label for="price_after">Price After:</label>
+    <input type="number" id="price_after" name="price_after" readonly required>
+    <span class="price-after-info">This will be calculated automatically based on Price Before and Sales.</span>
+
+    <label for="type">Type:</label>
+    <select id="type" name="type" required>
+      <option value="jackets" <%= product.type === "jackets" ? "selected" : "" %>>Jackets</option>
+      <option value="tops" <%= product.type === "tops" ? "selected" : "" %>>Tops</option>
+      <option value="bottoms" <%= product.type === "bottoms" ? "selected" : "" %>>Bottoms</option>
+      <option value="accessories" <%= product.type === "accessories" ? "selected" : "" %>>Accessories</option>
+    </select>
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    function calculatePriceAfter() {
+      const salesInput = document.getElementById("Sales");
+      const priceBeforeInput = document.getElementById("price_before");
+      const priceAfterInput = document.getElementById("price_after");
+
+      const sales = parseInt(salesInput.value) || 0;
+      const priceBefore = parseInt(priceBeforeInput.value) || 0;
+
+      const priceAfter = priceBefore * (100 - sales) / 100;
+      priceAfterInput.value = priceAfter > 0 ? priceAfter : 0;
+    }
+
+    const salesInput = document.getElementById("Sales");
+    const priceBeforeInput = document.getElementById("price_before");
+    const priceAfterInput = document.getElementById("price_after");
+
+    salesInput.addEventListener("input", calculatePriceAfter);
+    priceBeforeInput.addEventListener("input", calculatePriceAfter);
+
+    calculatePriceAfter();
+
+    function validateForm() {
+      const itemNameInput = document.getElementById("itemName");
+      const descriptionInput = document.getElementById("description");
+      const priceBeforeInput = document.getElementById("price_before");
+      const salesInput = document.getElementById("sales");
+
+      const itemNameError = document.getElementById("itemNameError");
+      const descriptionError = document.getElementById("descriptionError");
+      const priceBeforeError = document.getElementById("priceBeforeError");
+      const salesError = document.getElementById("salesError");
+
+      itemNameError.textContent = "";
+      descriptionError.textContent = "";
+      priceBeforeError.textContent = "";
+      salesError.textContent = "";
+
+      let isValid = true;
+
+      if (itemNameInput.value.trim() === "") {
+        itemNameError.textContent = "Item name is required";
+        isValid = false;
+      } else if (typeof itemNameInput.value !== "string") {
+        itemNameError.textContent = "Item name must be a string";
+        isValid = false;
+      }
+
+      if (descriptionInput.value.trim() === "") {
+        descriptionError.textContent = "Description is required";
+        isValid = false;
+      } else if (typeof descriptionInput.value !== "string") {
+        descriptionError.textContent = "Description must be a string";
+        isValid = false;
+      }
+
+      if (isNaN(priceBeforeInput.value)) {
+        priceBeforeError.textContent = "Price before must be a number";
+        isValid = false;
+      }
+
+      if (isNaN(salesInput.value)) {
+        salesError.textContent = "Sales must be a number";
+        isValid = false;
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+
+</html>
