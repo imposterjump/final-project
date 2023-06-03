@@ -4,7 +4,16 @@ import bcrypt from "bcrypt";
 import pkg from 'url/util.js';
 const { isNullOrUndefined } = pkg;
 
+
 import users from "../models/users.js"
+
+router.use((req, res, next) => {
+    if (req.session.user !== undefined && req.session.user.Type === 'admin') {
+        next();
+    } else {
+        res.render('err', { err: 'You are not an Admin', user: (req.session.user === undefined ? "" : req.session.user) })
+    }
+});
 
 router.get('/', function(req, res, next) {
 
@@ -14,7 +23,11 @@ router.get('/', function(req, res, next) {
             res.render('admin_user_controls', {
                 users: result,
                 TITLE: 'SIGNUP PAGE',
-                message: ''
+                message: '',
+                user: (req.session.user === undefined ? "" : req.session.user)
+
+
+
             });
             // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
         })
@@ -31,7 +44,7 @@ router.post('/search', function(req, res, next) {
         users.find()
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result, message: '' });
+                res.render('admin_user_controls', { users: result, message: '', user: (req.session.user === undefined ? "" : req.session.user) });
                 // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
             })
             .catch(err => {
@@ -43,7 +56,7 @@ router.post('/search', function(req, res, next) {
         users.find(query)
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result, message: '' });
+                res.render('admin_user_controls', { users: result, message: '', user: (req.session.user === undefined ? "" : req.session.user) });
                 // res.render('viewAll', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
             })
             .catch(err => {
@@ -75,7 +88,7 @@ router.post("/edit/:id", function(req, res, next) {
         users.find()
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result, message: 'please you have to fill all the information ' });
+                res.render('admin_user_controls', { users: result, message: 'please you have to fill all the information ', user: (req.session.user === undefined ? "" : req.session.user) });
 
             })
             .catch(err => {
@@ -88,7 +101,7 @@ router.post("/edit/:id", function(req, res, next) {
         users.find()
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result, message: 'the passwords doesnt match pls try again ' });
+                res.render('admin_user_controls', { users: result, message: 'the passwords doesnt match pls try again ', user: (req.session.user === undefined ? "" : req.session.user) });
 
             })
             .catch(err => {
@@ -101,7 +114,7 @@ router.post("/edit/:id", function(req, res, next) {
         users.find()
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result, message: 'the email is invalid please try again' });
+                res.render('admin_user_controls', { users: result, message: 'the email is invalid please try again', user: (req.session.user === undefined ? "" : req.session.user) });
 
             })
             .catch(err => {
@@ -114,7 +127,7 @@ router.post("/edit/:id", function(req, res, next) {
         users.find()
             .then(result => {
                 console.log(result);
-                res.render('admin_user_controls', { users: result, message: 'the phone number is invalid pls try again ' });
+                res.render('admin_user_controls', { users: result, message: 'the phone number is invalid pls try again ', user: (req.session.user === undefined ? "" : req.session.user) });
 
             })
             .catch(err => {
@@ -137,9 +150,9 @@ router.post("/edit/:id", function(req, res, next) {
                 phone_number: req.body.phone
             })
             .then(result => {
-                res.redirect('/admin-user-management'
+                res.redirect('/admin-user-management');
 
-                );
+
             })
             .catch(err => {
                 console.log(err);
