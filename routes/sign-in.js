@@ -14,6 +14,12 @@ router.get('/', function(req, res, next) {
         message: ""
     });
 });
+
+
+
+
+
+
 router.post('/user', function(req, res, next) {
     let temp_password = req.body.password;
     let query = { username: req.body.username };
@@ -44,9 +50,11 @@ router.post('/user', function(req, res, next) {
                     } else {
                         console.log("correct password and type = " + mytype);
                         if (mytype == 'user') {
-                            res.render('HomePage');
+                            req.session.user = result;
+                            res.redirect('/HomePage');
                             return true;
                         } else if (mytype == 'admin') {
+                            req.session.user = result;
                             res.redirect('/admin-homepage');
                             return true;
 
