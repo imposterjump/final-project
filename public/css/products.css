@@ -167,3 +167,19 @@ left: 50%;
 .text2{
     text-align: left;
 }
+.addbutton{
+    background-color: darkred;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 7px;
+}
+.inline{
+    display: inline-block;
+}
