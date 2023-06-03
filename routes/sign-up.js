@@ -34,12 +34,8 @@ router.post('/', (req, res) => {
         counter = false;
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-<<<<<<< HEAD
-            message: 'Fill all fields'
-=======
-            message: 'please you have to fill all the information ',
+            message: 'Fill all fields ',
             user: (req.session.user === undefined ? "" : req.session.user)
->>>>>>> c6bfb3a616c051b2d65373f28f0e0f6778338b7f
 
         });
 
@@ -47,12 +43,8 @@ router.post('/', (req, res) => {
         counter = "b";
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-<<<<<<< HEAD
-            message: 'The password and confirmation password do not match.'
-=======
-            message: 'the passwords doesnt match pls try again ',
+            message: 'The password and confirmation password do not match.',
             user: (req.session.user === undefined ? "" : req.session.user)
->>>>>>> c6bfb3a616c051b2d65373f28f0e0f6778338b7f
 
         });
 
@@ -60,12 +52,8 @@ router.post('/', (req, res) => {
         counter = "b";
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-<<<<<<< HEAD
-            message: 'Email invalid. Please try again'
-=======
-            message: 'the email is invalid please try again ',
+            message: 'Email invalid. Please try again',
             user: (req.session.user === undefined ? "" : req.session.user)
->>>>>>> c6bfb3a616c051b2d65373f28f0e0f6778338b7f
 
         });
 
@@ -74,12 +62,8 @@ router.post('/', (req, res) => {
         counter = "b";
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-<<<<<<< HEAD
-            message: 'Phone number invalid. Please try again'
-=======
-            message: 'the phone number is invalid pls try again  ',
+            message: 'Phone number invalid. Please try again',
             user: (req.session.user === undefined ? "" : req.session.user)
->>>>>>> c6bfb3a616c051b2d65373f28f0e0f6778338b7f
 
         });
     } else {
@@ -98,12 +82,8 @@ router.post('/', (req, res) => {
 
                     res.render('signup', {
                         TITLE: 'SIGNUP PAGE',
-<<<<<<< HEAD
-                        message: 'User name already exists'
-=======
-                        message: 'this username is already taken please try another one ',
+                        message: 'Username already exists',
                         user: (req.session.user === undefined ? "" : req.session.user)
->>>>>>> c6bfb3a616c051b2d65373f28f0e0f6778338b7f
 
 
 
