@@ -29,14 +29,9 @@
         "formidable": "^2.1.1",
         "fs-extra": "^11.1.1",
         "http-errors": "^2.0.0",
-<<<<<<< HEAD
         "method-override": "^3.0.0",
         "mongodb": "^5.5.0",
         "mongoose": "^7.1.1",
-=======
-        "mongodb": "^5.6.0",
-        "mongoose": "^7.2.2",
->>>>>>> 266e9f650cc1d397543b683d73efcb2c76619fb9
         "morgan": "^1.10.0",
         "multer": "^1.4.5-lts.1",
         "nodemon": "^2.0.22",
