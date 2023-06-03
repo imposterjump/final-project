@@ -1,129 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<body style="background-color:#f7e7ce;"></body>
-
-
-<! -- head and css start here -->
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/signup.css">
-
-    <title>
-        <%- TITLE %>
-    </title>
-
-    <! -- css -->
-
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/CSS/signup.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-
-
-<! -- javascript starts here  -->
-
 <script src="/js/signup.js"></script>
+<body>
 
+    
+  <div class="container">
+    <div class="title">Registration</div>
+    <% if(message !=''){ %>
 
-<! -- BODY STRATS HERE  -->
-
-<body class="body">
-
-    <%- include("./Partials/chat.ejs") %>
-        <%- include("./Partials/NavUser.ejs") %>
-
-            <p class="reg_message">welcome to BOOMY please enter your information to sign up </p>
-
-
-            <% if(message !=''){ %>
-
-                <p class="reg_message">
-                    <%= message %>
-                </p>
-                <% } %>
-
-
-
-
-                    <div class="mydiv">
-
-                        <form action="/signup " method="POST" enctype="multipart/form-data" class="myform">
-
-                            <input type="text " class="inputs1 " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
-                            <br>
-                            <input type="email" class="inputs1 " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-                            <br>
-
-                            <input type="password" class="inputs1 " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                            <br>
-
-                            <input type="password" class="inputs1 " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                            <br>
-                            <label class="phone_label " for="phone_label">Phone Number:</label>
-
-                            <div class="input-group ">
-
-                                <select id="countrycode " name="countrycode ">
-                             <option value="1 ">United States (+1)</option>
-                             <option value="86 ">China (+86)</option>
-                             <option value="91 ">India (+91)</option>
-                             <option value="81 ">Japan (+81)</option>
-                             <option value="7 ">Russia (+7)</option>
-                             <option value="82 ">South Korea (+82)</option>
-                             <option value="62 ">Indonesia (+62)</option>
-                             <option value="55 ">Brazil (+55)</option>
-                             <option value="92 ">Pakistan (+92)</option>
-                             <option value="234 ">Nigeria (+234)</option>
-                             <option value="880 ">Bangladesh (+880)</option>
-                             <option value="33 ">France (+33)</option>
-                             <option value="49 ">Germany (+49)</option>
-                             <option value="44 ">United Kingdom (+44)</option>
-                             <option value="39 ">Italy (+39)</option>
-                             <option value="90 ">Turkey (+90)</option>
-                             <option value="54 ">Argentina (+54)</option>
-                             <option value="20 ">Egypt (+20)</option>
-                             <option value="81 ">Japan (+81)</option>
-                             <option value="86 ">China (+86)</option>
-                             </select>
-
-                            </div>
-                            <input type="text" class="" id="phone " name="phone" required>
-
+        <p class="reg_message">
+            <%= message %>
+        </p>
+        <% } %>
+    <div class="content">
+      <form action="/signup" method="post" enctype="multipart/form-data">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" id="username" name="username" minlength="8"
+              maxlength="16" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" placeholder="Enter your email" id="email " name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Country Code</span>
+            <select class="selector" id="countrycode " name="countrycode ">
+              <option value="1 ">United States (+1)</option>
+              <option value="86 ">China (+86)</option>
+              <option value="91 ">India (+91)</option>
+              <option value="81 ">Japan (+81)</option>
+              <option value="7 ">Russia (+7)</option>
+              <option value="82 ">South Korea (+82)</option>
+              <option value="62 ">Indonesia (+62)</option>
+              <option value="55 ">Brazil (+55)</option>
+              <option value="92 ">Pakistan (+92)</option>
+              <option value="234 ">Nigeria (+234)</option>
+              <option value="880 ">Bangladesh (+880)</option>
+              <option value="33 ">France (+33)</option>
+              <option value="49 ">Germany (+49)</option>
+              <option value="44 ">United Kingdom (+44)</option>
+              <option value="39 ">Italy (+39)</option>
+              <option value="90 ">Turkey (+90)</option>
+              <option value="54 ">Argentina (+54)</option>
+              <option value="20 ">Egypt (+20)</option>
+              <option value="81 ">Japan (+81)</option>
+              <option value="86 ">China (+86)</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="number" placeholder="Enter your number" id="phone " name="phone" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" id="pw" name="pw" minlength="8 " maxlength="16 "
+              required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" placeholder="Confirm your password" id="cpw" name="cpw" minlength="8 " maxlength="16 "
+              required>
+          </div>
+          <label> <input type="checkbox" class="check" name="agree " required> I agree to the Website's terms and licenses </label>
                             <br>
 
+        </div>
+        <div class="button">
+          <input type="submit" class="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
 
-                            <label> <input type="checkbox" class="check" name="agree " required> I agree to the Website's terms and licenses </label>
-                            <br>
+  <script>
+    // Add a listener to the form submission to check if passwords are matching
 
-                            <input type="submit" class="submit" value="signup">
-                        </form>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const password = document.querySelector('#password').value;
+        const confirmPassword = document.querySelector('#confirm-password').value;
 
-
-                    </div>
-
-
-                    <script>
-                        // Add a listener to the form submission to check if passwords are matching
-
-                        document.querySelector('form').addEventListener('submit', function(event) {
-                            const password = document.querySelector('#password').value;
-                            const confirmPassword = document.querySelector('#confirm-password').value;
-
-                            // Check if the two passwords match
-                            if (password !== confirmPassword) {
-                                alert('The two passwords do not match.');
-                                event.preventDefault();
-                            }
-                        });
-                    </script>
+        // Check if the two passwords match
+        if (password !== confirmPassword) {
+            alert('The two passwords do not match.');
+            event.preventDefault();
+        }
+    });
+</script>
 
 </body>
 
 
-</html>
 
 </html>

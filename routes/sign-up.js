@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
         counter = false;
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-            message: 'please you have to fill all the information '
+            message: 'Fill all fields'
 
         });
 
@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
         counter = "b";
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-            message: 'the passwords doesnt match pls try again '
+            message: 'The password and confirmation password do not match.'
 
         });
 
@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
         counter = "b";
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-            message: 'the email is invalid please try again '
+            message: 'Email invalid. Please try again'
 
         });
 
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
         counter = "b";
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-            message: 'the phone number is invalid pls try again  '
+            message: 'Phone number invalid. Please try again'
 
         });
     } else {
@@ -76,7 +76,7 @@ router.post('/', (req, res) => {
 
                     res.render('signup', {
                         TITLE: 'SIGNUP PAGE',
-                        message: 'this username is already taken please try another one '
+                        message: 'User name already exists'
 
 
 
