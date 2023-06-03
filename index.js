@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import fileUpload from "express-fileupload";
 import users from "./models/users.js"
 import mongoose from 'mongoose';
+import session from 'express-session';
 
 
 
@@ -33,7 +34,7 @@ import vproducts_router from "./routes/vproducts.js";
 import Product from './models/Product.js';
 const index = express();
 export const __filename = fileURLToPath(
-  import.meta.url);
+    import.meta.url);
 export const __dirname = path.dirname(__filename);
 // Middleware
 index.use(express.urlencoded({ extended: false }));
@@ -46,7 +47,8 @@ index.set("view engine", "ejs");
 index.use(logger("common"));
 index.use(express.json());
 index.use(fileUpload());
-//app.use(session({ secret: 'Your_Secret_Key' }));
+
+index.use(session({ secret: 'Your_Secret_Key' }));
 
 //setup cookie parser middleware
 index.use(cookieParser());
@@ -59,105 +61,105 @@ index.use(express.static(path.join(__dirname, 'public')));
 //db
 console.log(`Project Root dir : ${__dirname}`);
 mongoose.connect('mongodb+srv://boomy:25102002@cluster0.lfldchi.mongodb.net/projectdatabase?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    console.log('Connected to the database');
-  })
-  .catch((error) => {
-    console.error('Error connecting to the database:', error);
-  });
- 
-
-  
- index.get('/details/:id', (req, res) => {
-    const productId = req.params.id;
-  
-    Product.findById(productId)
-      .then((product) => {
-        res.render('details', { product });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.redirect('/');
-      });
-  });
-  index.delete('/details/:id', (req, res) => {
-    const productId = req.params.id;
-  
-    Product.findByIdAndDelete(productId)
-      .then(() => {
-        res.json({ mylink: '/vproducts' });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.redirect('/');
-      });
-  });
-
-
-  // Edit Product Page - GET
-  index.get('/edit-product/:id', (req, res) => {
-    const productId = req.params.id;
-    Product.findById(productId)
-      .then((product) => {
-        res.render('edit', { product });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.redirect('/');
-      });
-  });
-// Edit Product Page - POST
-index.post('/edit-product/:id', function(req, res, next) {
-   
-  let imgFile;
-  let uploadPath;
-  console.log(__dirname + '/public/uploads/');
-  console.log(req.files);
-
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
-  }
-  
-  imgFile = req.files && req.files.image;
-  uploadPath = __dirname + '/public/uploads/' +  req.body.title + path.extname(imgFile.name)
-  console.log(uploadPath)
-  console.log(req.body)
-  // Use the mv() method to place the file somewhere on your server
-  imgFile.mv(uploadPath, function (err) {
-    if (err) {
-      return res.status(500).send(err);
-    }
-
-    const id = req.params.id
-    
-    const pro = ({
-      itemName: req.body.itemName,
-      Sales: req.body.Sales,
-      description: req.body.description,
-      price_before: req.body.price_before,
-      price_after: req.body.price_after,
-      type: req.body.type,
-      images: req.body.i + path.extname(imgFile.name),
-     
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => {
+        console.log('Connected to the database');
+    })
+    .catch((error) => {
+        console.error('Error connecting to the database:', error);
     });
 
-    
-    
-    Product.findByIdAndUpdate(id,pro)
-      .then(result => {
-         
-          console.log(result)
-        res.redirect('/vproducts');
-      
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
- 
+
+
+index.get('/details/:id', (req, res) => {
+    const productId = req.params.id;
+
+    Product.findById(productId)
+        .then((product) => {
+            res.render('details', { product });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.redirect('/');
+        });
+});
+index.delete('/details/:id', (req, res) => {
+    const productId = req.params.id;
+
+    Product.findByIdAndDelete(productId)
+        .then(() => {
+            res.json({ mylink: '/vproducts' });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.redirect('/');
+        });
+});
+
+
+// Edit Product Page - GET
+index.get('/edit-product/:id', (req, res) => {
+    const productId = req.params.id;
+    Product.findById(productId)
+        .then((product) => {
+            res.render('edit', { product });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.redirect('/');
+        });
+});
+// Edit Product Page - POST
+index.post('/edit-product/:id', function(req, res, next) {
+
+    let imgFile;
+    let uploadPath;
+    console.log(__dirname + '/public/uploads/');
+    console.log(req.files);
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    imgFile = req.files && req.files.image;
+    uploadPath = __dirname + '/public/uploads/' + req.body.title + path.extname(imgFile.name)
+    console.log(uploadPath)
+    console.log(req.body)
+        // Use the mv() method to place the file somewhere on your server
+    imgFile.mv(uploadPath, function(err) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+
+        const id = req.params.id
+
+        const pro = ({
+            itemName: req.body.itemName,
+            Sales: req.body.Sales,
+            description: req.body.description,
+            price_before: req.body.price_before,
+            price_after: req.body.price_after,
+            type: req.body.type,
+            images: req.body.i + path.extname(imgFile.name),
+
+        });
+
+
+
+        Product.findByIdAndUpdate(id, pro)
+            .then(result => {
+
+                console.log(result)
+                res.redirect('/vproducts');
+
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    });
+
 });
 
 
@@ -191,11 +193,17 @@ index.use('/add-product', add_product_router);
 index.use('/edit', edit_router);
 index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
-
 //port
+// 404 page
+index.use((req, res) => {
+    res.status(404).send('404  page not found ' /*, { user: (req.session.user === undefined ? "" : req.session.user) }*/ );
+
+
+});
+
 const port = 3000;
 
-  
+
 index.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

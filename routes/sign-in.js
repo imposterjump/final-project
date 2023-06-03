@@ -11,7 +11,8 @@ const SALT_ROUNDS = 10;
 
 router.get('/', function(req, res, next) {
     res.render('signin', {
-        message: ""
+        message: "",
+        user: (req.session.user === undefined ? "" : req.session.user)
     });
 });
 
@@ -33,6 +34,7 @@ router.post('/user', function(req, res, next) {
                 console.log(" i am not null");
                 console.log(result);
                 let mytype = result.type;
+                const me = result;
 
 
                 bcrypt.compare(req.body.password, result.password, (err, result) => {
@@ -40,7 +42,8 @@ router.post('/user', function(req, res, next) {
                         console.log("wrong pass ");
 
                         res.render('signin', {
-                            message: "sorry this password is incorrect please try agaim "
+                            message: "sorry this password is incorrect please try agaim ",
+                            user: (req.session.user === undefined ? "" : req.session.user)
                         });
                         return false;
 
@@ -50,12 +53,30 @@ router.post('/user', function(req, res, next) {
                     } else {
                         console.log("correct password and type = " + mytype);
                         if (mytype == 'user') {
-                            req.session.user = result;
-                            res.redirect('/HomePage');
+                            req.session.user = me;
+                            res.render('HomePage', { user: (req.session.user === undefined ? "" : req.session.user) });
                             return true;
                         } else if (mytype == 'admin') {
-                            req.session.user = result;
-                            res.redirect('/admin-homepage');
+                            req.session.user = me;
+                            console.log(req.session.user);
+                            users.find()
+                                .then(result => {
+                                    console.log(result);
+                                    res.render('admin_user_controls', {
+                                        users: result,
+                                        TITLE: 'SIGNUP PAGE',
+                                        message: '',
+                                        user: (req.session.user === undefined ? "" : req.session.user)
+
+
+
+                                    });
+
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                });
+
                             return true;
 
                         }
@@ -74,10 +95,11 @@ router.post('/user', function(req, res, next) {
 
 
             } else {
-                console.log(" i am not null");
+                console.log(" i am null");
                 res.render('signin', {
 
-                    message: "sorry this username doesnt exist please try agaim "
+                    message: "sorry this username doesnt exist please try agaim ",
+                    user: (req.session.user === undefined ? "" : req.session.user)
                 });
 
             }
