@@ -6,12 +6,7 @@ import Product from '../models/Product.js';
 const router = express.Router();
 
 
-router.get('/', function(req, res, next) {
-    res.render('details');
-});
-
-
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     const productId = req.params.id;
 
     Product.findById(productId)
@@ -23,19 +18,18 @@ router.get('/', (req, res) => {
             res.redirect('/');
         });
 });
-
-
-router.delete('/details/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const productId = req.params.id;
 
     Product.findByIdAndDelete(productId)
         .then(() => {
-            res.json({ mylink: '/' });
+            res.json({ mylink: '/vproducts' });
         })
         .catch((err) => {
             console.log(err);
             res.redirect('/');
         });
 });
+
 
 export default router;
