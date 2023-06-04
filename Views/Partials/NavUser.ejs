@@ -19,11 +19,14 @@
         <div class="logosmall">
             <a href="#"><img src="/images/TopNav/LogoSmallTrial.png"></a>
         </div>
-
+        <div class="rightlinks">
+        <a href="/signin"><button class="loginbutton">Log In</button></a>
         <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
             class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
-
+        </div>
+        
             <% if(user==="" ) {%>
+                
                 <a href='/user/signup'>Sign Up</a>
                 <a href='/user/login'>Login</a>
                 <% }
@@ -59,10 +62,7 @@
 
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
-    </ul>
-    <ul class="lowerbar">
-        <p class="lowerbartext">Free shipping on orders above US$99</p>
-
+        <div class="lowerbar"></div>
     </ul>
 </body>
 

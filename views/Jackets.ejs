@@ -3,168 +3,87 @@
 
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="/css/products.css">
-  <title>Boomy's Jackets</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/products.css">
+    <title>Boomy's Jackets</title>
 </head>
 
 <body>
-  <%- include("./partials/navproduct.ejs") %>
-  <%- include("./Partials/chat.ejs") %>
+    <%- include("./partials/navproduct.ejs") %>
+        <%- include("./Partials/chat.ejs") %>
+
+            <div class="container">
 
 
-  <div class="container">
+
+                <div class="text2">
+                    <p>Category</p>
+                    <h3>Jackets</h3>
+                </div>
+                <% if (Product.length > 0) { %>
+                    <div class="row">
+                        <% Product.forEach(pro => {  %>
+
+                            <% if (i < 3) { %>
+                                <div class="column">
+                                    <div>
+                                        <div class="images">
+                                            <img src="/uploads/<%= pro.images[0] %>">
+                                        </div>
+                                        <div class="text">
+                                            <h4>
+                                                <%= pro.itemName %>
+                                            </h4>
+                                            <h5 class="before">EGP
+                                                <%= pro.price_before %>.00</h5>
+                                            <h5 class="after">EGP
+                                                <%= pro.price_after %>.00</h5>
+                                            <p class="after">
+                                                <%= pro.Sales %>% Discount </p>
+                                            <button class="addbutton" type="submit">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                    <% i= i+1; %>
+                                        <% } else { %>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <div>
+                                                        <div class="images">
+                                                            <img src="/uploads/<%= pro.images[0] %>">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h4>
+                                                                <%= pro.itemName %>
+                                                            </h4>
+                                                            <h5 class="before">EGP
+                                                                <%= pro.price_before %>.00</h5>
+                                                            <h5 class="after">EGP
+                                                                <%= pro.price_after %>.00</h5>
+                                                            <p class="after">
+                                                                <%= pro.Sales %>% Discount </p>
+                                                            <button class="addbutton" type="submit">Add To Cart</button>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                                        <% }) %>
+                                                </div>
+                                                <% } else { %>
+                                                    <p>There are no products to display...</p>
+                                                    <% } %>
+
+                                            </div>
 
 
-
-    <div class="text2">
-      <p>Category</p>
-      <h3>Jackets</h3>
-    </div>
-    <div class="row">
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="images/Jackets/HeavyWeight Black Puffer Jacket.avif" href="Ripped.html">
-            <img class="imgtop" src="/images/Jackets/HeavyWeight Black Puffer Jacket2.avif">
-          </div>
-          <div class="text">
-            <h4>HeavyWeight Black Puffer Jacket</h4>
-            <h5 class="before">EGP 3000.00</h5>
-              <h5 class="after">EGP 2500.00</h5>
-              <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/HeavyWeight Baige Puffer Jacket1.avif">
-            <img src="/images/Jackets/HeavyWeight Baige Puffer Jacket2.avif" class="imgtop">
-          </div>
-          <div class="text">
-            <h4>HeavyWeight Baige Puffer Jacket</h4>
-            <h5 class="before">EGP 3000.00 </h5>
-            <h5 class="after">EGP 2500.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-
-      </div>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Faux Fur-Lined Black Jacket1.avif">
-            <img class="imgtop" src="/images/Jackets/Faux Fur-Lined Black Jacket2.avif">
-          </div>
-          <div class="text">
-            <h4>Faux Fur-Lined BLack Jacket</h4>
-            <h5 class="before">EGP 2500.00 </h5>
-            <h5 class="after">EGP 1950.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Hooded Narrow Channel Puffer Black1.avif">
-            <img class="imgtop" src="/images/Jackets/Hooded Narrow Channel Puffer Black2.avif">
-          </div>
-          <div class="text">
-            <h4>Black Hooded Narrow Puffer Jacket</h4>
-            <h5 class="before">EGP 3200.00 </h5>
-            <h5 class="after">EGP 2750.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Fleece Lined Sport Hoodie Jacket1.avif">
-            <img class="imgtop" src="/images/Jackets/Fleece-Lined Sport Hoodie Jacket2.avif">
-          </div>
-          <div class="text">
-            <h4>Black Fleece-Lined Logo Sport Jacket</h4>
-            <h5 class="before">EGP 2650.00 </h5>
-            <h5 class="after">EGP 1900.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Sherpa-Lined Black Trucker1.avif">
-            <img class="imgtop" src="/images/Jackets/Sherpa-Lined Black Trucker2.avif">
-          </div>
-          <div class="text">
-            <h4>Sherpa-Lined Black Trucker Jacket</h4>
-            <h5 class="before">EGP 2300.00 </h5>
-            <h5 class="after">EGP 1800.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Black Hooded Weather Bomber1.avif">
-            <img class="imgtop" src="/images/Jackets/Black Hooded Weather Bomber2.avif">
-          </div>
-          <div class="text">
-            <h4>Black Hooded Weather Bomber Jacket</h4>
-            <h5 class="before">EGP 2200.00 </h5>
-            <h5 class="after">EGP 1600.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Patch Pocket Puffer Vest1.avif">
-            <img class="imgtop" src="/images/Jackets/Patch Pocket Puffer Vest2.avif">
-          </div>
-          <div class="text">
-            <h4>Patch Pocket Puffer Vest</h4>
-            <h5 class="before">EGP 2100.00 </h5>
-            <h5 class="after">EGP 1750.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src="/images/Jackets/Black Varisty Bomber Jacket.avif">
-            <img class="imgtop" src="/images/Jackets/Black Varsity Bomber Jacket2.avif">
-          </div>
-          <div class="text">
-            <h4>Black Varsity Bomber Jacket</h4>
-            <h5 class="before">EGP 2900.00 </h5>
-            <h5 class="after">EGP 2100.00</h5>
-            <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                                </div>
 
 </body>
 
 <footer>
-  <%- include("./Partials/footer.ejs") %>
+    <%- include("./Partials/footer.ejs") %>
 </footer>
 
 </html>

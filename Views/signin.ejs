@@ -12,6 +12,12 @@
     <div class="container">
       <form action="/signin/user" method="post">
         <div class="title">Login</div>
+        <% if(message !=''){ %>
+
+          <p class="reg_message">
+              <%= message %>
+          </p>
+          <% } %>
         <div class="input-box underline">
           <input type="text" placeholder="Enter Your Username" id="username" name="username" required>
           <div class="underline"></div>
