@@ -36,13 +36,13 @@
           </div>
           <div class="text">
             <h4><%= pro.itemName %> </h4>
-            <h5 class="before"><%= pro.price_before %></h5>
+            <h5 class="before">EGP <%= pro.price_before %>.00</h5>
             <div style ="display: inline-block;">
-              <h5 class="after"><%= pro.price_after %></h5> 
+              <h5 class="after">EGP<%= pro.price_after %>.00</h5> 
               <p class="after"><%= pro.Sales %>% Discount </p></div>
               <button class="addbutton" type="submit">Add To Cart</button>
           </div>
-        </div>
+        </div> 
         <% }) %>
       </div>
       <% } else { %>
