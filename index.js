@@ -71,55 +71,55 @@ mongoose.connect('mongodb+srv://boomy:25102002@cluster0.lfldchi.mongodb.net/proj
         console.error('Error connecting to the database:', error);
     });
 //edit ppost 
-    index.post('/edit-product/:id', function(req, res, next) {
+index.post('/edit-product/:id', function(req, res, next) {
 
-        let imgFile;
-        let uploadPath;
-        console.log(__dirname + '/public/uploads/');
-        console.log(req.files);
-    
-        if (!req.files || Object.keys(req.files).length === 0) {
-            return res.status(400).send('No files were uploaded.');
+    let imgFile;
+    let uploadPath;
+    console.log(__dirname + '/public/uploads/');
+    console.log(req.files);
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+
+    imgFile = req.files && req.files.image;
+    uploadPath = __dirname + '/public/uploads/' + req.body.title + path.extname(imgFile.name)
+    console.log(uploadPath)
+    console.log(req.body)
+        // Use the mv() method to place the file somewhere on your server
+    imgFile.mv(uploadPath, function(err) {
+        if (err) {
+            return res.status(500).send(err);
         }
-    
-        imgFile = req.files && req.files.image;
-        uploadPath = __dirname + '/public/uploads/' + req.body.title + path.extname(imgFile.name)
-        console.log(uploadPath)
-        console.log(req.body)
-            // Use the mv() method to place the file somewhere on your server
-        imgFile.mv(uploadPath, function(err) {
-            if (err) {
-                return res.status(500).send(err);
-            }
-    
-            const id = req.params.id
-    
-            const pro = ({
-                itemName: req.body.itemName,
-                Sales: req.body.Sales,
-                description: req.body.description,
-                price_before: req.body.price_before,
-                price_after: req.body.price_after,
-                type: req.body.type,
-                images: req.body.i + path.extname(imgFile.name),
-    
-            });
-    
-    
-    
-            Product.findByIdAndUpdate(id, pro)
-                .then(result => {
-    
-                    console.log(result)
-                    res.redirect('/vproducts');
-    
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+
+        const id = req.params.id
+
+        const pro = ({
+            itemName: req.body.itemName,
+            Sales: req.body.Sales,
+            description: req.body.description,
+            price_before: req.body.price_before,
+            price_after: req.body.price_after,
+            type: req.body.type,
+            images: req.body.i + path.extname(imgFile.name),
+
         });
-    
+
+
+
+        Product.findByIdAndUpdate(id, pro)
+            .then(result => {
+
+                console.log(result)
+                res.redirect('/vproducts');
+
+            })
+            .catch(err => {
+                console.log(err);
+            });
     });
+
+});
 
 
 // routes setup (pls focus team while filling this )
@@ -146,6 +146,7 @@ index.use('/signup', sign_up_router);
 index.use('/account', account_router);
 index.use('/cart', cart_router);
 index.use('/help', help_router);
+
 //product
 index.use('/add-product', add_product_router);
 index.use('/edit-product', edit_router);

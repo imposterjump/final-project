@@ -3,6 +3,7 @@ var router = Router();
 
 
 
+
 router.get('/', function(req, res, next) {
     const analyticsdata = {
         numberOforderschartdata: [10, 20, 30, 40, 50],
@@ -13,10 +14,10 @@ router.get('/', function(req, res, next) {
         numberofvisitorsch: 600,
         registeredusers: 6500,
         registeredusersch: 6500,
-        tobefulfilled:26,
-        tobefulfilledch:26,
-        totalsales:8125,
-        totalsales:130
+        tobefulfilled: 26,
+        tobefulfilledch: 26,
+        totalsales: 8125,
+        totalsales: 130
 
 
     };
