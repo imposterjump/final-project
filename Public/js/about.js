@@ -51,3 +51,18 @@ window.addEventListener('scroll', checkScroll);
     slides[slideIndex-1].style.display = "block";
     setTimeout(showSlides, 3000); 
   };
+  // JavaScript code
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+});
+
+const containerss = document.querySelectorAll('.container');
+
+containers.forEach((container) => {
+  observer.observe(container);
+});

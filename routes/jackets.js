@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import Product from "../models/Product.js";
 var router = Router();
 
 router.get('/', function(req, res, next) {

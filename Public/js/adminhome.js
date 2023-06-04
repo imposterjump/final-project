@@ -15,7 +15,7 @@ const doughnutChart = new Chart(donutChart, {
   data: {
     labels: ['EGY', 'FR', 'GER', 'USA', 'UAE'],
     datasets: [{
-      data:<%=analyticsData.numberoforderschartdata %>,
+      data:<%=analyticsdata.numberoforderschartdata%>,
       backgroundColor: [
         '#FF6384', '#36A2EB', '#FFCE56', '#33FF9E', '#B533FF'
       ],
