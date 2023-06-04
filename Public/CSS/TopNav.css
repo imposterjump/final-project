@@ -70,6 +70,11 @@ html,body{
     font-size: 17px;
     border: none;
   }
+
+  .search-container :hover
+  {
+    background-color: white;
+  }
   
   .topnav .search-container button {
     float: right;
