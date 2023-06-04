@@ -4,7 +4,7 @@ var router = Router();
 
 router.get('/', function(req, res, next) {
 
-    Product.find({ type: 'jackets' })
+    Product.find({ type: 'bottoms' })
         .then(result => {
             console.log(result);
             res.render('bottoms', {
