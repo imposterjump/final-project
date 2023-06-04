@@ -25,10 +25,12 @@
       <h3>Jackets</h3>
     </div>
     <% if (Product.length > 0) { %> 
+       <div class="row">
       <% Product.forEach(pro => {  %>
        <% let i = 0; %>
       <% if (i < 3) { %>
       <div class="column">
+        <div>
           <div class="images">
             <img src= "/uploads/<%= pro.images[0] %>">
           </div>
@@ -42,8 +44,9 @@
         </div> 
         <% i++; %>
         <% } else { %>
-        <div class="row">
+          <div class="row">
           <div class="column">
+            <div>
               <div class="images">
                 <img src= "/uploads/<%= pro.images[0] %>">
               </div>
@@ -55,7 +58,6 @@
                   <button class="addbutton" type="submit">Add To Cart</button>
               </div>
             </div> 
-        </div>
             <% } %>
         <% }) %>
       </div>
@@ -63,7 +65,7 @@
         <p>There are no products to display...</p>
         <% } %>
 
-   
+    </div>
      
       
   </div>
