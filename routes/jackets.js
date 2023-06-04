@@ -1,7 +1,4 @@
 import express from 'express';
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
-import { createRequire } from 'module';
 import Product from '../models/Product.js';
 const router = express.Router();
 
