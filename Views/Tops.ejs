@@ -11,141 +11,49 @@
 </head>
 <body>
   <%- include("./partials/navproduct.ejs") %>
-  <%- include("./Partials/chat.ejs") %>
-         
-    <div class="container">
-     
+      <%- include("./Partials/chat.ejs") %>
 
+          <div class="container">
+              <div class="text2">
+                  <p>Category</p>
+                  <h3>Bottoms</h3>
+              </div>
+              <% if (Product.length > 0) { %>
+                  <% let i = 0; %>
+                      <div class="row">
+                          <% Product.forEach(pro => {  %>
+                              <% if (i % 3 === 0 && i !== 0) { %>
+                      </div>
+                      <div class="row">
+                          <% } %>
+                              <div class="column">
+                                  <div>
+                                      <div class="images">
+                                          <img src="/uploads/<%= pro.images[0] %>">
+                                          <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
+                                      </div>
+                                      <div class="text">
+                                          <h4>
+                                              <%= pro.itemName %>
+                                          </h4>
+                                          <h5 class="before">EGP
+                                              <%= pro.price_before %>.00</h5>
+                                          <h5 class="after">EGP
+                                              <%= pro.price_after %>.00</h5>
+                                          <p class="after">
+                                              <%= pro.Sales %>% Discount </p>
+                                          <button class="addbutton" type="submit">Add To Cart</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <% i++; %>
+                                  <% }) %>
+                      </div>
+                      <% } else { %>
+                          <p>There are no products to display...</p>
+                          <% } %>
+          </div>
 
-    <div class="text2">
-          <p>Category</p>
-          <h3>Tops</h3>
-    </div>
-             <div class = "row">
-                <div class = "column">
-                    <div>
-                          <div class="images"> 
-                          <img src="images/Tops/Short Sleeve1.avif" href="ShortSleeve.html">
-                          <img class="imgtop" src="images/Tops/Short Sleeve2.avif">
-                          </div>
-                          <div class="text">
-                          <h4>Short-Sleeve Navy Shirt</h4>
-                          <h5 class = "before">EGP 950.00</h5> <span><h5 class="after">EGP 600.00</h5>
-                          <button class="addbutton" type="submit">Add To Cart</button>
-                          </div>
-                   </div>    
-                  </div>
-             <div class="column"> 
-                <div>
-                <div class="images">
-                 <img src="images/Tops/White Short Sleeve1.avif">
-                 <img class="imgtop" src="images/Tops/White Short Sleeve2.avif">
-                </div>
-                 <div class="text">
-                 <h4>Short-Sleeve White Shirt</h4>                             
-                 <h5 class="before">EGP 950.00 </h5> <h5 class="after">EGP 600.00</h5>
-                 <button class="addbutton" type="submit">Add To Cart</button>
-                </div>
-                </div>
-                
-            </div>
-            <div class="column">
-                <div>
-                  <div class="images">
-                    <img src="images/Tops/Floral Short Sleeve1.avif">
-                    <img class="imgtop" src="images/Tops/Floral Short Sleeve2.avif">
-                  </div>
-                    <div class="text">
-                    <h4>Floral Short-Sleeve Shirt</h4>
-                    <h5 class="before">EGP 1100.00 </h5> <h5 class="after">EGP 800.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="row"> 
-            <div class="column">
-              <div>
-                <div class="images"> 
-                    <img src="images/Tops/Logo navy tee1.webp">
-                    <img class="imgtop" src="images/Tops/Logo nave tee2.avif">
-                  </div>
-                    <div class="text">
-                    <h4>Logo Graphic Navy T-Shirt</h4>
-                    <h5 class="before">EGP 850.00 </h5> <h5 class="after">EGP 550.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-            </div>
-            <div class = "column">
-                <div>
-                  <div class="images">
-                   <img src="images/Tops/Logo red tee1.avif">
-                   <img class="imgtop" src="images/Tops/Logo red tee2.avif">
-                  </div>
-                   <div class="text">
-                      <h4>Logo Graphic Red T-Shirt</h4>
-                      <h5 class = "before">EGP 850.00 </h5> <h5 class="after">EGP 550.00</h5>
-                      <button class="addbutton" type="submit">Add To Cart</button>
-                    </div>
-               </div>    
-              </div>
-              <div class="column">
-                <div>
-                  <div class="images">
-                    <img src="images/Tops/Logo white tee1.avif">
-                    <img class="imgtop" src="images/Tops/Logo white tee2.avif">
-                  </div>
-                    <div class="text">
-                    <h4>Logo Graphic White T-Shirt</h4>
-                    <h5 class="before">EGP 850.00 </h5> <h5 class="after">EGP 550.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-            </div>
-         <div class="row"> 
-            <div class="column">
-              <div>
-                <div class="images"> 
-                    <img src="images/Tops/Black Zipper1.avif">
-                    <img class="imgtop" src="images/Tops/Black Zipper2.avif">
-                  </div>
-                    <div class="text">
-                    <h4>Black Zipper Pocket Hoodie</h4>
-                    <h5 class="before">EGP 1500.00 </h5> <h5 class="after">EGP 1000.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-            </div>
-            <div class = "column">
-                <div>
-                  <div class="images">
-                   <img src="images/Tops/Burgundy Logo hoodie1.avif">
-                   <img class="imgtop" src="images/Tops/Burgundy Logo hoodie2.avif">
-                  </div>
-                   <div class="text">
-                      <h4>Burgundy Logo Graphic Hoodie</h4>
-                      <h5 class = "before">EGP 1300.00 </h5> <h5 class="after">EGP 970.00</h5>
-                      <button class="addbutton" type="submit">Add To Cart</button>
-                    </div>
-               </div>    
-              </div>
-              <div class="column">
-                <div>
-                  <div class="images">
-                    <img src="images/Tops/Black White Logo1.avif">
-                    <img class="imgtop" src="images/Tops/Black White Logo2.webp">
-                  </div>
-                    <div class="text">
-                    <h4>Black & White Logo Graphic Hoodie</h4>
-                    <h5 class="before">EGP 1300.00 </h5> <h5 class="after">EGP 970.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-            </div>
-         </div>
-    </div>
 </body>
 <footer>
   <%- include("./Partials/footer.ejs") %>
