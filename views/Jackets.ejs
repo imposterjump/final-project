@@ -3,77 +3,87 @@
 
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="/css/products.css">
-  <title>Boomy's Jackets</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/products.css">
+    <title>Boomy's Jackets</title>
 </head>
 
 <body>
-  <%- include("./partials/navproduct.ejs") %>
-  <%- include("./Partials/chat.ejs") %>
+    <%- include("./partials/navproduct.ejs") %>
+        <%- include("./Partials/chat.ejs") %>
 
-  <div class="container">
+            <div class="container">
 
 
 
-    <div class="text2">
-      <p>Category</p>
-      <h3>Jackets</h3>
-    </div>
-    <% if (Product.length > 0) { %> 
-       <div class="row">
-      <% Product.forEach(pro => {  %>
-       <% let i = 0; %>
-      <% if (i < 3) { %>
-      <div class="column">
-        <div>
-          <div class="images">
-            <img src= "/uploads/<%= pro.images[0] %>">
-          </div>
-          <div class="text">
-            <h4><%= pro.itemName %> </h4>
-            <h5 class="before">EGP <%= pro.price_before %>.00</h5>
-              <h5 class="after">EGP <%= pro.price_after %>.00</h5> 
-              <p class="after"><%= pro.Sales %>% Discount </p>
-              <button class="addbutton" type="submit">Add To Cart</button>
-          </div>
-        </div> 
-        <% i++; %>
-        <% } else { %>
-          <div class="row">
-          <div class="column">
-            <div>
-              <div class="images">
-                <img src= "/uploads/<%= pro.images[0] %>">
-              </div>
-              <div class="text">
-                <h4><%= pro.itemName %> </h4>
-                <h5 class="before">EGP <%= pro.price_before %>.00</h5>
-                  <h5 class="after">EGP <%= pro.price_after %>.00</h5> 
-                  <p class="after"><%= pro.Sales %>% Discount </p>
-                  <button class="addbutton" type="submit">Add To Cart</button>
-              </div>
-            </div> 
-            <% } %>
-        <% }) %>
-      </div>
-      <% } else { %>
-        <p>There are no products to display...</p>
-        <% } %>
+                <div class="text2">
+                    <p>Category</p>
+                    <h3>Jackets</h3>
+                </div>
+                <% if (Product.length > 0) { %>
+                    <div class="row">
+                        <% Product.forEach(pro => {  %>
 
-    </div>
-     
-      
-  </div>
+                            <% if (i < 3) { %>
+                                <div class="column">
+                                    <div>
+                                        <div class="images">
+                                            <img src="/uploads/<%= pro.images[0] %>">
+                                        </div>
+                                        <div class="text">
+                                            <h4>
+                                                <%= pro.itemName %>
+                                            </h4>
+                                            <h5 class="before">EGP
+                                                <%= pro.price_before %>.00</h5>
+                                            <h5 class="after">EGP
+                                                <%= pro.price_after %>.00</h5>
+                                            <p class="after">
+                                                <%= pro.Sales %>% Discount </p>
+                                            <button class="addbutton" type="submit">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                    <% i= i+1; %>
+                                        <% } else { %>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <div>
+                                                        <div class="images">
+                                                            <img src="/uploads/<%= pro.images[0] %>">
+                                                        </div>
+                                                        <div class="text">
+                                                            <h4>
+                                                                <%= pro.itemName %>
+                                                            </h4>
+                                                            <h5 class="before">EGP
+                                                                <%= pro.price_before %>.00</h5>
+                                                            <h5 class="after">EGP
+                                                                <%= pro.price_after %>.00</h5>
+                                                            <p class="after">
+                                                                <%= pro.Sales %>% Discount </p>
+                                                            <button class="addbutton" type="submit">Add To Cart</button>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                                        <% }) %>
+                                                </div>
+                                                <% } else { %>
+                                                    <p>There are no products to display...</p>
+                                                    <% } %>
+
+                                            </div>
+
+
+                                </div>
 
 </body>
 
 <footer>
-  <%- include("./Partials/footer.ejs") %>
+    <%- include("./Partials/footer.ejs") %>
 </footer>
 
 </html>

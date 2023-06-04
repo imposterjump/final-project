@@ -7,13 +7,14 @@ const router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-    Product.find({type:'jackets'})
+    Product.find({ type: 'jackets' })
         .then(result => {
             console.log(result);
             res.render('jackets', {
                 Product: result,
                 TITLE: 'PRODUCT PAGE',
                 message: '',
+                i: 0,
                 user: (req.session.user === undefined ? "" : req.session.user)
 
 
