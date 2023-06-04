@@ -1,173 +1,190 @@
-html,body{
+html, body {
     margin: 0;
     background-color: white;
-  }
+}
 
-.container{
+.container {
     max-width: 1300px;
     margin: auto;
     padding-left: 25px;
     padding-right: 15px;
     display: grid;
     text-align: center;
-    column-span: 3;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.row{
+
+.row {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.column{
-    flex-basis:30%;
+
+.column {
+    flex-basis: 30%;
     min-width: 350px;
     margin-bottom: 30px;
-    background-color:#0f2130;
+    background-color: #0f2130;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     border-radius: 10px;
 }
-.text{
+
+.text {
     text-align: left;
     color: white;
 }
-.column img{
+
+.column img {
     width: 100%;
     height: 100%;
 }
+
 .sidenav {
-height: 100%;
-width: 0;
-position: fixed;
-z-index: 1;
-top: 0;
-left: 0;
-background-color: #0f2130;
-overflow-x: hidden;
-transition: 0.5s;
-padding-top: 60px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0f2130;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 .sidenav a {
-padding: 8px 8px 8px 32px;
-text-decoration: none;
-font-size: 25px;
-color: #818181;
-display: block;
-transition: 0.3s;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
-color: #f1f1f1;
+    color: #f1f1f1;
 }
 
 .sidenav .closebtn {
-position: absolute;
-top: 0;
-right: 25px;
-font-size: 36px;
-margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 @media screen and (max-height: 450px) {
-.sidenav {padding-top: 15px;}
-.sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }
+
 ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #0f2130;
-position: -webkit-sticky; /* Safari */
-position: static;
-top: 0;
-opacity: 85%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0f2130;
+    position: -webkit-sticky; /* Safari */
+    position: static;
+    top: 0;
+    opacity: 85%;
 }
 
 li {
-float: right;
+    float: right;
 }
 
 li a {
-
-display: block;
-color:  #0f2130;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: block;
+    color: #0f2130;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 li a:hover {
-background-color:lightblue;
+    background-color: lightblue;
 }
 
-.logo img
-{
-position:absolute;
-margin-top: 10px;
-margin-left: 70px;
+.logo img {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 70px;
 }
 
-.span
-{
-margin-top: 15px;
-margin-left: 15px;
+.span {
+    margin-top: 15px;
+    margin-left: 15px;
 }
-.before{
-font-weight: lighter;
-text-decoration:line-through ;
-color: white;
-}
-.after{
-color:darkred;
-}
-hr{
-border: 2px solid black;
-}
-.types{
-list-style-type: none;
-margin: 10px;
-padding: 0;
-overflow: hidden;
-background-color: white;
-top: 0;
-display: inline-block;
-font-size: 15pt;
-position: static;
 
+.before {
+    font-weight: lighter;
+    text-decoration: line-through;
+    color: white;
 }
-li .types2{
-float: none;
-text-align: center;
-text-decoration: none;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+.after {
+    color: darkred;
 }
-.images{
-position: relative;
-display: inline-block;
+
+hr {
+    border: 2px solid black;
 }
-.images .imgtop{
-display: none;
-position: absolute;
-top: 0;
-left: 0;
+
+.types {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    top: 0;
+    display: inline-block;
+    font-size: 15pt;
+    position: static;
 }
-.images:hover .imgtop{
-display: inline;
+
+li .types2 {
+    float: none;
+    text-align: center;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.centerednav{
-float: none;
-top: 50%;
-left: 50%;
+
+.images {
+    position: relative;
+    display: inline-block;
 }
-.text2{
+
+.images .imgtop {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.images:hover .imgtop {
+    display: inline;
+}
+
+.centerednav {
+    float: none;
+    top: 50%;
+    left: 50%;
+}
+
+.text2 {
     text-align: left;
 }
-.addbutton{
+
+.addbutton {
     background-color: darkred;
     border: none;
     color: white;
@@ -180,6 +197,84 @@ left: 50%;
     width: 100%;
     margin-bottom: 7px;
 }
-.inline{
+
+.inline {
     display: inline-block;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.filter select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 3px solid #ccc;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    appearance: none; /* Hide default dropdown arrow */
+    background-color: #fff;
+}
+
+.filter select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.filter select option {
+    font-size: 14px;
+    background-color: #fff;
+    color: #261e53;
+}
+
+.filter select:hover {
+    border-color: #007bff;
+}
+
+.filter select:hover option {
+    background-color: #f5f5f5;
+    color: #272c85;
+}
+
+/* Custom dropdown arrow */
+.filter select:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 4px);
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 5px 0 5px;
+    border-color: #333 transparent transparent transparent;
+    pointer-events: none;
+}
+
+.filter select:after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 4px);
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5px 6px 5px;
+    border-color: transparent transparent #333 transparent;
+    pointer-events: none;
+}
+
+.filter select:focus:before,
+.filter select:focus:after {
+    border-color: #007bff transparent transparent transparent;
 }

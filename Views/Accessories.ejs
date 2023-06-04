@@ -10,52 +10,80 @@
     <title>Boomy's Accessories</title>
 </head>
 <body>
-  <%- include("./Partials/NavUser.ejs") %>
+    <%- include("./Partials/NavUser.ejs") %>
     <%- include("./Partials/chat.ejs") %>
 
-        <div class="container">
-            <div class="text2">
-                <p>Category</p>
-                <h3>Accessories</h3>
-            </div>
-            <% if (Product.length > 0) { %>
-                <% let i = 0; %>
-                    <div class="row">
-                        <% Product.forEach(pro => {  %>
-                            <% if (i % 3 === 0 && i !== 0) { %>
-                    </div>
-                    <div class="row">
-                        <% } %>
-                            <div class="column">
-                                <div>
-                                    <div class="images">
-                                        <img src="/uploads/<%= pro.images[0] %>">
-                                        <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
-                                    </div>
-                                    <div class="text">
-                                        <h4>
-                                            <%= pro.itemName %>
-                                        </h4>
-                                        <h5 class="before">EGP
-                                            <%= pro.price_before %>.00</h5>
-                                        <h5 class="after">EGP
-                                            <%= pro.price_after %>.00</h5>
-                                        <p class="after">
-                                            <%= pro.Sales %>% Discount </p>
-                                        <button class="addbutton" type="submit">Add To Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <% i++; %>
-                                <% }) %>
-                    </div>
-                    <% } else { %>
-                        <p>There are no products to display...</p>
-                        <% } %>
+    <div class="container">
+        <div class="text2">
+            <p>Category</p>
+            <h3>Accessories</h3>
         </div>
+        <div class="filter">
+            <label for="sort">Filter</label>
+            <select id="sort" onchange="sortProducts(this.value)">
+                <option value="default">Default</option>
+                <option value="highToLow">Price: High to Low</option>
+                <option value="lowToHigh">Price: Low to High</option>
+            </select>
+        </div>
+        <% if (Product.length > 0) { %>
+            <% let i = 0; %>
+            <div class="row">
+                <% Product.forEach(pro => { %>
+                    <% if (i % 3 === 0 && i !== 0) { %>
+                        </div>
+                        <div class="row">
+                    <% } %>
+                    <div class="column">
+                        <div>
+                            <div class="images">
+                                <img src="/uploads/<%= pro.images[0] %>">
+                                <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
+                            </div>
+                            <div class="text">
+                                <h4>
+                                    <%= pro.itemName %>
+                                </h4>
+                                <h5 class="before">EGP <%= pro.price_before %>.00</h5>
+                                <h5 class="after">EGP <%= pro.price_after %>.00</h5>
+                                <p class="after"><%= pro.Sales %>% Discount</p>
+                                <button class="addbutton" type="submit">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <% i++; %>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>There are no products to display...</p>
+        <% } %>
+    </div>
 
+    <footer>
+        <%- include("./Partials/footer.ejs") %>
+    </footer>
+
+    <script>
+        function sortProducts(sortOption) {
+            let products = Array.from(document.querySelectorAll('.column'));
+            let container = document.querySelector('.row');
+
+            if (sortOption === 'highToLow') {
+                products.sort((a, b) => {
+                    let priceA = parseInt(a.querySelector('.after').textContent.replace('EGP', ''));
+                    let priceB = parseInt(b.querySelector('.after').textContent.replace('EGP', ''));
+                    return priceB - priceA;
+                });
+            } else if (sortOption === 'lowToHigh') {
+                products.sort((a, b) => {
+                    let priceA = parseInt(a.querySelector('.after').textContent.replace('EGP', ''));
+                    let priceB = parseInt(b.querySelector('.after').textContent.replace('EGP', ''));
+                    return priceA - priceB;
+                });
+            }
+
+            products.forEach(product => container.appendChild(product));
+        }
+    </script>
 </body>
-<footer>
-  <%- include("./Partials/footer.ejs") %>
-</footer>
 </html>
