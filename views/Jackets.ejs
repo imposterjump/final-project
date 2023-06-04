@@ -16,31 +16,55 @@
   <%- include("./partials/navproduct.ejs") %>
   <%- include("./Partials/chat.ejs") %>
 
-
   <div class="container">
 
 
 
     <div class="text2">
       <p>Category</p>
-      <h3><%- Product.type %></h3>
+      <h3>Jackets</h3>
     </div>
-    <div class="row">
+    <% if (Product.length > 0) { %> 
+       <div class="row">
+      <% Product.forEach(pro => {  %>
+       <% let i = 0; %>
+      <% if (i < 3) { %>
       <div class="column">
         <div>
           <div class="images">
-            <img src= "<%- Product.images %>">
+            <img src= "/uploads/<%= pro.images[0] %>">
           </div>
           <div class="text">
-            <h4><%- Products.itemName %> </h4>
-            <h5 class="before"><% Product.price_before %></h5>
-            <div style ="display: inline-block;">
-              <h5 class="after"><%- Product.price_after %></h5> 
-              <h3 class="after"><%- Product.Sales %> % Discount </h3></div>
+            <h4><%= pro.itemName %> </h4>
+            <h5 class="before">EGP <%= pro.price_before %>.00</h5>
+              <h5 class="after">EGP <%= pro.price_after %>.00</h5> 
+              <p class="after"><%= pro.Sales %>% Discount </p>
               <button class="addbutton" type="submit">Add To Cart</button>
           </div>
-        </div>
+        </div> 
+        <% i++; %>
+        <% } else { %>
+          <div class="row">
+          <div class="column">
+            <div>
+              <div class="images">
+                <img src= "/uploads/<%= pro.images[0] %>">
+              </div>
+              <div class="text">
+                <h4><%= pro.itemName %> </h4>
+                <h5 class="before">EGP <%= pro.price_before %>.00</h5>
+                  <h5 class="after">EGP <%= pro.price_after %>.00</h5> 
+                  <p class="after"><%= pro.Sales %>% Discount </p>
+                  <button class="addbutton" type="submit">Add To Cart</button>
+              </div>
+            </div> 
+            <% } %>
+        <% }) %>
       </div>
+      <% } else { %>
+        <p>There are no products to display...</p>
+        <% } %>
+
     </div>
      
       
