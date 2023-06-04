@@ -16,7 +16,10 @@
         <% arrproduct.filter(item => item.type === type).forEach(item => { %>
           <tr>
             <td><%= item.itemName %></td>
-            <td><img src="/uploads/<%= item.images %>" alt="Product Image" width="100"></td>
+            <td>  <% item.images.forEach(function(image) { %>
+              <img src="/uploads/<%= image %>" alt="Product Image" width="100">
+            <% }); %></td>
+            
             <td><%= item.price_after %></td>
             <td><a class="btn" href="/details/<%= item.id %>">Show More</a></td>
           </tr>

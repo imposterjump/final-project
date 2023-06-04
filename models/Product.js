@@ -8,7 +8,7 @@ const productSchema = new Schema({
     price_before: { type: Number },
     price_after: { type: Number },
     type: { type: String},
-    images: [{ type: String  }]
+    images: [{ type: String }]
   });
   
   const Product = mongoose.model('products', productSchema);
