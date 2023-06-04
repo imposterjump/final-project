@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
     };
 
-    res.render('adminhome', { analyticsdata });
+    res.render('adminhome', { analyticsdata, user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
 export default router;
