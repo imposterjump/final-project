@@ -28,7 +28,7 @@ import account_router from "./routes/account.js";
 import about_router from "./routes/about.js";
 import help_router from "./routes/help.js";
 import add_product_router from "./routes/add-product.js";
-import edit_router from "./routes/edit.js";
+import edit_router from "./routes/edit-product.js";
 import details_router from "./routes/details.js";
 import vproducts_router from "./routes/vproducts.js";
 import Product from './models/Product.js';
@@ -70,98 +70,56 @@ mongoose.connect('mongodb+srv://boomy:25102002@cluster0.lfldchi.mongodb.net/proj
     .catch((error) => {
         console.error('Error connecting to the database:', error);
     });
+//edit ppost 
+    index.post('/edit-product/:id', function(req, res, next) {
 
-
-
-index.get('/details/:id', (req, res) => {
-    const productId = req.params.id;
-
-    Product.findById(productId)
-        .then((product) => {
-            res.render('details', { product });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
-index.delete('/details/:id', (req, res) => {
-    const productId = req.params.id;
-
-    Product.findByIdAndDelete(productId)
-        .then(() => {
-            res.json({ mylink: '/vproducts' });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
-
-
-// Edit Product Page - GET
-index.get('/edit-product/:id', (req, res) => {
-    const productId = req.params.id;
-    Product.findById(productId)
-        .then((product) => {
-            res.render('edit', { product });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
-// Edit Product Page - POST
-index.post('/edit-product/:id', function(req, res, next) {
-
-    let imgFile;
-    let uploadPath;
-    console.log(__dirname + '/public/uploads/');
-    console.log(req.files);
-
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('No files were uploaded.');
-    }
-
-    imgFile = req.files && req.files.image;
-    uploadPath = __dirname + '/public/uploads/' + req.body.title + path.extname(imgFile.name)
-    console.log(uploadPath)
-    console.log(req.body)
-        // Use the mv() method to place the file somewhere on your server
-    imgFile.mv(uploadPath, function(err) {
-        if (err) {
-            return res.status(500).send(err);
+        let imgFile;
+        let uploadPath;
+        console.log(__dirname + '/public/uploads/');
+        console.log(req.files);
+    
+        if (!req.files || Object.keys(req.files).length === 0) {
+            return res.status(400).send('No files were uploaded.');
         }
-
-        const id = req.params.id
-
-        const pro = ({
-            itemName: req.body.itemName,
-            Sales: req.body.Sales,
-            description: req.body.description,
-            price_before: req.body.price_before,
-            price_after: req.body.price_after,
-            type: req.body.type,
-            images: req.body.i + path.extname(imgFile.name),
-
-        });
-
-
-
-        Product.findByIdAndUpdate(id, pro)
-            .then(result => {
-
-                console.log(result)
-                res.redirect('/vproducts');
-
-            })
-            .catch(err => {
-                console.log(err);
+    
+        imgFile = req.files && req.files.image;
+        uploadPath = __dirname + '/public/uploads/' + req.body.title + path.extname(imgFile.name)
+        console.log(uploadPath)
+        console.log(req.body)
+            // Use the mv() method to place the file somewhere on your server
+        imgFile.mv(uploadPath, function(err) {
+            if (err) {
+                return res.status(500).send(err);
+            }
+    
+            const id = req.params.id
+    
+            const pro = ({
+                itemName: req.body.itemName,
+                Sales: req.body.Sales,
+                description: req.body.description,
+                price_before: req.body.price_before,
+                price_after: req.body.price_after,
+                type: req.body.type,
+                images: req.body.i + path.extname(imgFile.name),
+    
             });
+    
+    
+    
+            Product.findByIdAndUpdate(id, pro)
+                .then(result => {
+    
+                    console.log(result)
+                    res.redirect('/vproducts');
+    
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+    
     });
-
-});
-
 
 
 // routes setup (pls focus team while filling this )
@@ -190,7 +148,7 @@ index.use('/cart', cart_router);
 index.use('/help', help_router);
 //product
 index.use('/add-product', add_product_router);
-index.use('/edit', edit_router);
+index.use('/edit-product', edit_router);
 index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
 //port
