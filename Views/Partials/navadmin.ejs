@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/navadmin.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/zhq0vyf.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body>
+    <ul class="upperbar">
+
+        <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
+            class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
+    
+        <% if(user === "") { %>
+            <a href='/user/login'>Login</a>
+        <% } else { %>
+            <a href='/user/profile'>Profile</a>
+            <a href='/user/logout'>Logout</a>
+            <div class="user">
+                Welcome <%= user.username %>
+            </div>
+        <% } %>
+    </ul>
+    <ul>
+        <div class="logo">
+            <a href="/admin-homepage"><img src="/images/TopNav/LogoNew.png"></a>
+        </div>
+        <div class="topnav" id="myTopnav">
+            <a href="/admin-user-management">User Management</a>
+            <a href="/admin-product-management">Jackets</a>
+        </div>
+        <div class="lowerbar"></div>
+    </ul>
+</body>
+
+</html>

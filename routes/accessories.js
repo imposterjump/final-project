@@ -1,10 +1,27 @@
 import { Router } from 'express';
+import Product from '../models/Product.js';
 var router = Router();
 
 router.get('/', function(req, res, next) {
-    res.render('Accessories', {
-        user: (req.session.user === undefined ? "" : req.session.user)
-    });
-});
 
+    Product.find({ type: 'accessories' })
+        .then(result => {
+            console.log(result);
+            res.render('accessories', {
+                Product: result,
+                TITLE: 'PRODUCT PAGE',
+                message: '',
+
+                user: (req.session.user === undefined ? "" : req.session.user)
+
+
+
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+
+});
 export default router;

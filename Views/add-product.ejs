@@ -78,6 +78,7 @@
 </head>
 
 <body>
+  <%- include("./Partials/navadmin.ejs") %>
   <h1>Add Product</h1>
   <form method="POST" action="/add-product" enctype="multipart/form-data" onsubmit="return validateForm()">
     <label for="itemName">Item Name:</label>
