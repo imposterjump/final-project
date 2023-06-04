@@ -11,143 +11,49 @@
 </head>
 <body>
   <%- include("./partials/navproduct.ejs") %>
-  <%- include("./Partials/chat.ejs") %>
-         
-    <div class="container">
-     
+      <%- include("./Partials/chat.ejs") %>
 
+          <div class="container">
+              <div class="text2">
+                  <p>Category</p>
+                  <h3>Bottoms</h3>
+              </div>
+              <% if (Product.length > 0) { %>
+                  <% let i = 0; %>
+                      <div class="row">
+                          <% Product.forEach(pro => {  %>
+                              <% if (i % 3 === 0 && i !== 0) { %>
+                      </div>
+                      <div class="row">
+                          <% } %>
+                              <div class="column">
+                                  <div>
+                                      <div class="images">
+                                          <img src="/uploads/<%= pro.images[0] %>">
+                                          <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
+                                      </div>
+                                      <div class="text">
+                                          <h4>
+                                              <%= pro.itemName %>
+                                          </h4>
+                                          <h5 class="before">EGP
+                                              <%= pro.price_before %>.00</h5>
+                                          <h5 class="after">EGP
+                                              <%= pro.price_after %>.00</h5>
+                                          <p class="after">
+                                              <%= pro.Sales %>% Discount </p>
+                                          <button class="addbutton" type="submit">Add To Cart</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <% i++; %>
+                                  <% }) %>
+                      </div>
+                      <% } else { %>
+                          <p>There are no products to display...</p>
+                          <% } %>
+          </div>
 
-    <div class="text2">
-          <p>Category</p>
-          <h3>Bottoms</h3>
-    </div>
-             <div class = "row">
-                <div class = "column">
-                    <div>
-                          <div class="images"> 
-                          <img src="images/Bottoms/Ripped Jeans1.avif" href="Ripped.html">
-                          <img class="imgtop" src="images/Bottoms/Ripped Jeans2.avif">
-                          </div>
-                          <div class="text">
-                          <h4>Ripped Medium Wash Slim Jeans</h4>
-                          <h5 class = "before">EGP 1200.00</h5> <span><h5 class="after">EGP 870.00</h5> 
-                          <button class="addbutton" type="submit">Add To Cart</button>
-                          </div>
-                   </div>    
-                  </div>
-             <div class="column"> 
-              
-                <div class="images">
-                 <img src="images/Bottoms/Ligh Wash Jeans1.avif">
-                 <img src="images/Bottoms/Light Wash Jeans2.webp" class="imgtop">
-                </div>
-                 <div class="text">
-                 <h4>Light Wash Straight Jeans</h4>                             
-                 <h5 class="before">EGP 1100.00 </h5> <h5 class="after">EGP 700.00</h5>
-                 <button class="addbutton" type="submit">Add To Cart</button>
-                </div>
-               
-                
-            </div>
-            <div class="column">
-                <div>
-                  <div class="images">
-                    <img src="images/Bottoms/Dark Wash Jeans1.avif">
-                    <img class="imgtop" src="images/Bottoms/Dark Wash Jeans2.avif">
-                  </div>
-                    <div class="text">
-                    <h4>Dark Wash Slim Jeans</h4>
-                    <h5 class="before">EGP 1050.00 </h5> <h5 class="after">EGP 680.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-                
-            </div>
-        </div>
-         <div class="row"> 
-            <div class="column">
-              <div>
-                <div class="images"> 
-                    <img src="images/Bottoms/Grey Cargo1.avif">
-                    <img class="imgtop" src="images/Bottoms/Grey Cargo2.avif">
-                  </div>
-                    <div class="text">
-                    <h4>Grey Cargo Pants</h4>
-                    <h5 class="before">EGP 1250.00 </h5> <h5 class="after">EGP 850.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-            </div>
-            <div class = "column">
-                <div>
-                  <div class="images">
-                   <img src="images/Bottoms/Baige Cargo1.webp">
-                   <img class="imgtop" src="images/Bottoms/Baige Cargo 2.avif">
-                  </div>
-                   <div class="text">
-                      <h4>Baige Cargo Pants</h4>
-                      <h5 class = "before">EGP 1250.00 </h5> <h5 class="after">EGP 850.00</h5>
-                      <button class="addbutton" type="submit">Add To Cart</button>
-                    </div>
-               </div>    
-              </div>
-              <div class="column">
-                <div>
-                  <div class="images">
-                    <img src="images/Bottoms/Black Cargo1.avif">
-                    <img class="imgtop" src="images/Bottoms/Black Cargo2.webp">
-                  </div>
-                    <div class="text">
-                    <h4>Black Cargo Pants</h4>
-                    <h5 class="before">EGP 1250.00 </h5> <h5 class="after">EGP 850.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-                </div>
-            </div>
-         </div>
-         <div class="row"> 
-          <div class="column">
-            <div>
-              <div class="images"> 
-                  <img src="images/Bottoms/Black fleece logo sweatpants1.avif">
-                  <img class="imgtop" src="images/Bottoms/Black fleece logo sweatpants2.avif">
-                </div>
-                  <div class="text">
-                  <h4>Black Fleece Logo SweatPants</h4>
-                  <h5 class="before">EGP 1250.00 </h5> <h5 class="after">EGP 900.00</h5>
-                  <button class="addbutton" type="submit">Add To Cart</button>
-                </div>
-              </div>
-          </div>
-          <div class = "column">
-              <div>
-                <div class="images">
-                 <img src="images/Bottoms/White and black bundle fleece1.webp">
-                 <img class="imgtop" src="images/Bottoms/White and black bundle fleece2.avif">
-                </div>
-                 <div class="text">
-                    <h4>Black & White Bundle Fleece SweatPants</h4>
-                    <h5 class = "before">EGP 1700.00 </h5> <h5 class="after">EGP 1350.00</h5>
-                    <button class="addbutton" type="submit">Add To Cart</button>
-                  </div>
-             </div>    
-            </div>
-            <div class="column">
-              <div>
-                <div class="images">
-                  <img src="images/Bottoms/Off white sherpa sweatpants1.avif">
-                  <img class="imgtop" src="images/Bottoms/Off white sherpa sweatpants2.avif">
-                </div>
-                  <div class="text">
-                  <h4>Off-White Sherpa SweatPants</h4>
-                  <h5 class="before">EGP 1250.00 </h5> <h5 class="after">EGP 900.00</h5>
-                  <button class="addbutton" type="submit">Add To Cart</button>
-                </div>
-              </div>
-          </div>
-       </div>
-    </div>
-    
 </body>
 <footer>
   <%- include("./Partials/footer.ejs") %>
