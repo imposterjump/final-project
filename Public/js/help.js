@@ -1,4 +1,4 @@
-let myIndex = 0;
+/* let myIndex = 0;
     function slides()
     {
         let images = document.getElementsByClassName("mySlides");
@@ -19,11 +19,11 @@ let myIndex = 0;
       
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
-      }
-  var slideIndex = 0;
+      } */
+/*   var slideIndex = 0;
   showSlides();
-
-  function showSlides() {
+ */
+/*   function showSlides() {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     for (i = 0; i < slides.length; i++) {
@@ -35,7 +35,7 @@ let myIndex = 0;
     }
     slides[slideIndex-1].style.display = "block";
     setTimeout(showSlides, 2500); 
-  }
+  } */
 
   const tabs = document.querySelectorAll(".tabs-container .tab");
   const contents = document.querySelectorAll(".tabs-container .content");
@@ -76,6 +76,5 @@ let myIndex = 0;
   for (let i = 1; i <=50; i++) {
   toggleText("heading" + i, "text" + i);
 }
-var slideIndex = 0;
-  showSlides();
+
 
