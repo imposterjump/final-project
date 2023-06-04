@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body style="background-color:#f7e7ce;"></body>
+  
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,33 +13,12 @@
   </head>
   
   <body>
-    <%- include("./Partials/chat.ejs") %>
-    <ul>
-      <div class="logo"><a href="#"><img src = "C:\Users\Yahia Eissa\Documents\GitHub\project-el-8alaba\Images\LOGOIHF.png"></a></div>
-      <span style="margin-left:15px;font-size:40px;cursor:pointer" onclick="openNav()">&#9776; </span>
-      
-        <li>
-            <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="HomePage.html">Home</a>
-            <a href="checkout.html">Cart</a>
-            <a href="Tops.html">Tops</a>
-            <a href="bottom2.html">Bottoms</a>
-            <a href="Jackets.html">Jackets</a>
-            <a href="Accessories.html">Accessories</a>
-          
-        </li>
-        
-        
-        <li><a href="checkout.html"><i class="material-icons">&#xe854;</i></a></li>
-        <li><a href="AccountPage.html"><i class="material-icons">&#xe853;</i></a></li>
-        <li><a href="Registration_page.html">Register</a></li>
-        <li><a href="help.html">Help</a></li>
-        <li><a href="about.html">About</a></li>
-        
-      </ul>
     
-      <div class="slideshow-container">
+    <%- include("./Partials/NavUser.ejs") %>
+    <%- include("./Partials/chat.ejs") %>
+    
+  
+    <!--   <div class="slideshow-container">
         <div class="mySlides fade">
           <img src="Images/slide 1.jpg" style="width:100%">
         </div>
@@ -53,7 +32,7 @@
         
           
         </div>
-      </div>
+      </div> -->
 
     <div class="tabs-container">
       <div class="tabs">
@@ -281,6 +260,9 @@
     </div>
 
   </body>
+
+  
+</div>
 </html>
 
 <script src="js\help.js"></script>

@@ -25,6 +25,16 @@ let users = [i, x];
 
 let products = [j, b];
 
+function edit_user(parameter) {
+    console.log(parameter);
+    var x = document.getElementById(parameter);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 
 
 
