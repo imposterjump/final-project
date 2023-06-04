@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-    Product.find({type:'Jackets'})
+    Product.find({type:'jackets'})
         .then(result => {
             console.log(result);
             res.render('jackets', {
