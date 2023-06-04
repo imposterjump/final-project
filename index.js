@@ -32,6 +32,7 @@ import edit_router from "./routes/edit-product.js";
 import details_router from "./routes/details.js";
 import vproducts_router from "./routes/vproducts.js";
 import Product from './models/Product.js';
+import signout_router from "./routes/signout.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -146,6 +147,7 @@ index.use('/signup', sign_up_router);
 index.use('/account', account_router);
 index.use('/cart', cart_router);
 index.use('/help', help_router);
+index.use('/signout', signout_router);
 
 //product
 index.use('/add-product', add_product_router);

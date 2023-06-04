@@ -1,5 +1,8 @@
+
+
 html,body{
     margin: 0;
+    font-family: Exo;
   }
 
   ul {
@@ -48,6 +51,11 @@ html,body{
   
   .topnav .icon {
     display: none;
+  }
+
+  .topnav :hover
+  {
+    background-color: whitesmoke;
   }
   
  
@@ -106,12 +114,49 @@ html,body{
     padding: 5px 5px;
     margin-top: 0%;
     float: right;
-    margin-right: 100px;
+    margin-right: 147px;
   }
 
   .lowerbar
   {
     background-color: #0f2130;
     height: 5px;
+  }
+
+  .usermessage
+  {
+    float: left;
+    color: #0f2130;
+    font-size: 20px;
+    margin-left: 70px;
+    margin-top: 10px;
+    font-family: Exo;
+    
+  }
+
+  .logoutbutton 
+  {
+    float: right;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 20px;
+    background-color: #0f2130;
+    color: white;
+    font-family: Exo;
+
+  }
+
+  .loginbutton 
+  {
+    float: right;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 215px;
+    background-color: #0f2130;
+    color: white;
+    font-family: Exo;
+
   }
    

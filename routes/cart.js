@@ -5,11 +5,11 @@ import Product from '../models/Product.js';
 
 
 router.use((req, res, next) => {
-    if (req.session.user !== undefined && req.session.user.Type === 'user') {
+    if (req.session.user !== undefined && req.session.user.type == "user") {
         next();
     } else {
         res.render('err', {
-            err: 'You are signed in as a user pls sign in ',
+            err: 'You are not signed in as a user pls sign in ',
             user: (req.session.user === undefined ? "" : req.session.user)
         })
     }
