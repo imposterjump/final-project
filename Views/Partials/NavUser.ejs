@@ -15,42 +15,43 @@
 </head>
 
 <body>
-    <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
+    <ul class="upperbar">
+        <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
             class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
 
-    <% if(user === "") { %>
-        <a href='/user/login'>Login</a>
-        <% } else { %>
-            <a href='/user/profile'>Profile</a>
-            <a href='/user/logout'>Logout</a>
-            <div class="user">
-                Welcome
-                <%= user.username %>
+        <% if(user === "") { %>
+            <a href='/user/login'>Login</a>
+            <% } else { %>
+                <a href='/user/profile'>Profile</a>
+                <a href='/user/logout'>Logout</a>
+                <div class="user">
+                    Welcome
+                    <%= user.username %>
+                </div>
+                <% } %>
+    </ul>
+    <ul>
+        <div class="logo">
+            <a href="/"><img src="/images/TopNav/LogoNew.png"></a>
+        </div>
+        <div class="topnav" id="myTopnav">
+            <a href="/cart">Cart</a>
+            <a href="/jackets">Jackets</a>
+            <a href="/tops">Tops</a>
+            <a href="/bottoms">Bottoms</a>
+            <a href="/accessories">Accessories</a>
+
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
-            <% } %>
-                </ul>
-                <ul>
-                    <div class="logo">
-                        <a href="/"><img src="/images/TopNav/LogoNew.png"></a>
-                    </div>
-                    <div class="topnav" id="myTopnav">
-                        <a href="/cart">Cart</a>
-                        <a href="/jackets">Jackets</a>
-                        <a href="/tops">Tops</a>
-                        <a href="/bottoms">Bottoms</a>
-                        <a href="/accessories">Accessories</a>
 
-                        <div class="search-container">
-                            <form action="/action_page.php">
-                                <input type="text" placeholder="Search.." name="search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-
-                        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-                    </div>
-                    <div class="lowerbar"></div>
-                </ul>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+        <div class="lowerbar"></div>
+    </ul>
 </body>
 
 </html>
