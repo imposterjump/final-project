@@ -19,16 +19,17 @@
 
         <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
             class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
-    
+
         <% if(user === "") { %>
             <a href='/user/login'>Login</a>
-        <% } else { %>
-            <a href='/user/profile'>Profile</a>
-            <a href='/user/logout'>Logout</a>
-            <div class="user">
-                Welcome <%= user.username %>
-            </div>
-        <% } %>
+            <% } else { %>
+                <a href='/user/profile'>Profile</a>
+                <a href='/signout'>Logout</a>
+                <div class="user">
+                    Welcome
+                    <%= user.username %>
+                </div>
+                <% } %>
     </ul>
     <ul>
         <div class="logo">
