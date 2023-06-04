@@ -2,48 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/CSS/TopNav.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/zhq0vyf.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/TopNav.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/zhq0vyf.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
-    <ul class="upperbar">
-        <div class="logosmall"><a href="#"><img src="/images/TopNav/LogoSmallTrial.png"></a>
-        </div>
-    
-        <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
-            class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
-    
-      </ul>
-      <ul>
-      <div class="logo"><a href="#"><img
-            src="/images/TopNav/LogoNew.png"></a></div>
-      <div class="topnav" id="myTopnav">
-        <a href="/">Home</a>
-        <a href="/jackets">Jackets</a>
-        <a href="/tops">Tops</a>
-        <a href="/bottoms">Bottoms</a>
-        <a href="/accessories">Accessories</a>
-        <div class="search-container">
-          <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-        
-        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  <ul class="upperbar">
+    <div class="logosmall"><a href="#"><img src="/images/TopNav/LogoSmallTrial.png"></a>
+    </div>
+    <div class="rightlinks">
+      <a href="/signin"><button class="loginbutton">Log In</button></a>
+      <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
+          class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
       </div>
-      </ul>
-      
+  </ul>
+  <ul>
+    <div class="logo"><a href="#"><img src="/images/TopNav/LogoNew.png"></a></div>
+    <div class="topnav" id="myTopnav">
+      <a href="/">Home</a>
+      <a href="/jackets">Jackets</a>
+      <a href="/tops">Tops</a>
+      <a href="/bottoms">Bottoms</a>
+      <a href="/accessories">Accessories</a>
+      <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+    <div class="lowerbar"></div>
+  </ul>
+
 </body>
 
 </html>
