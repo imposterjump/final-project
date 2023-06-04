@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     Product.find()
         .then(result => {
             console.log(result);
-            res.render('Jackets', {
+            res.render('jackets', {
                 Product: result,
                 TITLE: 'PRODUCT PAGE',
                 message: '',
