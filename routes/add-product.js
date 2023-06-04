@@ -13,13 +13,6 @@ const __dirname = dirname(__filename);
 const router = express.Router();
 const uploadPath = path.join(__dirname, '../public/uploads');
 
-router.use((req, res, next) => {
-    if (req.session.user !== undefined && req.session.user.Type === 'admin') {
-        next();
-    } else {
-        res.render('err', { err: 'You are not an Admin', user: (req.session.user === undefined ? "" : req.session.user) })
-    }
-});
 
 // Add Product Page - GET
 router.get('/', (req, res) => {
