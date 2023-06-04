@@ -1,108 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<body style="background-color:#f7e7ce;"></body>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/CSS/account.css">
+    <title>Document</title>
 </head>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <body>
-    <%- include("./Partials/chat.ejs") %>
     <%- include("./Partials/NavUser.ejs") %>
-
-
-        </div>
-        <div class="main">
-            <div class="container">
-                <form action="/action_page.php">
-                    <div class="FormTitle">
-                        <h3>MY INFO</h3>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="fname">First Name</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="fname" name="firstname" value="Yahia">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="lname">Last Name</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="lname" name="lastname" value="Eissa">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="country">Birthday (Optional)</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="date" id="birthday" name="birthday">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="Email and Password">Email and Password</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="email" id="eml" name="email" value="yahia1572003@gmail.com">
-                            <br>
-                            <input type="password" id="pword" name="password" placeholder="Change Password">
-                            <br>
-                            <input type="tel" id="num" name="number" placeholder="Phone number">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <input type="submit" value="Update">
-                    </div>
-                </form>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
             </div>
-
-            <div class="container">
-                <form action="/action_page.php">
-                    <div class="FormTitle">
-                        <h3>CHECKOUT INFO</h3>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="Saddress">Shipping Address</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="Sadress" name="ShippingAddress" placeholder="Select Address">
-                        </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+                        <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="Pmethod">Payment Method</label>
-                        </div>
-                        <div class="col-75">
-                            <select id="Pmethod" name="PaymentMethod">
-                                <option value="Cash">Cash</option>
-                                <option value="Visa/MasterCard">Visa/MasterCard</option>
-                                <option value="GiftCard">GiftCard</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <input type="submit" value="Save">
-                        </div>
-                </form>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+                        <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                        <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                        <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                        <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
+                        <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                    <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                    <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                </div>
             </div>
         </div>
-        <script src="/js/account.js"></script>
-
-
+    </div>
+    </div>
+    </div>
 </body>
-
 </html>
