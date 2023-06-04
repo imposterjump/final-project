@@ -17,69 +17,44 @@
         <%- include("./Partials/chat.ejs") %>
 
             <div class="container">
-
-
-
                 <div class="text2">
                     <p>Category</p>
                     <h3>Jackets</h3>
                 </div>
-                
                 <% if (Product.length > 0) { %>
-                    <div class="row">
-                        <% Product.forEach(pro => {  %>
-                            <% let i = 0; %>
-                                <% if (i < 3) { %>
-                                    <div class="column">
-                                        <div>
-                                            <div class="images">
-                                                <img src="/uploads/<%= pro.images[0] %>">
-                                            </div>
-                                            <div class="text">
-                                                <h4>
-                                                    <%= pro.itemName %>
-                                                </h4>
-                                                <h5 class="before">EGP
-                                                    <%= pro.price_before %>.00</h5>
-                                                <h5 class="after">EGP
-                                                    <%= pro.price_after %>.00</h5>
-                                                <p class="after">
-                                                    <%= pro.Sales %>% Discount </p>
-                                                <button class="addbutton" type="submit">Add To Cart</button>
-                                            </div>
+                    <% let i = 0; %>
+                        <div class="row">
+                            <% Product.forEach(pro => {  %>
+                                <% if (i % 3 === 0 && i !== 0) { %>
+                        </div>
+                        <div class="row">
+                            <% } %>
+                                <div class="column">
+                                    <div>
+                                        <div class="images">
+                                            <img src="/uploads/<%= pro.images[0] %>">
                                         </div>
-                                        <% i++; %>
-                                            <% } else { %>
-                                                <div class="row">
-                                                    <div class="column">
-                                                        <div>
-                                                            <div class="images">
-                                                                <img src="/uploads/<%= pro.images[0] %>">
-                                                            </div>
-                                                            <div class="text">
-                                                                <h4>
-                                                                    <%= pro.itemName %>
-                                                                </h4>
-                                                                <h5 class="before">EGP
-                                                                    <%= pro.price_before %>.00</h5>
-                                                                <h5 class="after">EGP
-                                                                    <%= pro.price_after %>.00</h5>
-                                                                <p class="after">
-                                                                    <%= pro.Sales %>% Discount </p>
-                                                                <button class="addbutton" type="submit">Add To Cart</button>
-                                                            </div>
-                                                        </div>
-                                                        <% } %>
-                                                            <% }) %>
-                                                    </div>
-                                                    <% } else { %>
-                                                        <p>There are no products to display...</p>
-                                                        <% } %>
-
-                                                </div>
-
-
+                                        <div class="text">
+                                            <h4>
+                                                <%= pro.itemName %>
+                                            </h4>
+                                            <h5 class="before">EGP
+                                                <%= pro.price_before %>.00</h5>
+                                            <h5 class="after">EGP
+                                                <%= pro.price_after %>.00</h5>
+                                            <p class="after">
+                                                <%= pro.Sales %>% Discount </p>
+                                            <button class="addbutton" type="submit">Add To Cart</button>
+                                        </div>
                                     </div>
+                                </div>
+                                <% i++; %>
+                                    <% }) %>
+                        </div>
+                        <% } else { %>
+                            <p>There are no products to display...</p>
+                            <% } %>
+            </div>
 
 </body>
 
