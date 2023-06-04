@@ -15,7 +15,7 @@
 <body>
   <%- include("./partials/navproduct.ejs") %>
   <%- include("./Partials/chat.ejs") %>
-
+  <%- include("../models/Product.js") %>
 
   <div class="container">
 
@@ -26,21 +26,26 @@
       <h3>Jackets</h3>
     </div>
     <div class="row">
+      <%- if (Product.length > 0) { %> 
+      <%- Product.forEach(pro => {  %>
+      <%- if (pro.type == "Jackets") { %>
       <div class="column">
         <div>
           <div class="images">
-            <img src= "<%- Product.images %>">
+            <img src= "<%= pro.images %>">
           </div>
           <div class="text">
-            <h4><%- Products.itemName %> </h4>
-            <h5 class="before"><% Product.price_before %></h5>
+            <h4><%= pro.itemName %> </h4>
+            <h5 class="before"><%= pro.price_before %></h5>
             <div style ="display: inline-block;">
-              <h5 class="after"><%- Product.price_after %></h5> 
-              <h3 class="after"><%- Product.Sales %> % Discount </h3></div>
+              <h5 class="after"><%= pro.price_after %></h5> 
+              <h3 class="after"><%= pro.Sales %>% Discount </h3></div>
               <button class="addbutton" type="submit">Add To Cart</button>
           </div>
         </div>
+        <%- }}) %>
       </div>
+      <%- } %>
     </div>
      
       
