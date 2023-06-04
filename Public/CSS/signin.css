@@ -10,10 +10,10 @@ html, body{
   height: 100vh;
   width: 100%;
   place-items: center;
-  background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+  background: linear-gradient(to right, #0f2130, white);
 }
 ::selection{
-  background: #ff80bf;
+  background: linear-gradient(to right, #0f2130, white);
 }
 .container{
   background: #fff;
@@ -37,7 +37,7 @@ html, body{
   left: 0px;
   bottom: 3px;
   border-radius: 5px;
-  background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+  background: linear-gradient(to right,  #0f2130, white);
 }
 .container form .input-box{
   width: 100%;
@@ -66,7 +66,7 @@ html, body{
   position: absolute;
   height: 2px;
   width: 100%;
-  background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+  background: linear-gradient(to right,  #0f2130, white);
   left: 0;
   bottom: 0;
   transform: scaleX(0);
@@ -82,7 +82,7 @@ html, body{
   margin: 40px 0 20px 0;
 }
 .container .input-box input[type="submit"]{
-  background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+  background: #0f2130;
   font-size: 17px;
   color: #fff;
   border-radius: 5px;
@@ -91,7 +91,7 @@ html, body{
 }
 .container .input-box input[type="submit"]:hover{
   letter-spacing: 1px;
-  background: linear-gradient(to left, #99004d 0%, #ff0080 100%);
+  background: linear-gradient(to left, #0f2130, white);
 }
 .container .option{
   font-size: 14px;
