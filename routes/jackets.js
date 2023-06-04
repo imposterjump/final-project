@@ -6,11 +6,6 @@ import Product from '../models/Product.js';
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('jackets', {
-        user: (req.session.user === undefined ? "" : req.session.user)
-    });
-});
-router.get('/', function(req, res, next) {
 
     Product.find()
         .then(result => {
