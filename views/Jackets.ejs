@@ -24,8 +24,9 @@
       <p>Category</p>
       <h3>Jackets</h3>
     </div>
+    <% if (Product.length > 0) { %> 
     <div class="row">
-      <% if (Product.length > 0) { %> 
+      
       <% Product.forEach(pro => {  %>
       <% if (pro.type == "Jackets") { %>
       <div class="column">
