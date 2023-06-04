@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
                 Product: result,
                 TITLE: 'PRODUCT PAGE',
                 message: '',
-                i: 0,
+
                 user: (req.session.user === undefined ? "" : req.session.user)
 
 
