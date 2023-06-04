@@ -23,23 +23,22 @@
         <button class="account" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><i
             class="material-icons" style="font-size: 38px;">&#xe853;</i></button>
 
-        <% if(user==="" ) {%>
-            <a href='/user/signup'>Sign Up</a>
-            <a href='/user/login'>Login</a>
-            <% }
-            else { 
-              if(user.Type==="admin" ) { %>
-                <a href='/admin/viewAll'>Admin</a>
-                <% } %>
-                    <a href='/user/profile'>Profile</a>
-                    <a href='/user/logout'>Logout</a>
-
-                    <div class="user">
-                        Welcome
-                        <%= user.UserName %>
-                    </div>
+            <% if(user==="" ) {%>
+                <a href='/user/signup'>Sign Up</a>
+                <a href='/user/login'>Login</a>
+                <% }
+                else { 
+                  if(user.Type==="admin" ) { %>
+                    <a href='/admin/viewAll'>Admin</a>
                     <% } %>
-
+                        <a href='/user/profile'>Profile</a>
+                        <a href='/user/logout'>Logout</a>
+    
+                        <div class="user">
+                            Welcome
+                            <%= user.UserName %>
+                        </div>
+                        <% } %>
     </ul>
     <ul>
         <div class="logo">

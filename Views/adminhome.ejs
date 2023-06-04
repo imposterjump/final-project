@@ -19,7 +19,7 @@
 
 
 <body style="background-color: white;" >
-    <%- include("./Partials/NavUser.ejs") %>
+    <% include("./Partials/NavUser.ejs") %>
    
    
     
@@ -31,13 +31,13 @@
         <span class="rectangle2" >
           <h4>Number Of Orders</h4>
           <canvas id="donutChart"></canvas>
-          <p style="font-size: 40px;"><%= analyticsData.numberoforders %></p> <span style="font-size: 40px;"class="green-arrow"><p3 > &#x25B2 </p3></span><p2 style="font-size: 38px;"> <%= analyticsdata.numberofordersch%> </p2>
+          <p style="font-size: 40px;"><%= analyticsdata.numberoforders %></p> <span style="font-size: 40px;"class="green-arrow"><p3 > &#x25B2 </p3></span><p2 style="font-size: 38px;"> <%= analyticsdata.numberofordersch%> </p2>
         </span>
        
         <span class="rectangle2">
           <h3>Number of Visitors Today</h3>
           <canvas id="donutChart2"></canvas>
-           <p1 style="font-size: 40px;"><%= analyticsData.numberofvisitorstoday %></p1> <div style="font-size: 40px;"class="green-arrow2"><p5 style="font-size: 40px;"> &#x25B2 </p5></div><p6 style="font-size: 38px;" ><%= analyticsdata.numberofvisitorsch%> </p6>
+           <p1 style="font-size: 40px;"><%= analyticsdata.numberofvisitorstoday %></p1> <div style="font-size: 40px;"class="green-arrow2"><p5 style="font-size: 40px;"> &#x25B2 </p5></div><p6 style="font-size: 38px;" ><%= analyticsdata.numberofvisitorsch%> </p6>
           </span>
          
 
@@ -46,7 +46,7 @@
    
       <div class="center">
         <span class="rectangle"><h3>Total Sales</h3>
-          <p style="font-size: 30px;"><%= analyticsdata.totalsales%></p> <span style="font-size: 28px;"class="green-arrow3"><p3 > &#x25B2 </p3></span><p2 ><%= analyticsdata.totalsales%></p2>
+          <p style="font-size: 30px;"><%= analyticsdata.totalsales%></p> <span style="font-size: 28px;"class="green-arrow3"><p3 > &#x25B2 </p3></span><p2 ><%= analyticsdata.totalsalesch%></p2>
         </span> 
         <span class="rectangle"><h3>Registered Users</h3>
           <p style="font-size: 30px;"><%= analyticsdata.registeredusers%></p> <span style="font-size: 28px;"class="green-arrow4"><p3 > &#x25B2 </p3></span><p2 > <%=analyticsdata.registeredusersch %> </p2>
