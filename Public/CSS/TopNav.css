@@ -186,11 +186,7 @@ html,body{
     }
   }
   
-  .rightlinks
-  {
-    float: right;
-    margin-right: 47px;
-  }
+  
 
   .account
   {
@@ -200,18 +196,10 @@ html,body{
     border: none;
     padding: 5px 5px;
     margin-top: 0%;
+    float: right;
+    margin-right: 100px;
   }
 
-  .loginbutton
-  {
-    background-color: #0f2130;
-    color: white;
-    margin-right: 20px;
-    margin-top: 3%;
-    padding: 8px 8px;
-    width: 100px;
-  }
-   
   .lowerbar
   {
     background-color: #0f2130;
