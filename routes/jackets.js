@@ -10,17 +10,25 @@ router.get('/', function(req, res, next) {
         user: (req.session.user === undefined ? "" : req.session.user)
     });
 });
+router.get('/', function(req, res, next) {
 
-router.get('/', (req, res) => {
-    const productId = req.params.id;
+    Product.find()
+        .then(result => {
+            console.log(result);
+            res.render('Jackets', {
+                Product: result,
+                TITLE: 'PRODUCT PAGE',
+                message: '',
+                user: (req.session.user === undefined ? "" : req.session.user)
 
-    Product.findById(productId)
-        .then((product) => {
-            res.render('details', { product });
+
+
+            });
         })
-        .catch((err) => {
+        .catch(err => {
             console.log(err);
-            res.redirect('/');
         });
+
+
 });
 export default router;
