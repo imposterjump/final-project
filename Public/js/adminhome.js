@@ -26,12 +26,12 @@ const doughnutChart = new Chart(donutChart, {
 
 document.addEventListener('DOMContentLoaded', function() {
 const donutChart2 = document.getElementById('donutChart2').getContext('2d');
-const doughnutChart = new Chart(donutChart2, {
+const doughnutChart2 = new Chart(donutChart2, {
   type: 'doughnut',
   data: {
     labels: ['Egypt', 'France', 'Germany', 'UAE', 'USA'],
     datasets: [{
-      data: <%=analyticsData.numberofvisitorschartdata %>,
+      data: <%=analyticsdata.numberofvisitorschartdata %>,
       backgroundColor: [
         '#FF6384', '#36A2EB', '#FFCE56', '#33FF9E', '#B533FF'
       ],
