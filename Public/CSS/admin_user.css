@@ -1,3 +1,11 @@
+        html,body
+        {
+            margin: 0;
+            font-family: Exo;
+            background: linear-gradient(to right, #0f2130, white);
+        }
+        
+        
         .user-container {
             margin-left: 25%;
             width: 50%;
@@ -96,98 +104,16 @@
             margin-right: 25%;
         }
         
-        html,
-        body {
-            margin: 0;
-        }
-        
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #0f2130;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-        
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-        
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-        
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #0f2130;
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            opacity: 85%;
-        }
-        
-        li {
-            float: right;
-        }
-        
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-        
-        li a:hover {
-            background-color: #111;
-        }
-        
-        .logo img {
-            position: absolute;
-            margin-top: 10px;
-            margin-left: 70px;
-        }
-        
         .title {
             text-align: center;
         }
         
         .customers {
-            font-family: Arial, Helvetica, sans-serif;
+           
             border-collapse: collapse;
             width: 100%;
+            border-style: solid;
+            
         }
         
         .customers td {
@@ -209,8 +135,7 @@
         }
         
         .customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
+           border-style: solid;
             text-align: left;
             background-color: #04AA6D;
             color: white;
@@ -225,3 +150,11 @@
             border-radius: 10px;
             background-color: white;
         }
+
+       .headers
+       {
+        width: 50%;
+        margin-left: 210px;
+       }
+
+    
