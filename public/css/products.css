@@ -250,6 +250,10 @@ html, body {
     text-decoration: none;
 }
 
+.pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 .pagination-button :hover{
     background-color: #0f2130;
 }
