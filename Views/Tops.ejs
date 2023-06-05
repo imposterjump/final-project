@@ -48,7 +48,7 @@
                                 <h5 class="before">EGP <%= pro.price_before %>.00</h5>
                                 <h5 class="after">EGP <%= pro.price_after %>.00</h5>
                                 <p class="after"><%= pro.Sales %>% Discount</p>
-                                <button class="addbutton" type="submit">Add To Cart</button>
+                                <a class="addbutton" href="/cart/add/<%= pro._id %>">Add To Cart</a>
                             </div>
                         </div>
                     </div>
