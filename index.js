@@ -37,6 +37,7 @@ import itemdetails_router from "./routes/itemdetails.js";
 import product_router from "./routes/product.js";
 import orders_router from "./routes/orders.js";
 import shippingform_router from "./routes/shippingform.js";
+import wishlist_router from "./routes/wishlist.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -153,6 +154,7 @@ index.use('/cart', cart_router);
 index.use('/help', help_router);
 index.use('/signout', signout_router);
 index.use('/itemdetails',itemdetails_router);
+index.use('/wishlist',wishlist_router);
 
 index.use('/shippingform',shippingform_router);
 //product

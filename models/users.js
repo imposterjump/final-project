@@ -26,6 +26,9 @@ const users_schema = new Schema({
     cart: [{
         type: String
   }],
+  wishlist: [{
+    type: String
+}],
 }, { timestamps: true });
 
 const users = mongoose.model('users', users_schema);
