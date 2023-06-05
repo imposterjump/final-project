@@ -1,10 +1,17 @@
-import { Router } from 'express';
-var router = Router();
+import express from 'express';
+import Product from '../models/Product.js';
+const router = express.Router();
 
-router.get('/', function(req, res, next) {
-    res.send('product', {
-        user: (req.session.user === undefined ? "" : req.session.user)
-    });
+router.get('/Product/:itemName', function(req, res, next) {
+
+   const itemName = req.params.itemName;
+   Product.findOne({name: itemName}, (err,Product) => {
+    if(err || !Product){
+        res.status(404).send("Product Not Found");
+    } else {
+        res.render('product', {Product});
+    }
+   });
+
 });
-
 export default router;

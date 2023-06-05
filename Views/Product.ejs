@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/products.css">
+    <title>Boomy's Item</title>
+</head>
+
+<body>
+    <%- include("./Partials/NavUser.ejs") %>
+        <%- include("./Partials/chat.ejs") %>
+
+            <div class="container">
+                        <div class="row">
+                                <div class="column">
+                                    <div>
+                                        <div class="images">
+                                            <img src="/uploads/<%= Product.images[0] %>">
+                                            <img src="/uploads/<%= Product.images[1] %>" class="imgtop">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">     
+                                <div class="text">
+                                            <h2>
+                                                <%= Product.itemName %>
+                                            </h2>
+                                            <h5 class="before">EGP
+                                                <%= Product.price_before %>.00</h5>
+                                            <h3 class="after">EGP
+                                                <%= Product.price_after %>.00</h3>
+                                            <p class="after">
+                                                <%= Product.Sales %>% Discount </p>
+                                            <p> <%= Product.description </p>
+                                            <button class="addbutton" type="submit">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+            </div>
+
+</body>
+
+<footer>
+    <%- include("./Partials/footer.ejs") %>
+</footer>
+
+</html>
