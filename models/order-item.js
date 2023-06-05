@@ -9,6 +9,5 @@ const orderItemSchema = mongoose.Schema({
         ref: 'Product'
     }
 })
-
-exports.OrderItem = mongoose.model('OrderItem', orderItemSchema);
+const OrderItem = mongoose.model('OrderItem', orderItemSchema);
 export default OrderItem;

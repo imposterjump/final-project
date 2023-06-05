@@ -9,7 +9,8 @@ const { isNullOrUndefined } = pkg;
 
 const SALT_ROUNDS = 10;
 router.post('/checkUN', function(req, res) {
-    var query = { userame: req.body.userame };
+
+    var query = { username: req.body.username };
     users.find(query)
         .then(result => {
             if (result.length > 0) {
@@ -21,6 +22,7 @@ router.post('/checkUN', function(req, res) {
         .catch(err => {
             console.log(err);
         });
+
 });
 
 router.get('/', function(req, res, next) {
