@@ -44,7 +44,7 @@ console.log(req.body.email+req.body.phone+req.session.id)
 
     const SALT_ROUNDS = 10;
 
-    users.findOneAndUpdate({username:req.session.username}, {
+    users.findOneAndUpdate({username:req.session.user.username}, {
             email: req.body.email,
             phone_number: req.body.phone
         })
