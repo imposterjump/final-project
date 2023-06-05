@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/css/cart.css">
+<%- include("./Partials/NavUser.ejs") %>
+<%- include("./Partials/chat.ejs") %>
 <div class='container'>
   <div class='window'>
     <div class='order-info'>
@@ -10,47 +13,72 @@
             <table class='order-table'>
               <tbody>
                 <tr>
-                  <td class="image-container">
-                    <img src="/uploads/<%= item.images[0] %>">
-                  </td>
                   <td>
-                    <br> <span class='thin'><%= item.itemName %></span>
-                  </td>
-                  <td>
-                    <div class='price'>$<%= item.price_after %></div>
-                  </td>
-                  <td>
-                    <a class="delete-button" href="/cart/delete/<%= item._id %>">
-                      <img class="delete-icon" src="images/delete.png" alt="delete photo">
-                    </a>
+                    <div class="product-wrapper">
+                      <div class="image-container">
+                        <img src="/uploads/<%= item.images[0] %>" alt="Product Image">
+                      </div>
+                      <div class="product-details">
+                        <div class="product-name">
+                          <%= item.itemName %>
+                        </div>
+                        <div class="product-price">$<%= item.price_after %></div>
+                        <div class="product-quantity">
+                          <input class="quantity-select" type="number" min="1" value="1">
+                        </div>
+                      </div>
+                      <a class="delete-button" href="/cart/delete/<%= item._id %>">
+                        <img class="delete-icon" src="images/delete.png" alt="Delete Product">
+                      </a>
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div class='line'></div>
+            <div class="line"></div>
           <% }); %>
-
-          <div class='line'></div>
-          <div class='total'>
-            <span style='float:left;'>
-              <div class='thin dense'>VAT 19%</div>
-              <div class='thin dense'>Delivery</div>
-              TOTAL
-            </span>
-            <span style='float:right; text-align:right;'>
-              <div class='thin dense'>$68.75</div>
-              <div class='thin dense'>$4.95</div>
-              $435.55
-            </span>
+          <div class="total">
+            <span class="total-title">Total:</span>
+            <span class="total-value">$10.00</span>
+            <div class="proceed-checkout">
+              <a href="/shippingform" class="pay-btn">Proceed to Checkout</a>
+            </div>
           </div>
         <% } else { %>
-          <p>Your cart is empty.</p>
+          <p class="empty-cart">Your cart is empty.</p>
         <% } %>
       </div>
     </div>
   </div>
 </div>
 
-<a class="pay-btn" href="/checkout">Proceed to Checkout</a>
-<link rel="stylesheet" href="/css/cart.css">
+<footer>
+  <%- include("./Partials/footer.ejs") %>
+</footer>
 
+<script>
+  // Add event listener to quantity selects
+  const quantitySelects = document.querySelectorAll('.quantity-select');
+  quantitySelects.forEach((select) => {
+    select.addEventListener('change', updateTotal);
+  });
+
+  // Function to calculate and update the total price
+  function updateTotal() {
+    let total = 0;
+    const prices = document.querySelectorAll('.product-price');
+    const quantities = document.querySelectorAll('.quantity-select');
+
+    for (let i = 0; i < prices.length; i++) {
+      const price = parseFloat(prices[i].textContent.replace('$', ''));
+      const quantity = parseInt(quantities[i].value);
+      total += price * quantity;
+    }
+
+    const totalElement = document.querySelector('.total-value');
+    totalElement.textContent = '$' + total.toFixed(2);
+  }
+
+  // Initial update of the total
+  updateTotal();
+</script>

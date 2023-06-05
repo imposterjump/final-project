@@ -1,60 +1,68 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-const orderSchema = mongoose.Schema(
-  {
-    orderItems: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'OrderItem',
-        required: true,
-      },
-    ],
-    shippingAddress1: {
-      type: String,
-      required: true,
-    },
-    shippingAddress2: {
-      type: String,
-      default: '',
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-    zip: {
-      type: String,
-      required: true,
-    },
-    country: {
-      type: String,
-      required: true,
-    },
-    phone: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      required: true,
-      default: 'Pending',
-    },
-    totalPrice: {
-      type: Number,
-    },
+const orderSchema = mongoose.Schema({
     user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'users',
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: true
     },
-    dateOrdered: {
-      type: Date,
-      default: Date.now,
+    orderItems: [
+        {
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
+            },
+            quantity: {
+                type: Number,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            }
+        }
+    ],
+  
+        address: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        postalCode: {
+            type: String,
+            required: true
+        },
+      
+    paymentMethod: {
+        type: String,
+        required: true
     },
-  },
-  {
-    timestamps: true,
-  }
-);
+    itemsPrice: {
+        type: Number,
+        required: true
+    },
+    shippingPrice: {
+        type: Number,
+        required: true
+    },
+   
+    totalPrice: {
+        type: Number,
+        required: true
+    },
+   
+   
+    isDelivered: {
+        type: Boolean,
+        default: false
+    },
+    
+}, { timestamps: true });
 
-
-exports.Order = mongoose.model('Order', orderSchema);
-export default Order ;
+const Order = mongoose.model('Order', orderSchema);
+export default Order;
