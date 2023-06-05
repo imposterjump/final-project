@@ -1,0 +1,165 @@
+/* Set global font properties */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #0f2130;
+  color: white;
+}
+
+/* Style the container element */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style the product image container */
+.product-image {
+  position: relative;
+  height: 400px;
+  padding: 20px;
+  background-color: #0f2130;
+}
+
+/* Style the product image */
+.product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  border: 8px solid whitesmoke;
+  border-radius: 8px
+}
+
+
+
+/* Style the product details container */
+.product-details {
+  padding: 20px;
+}
+
+/* Style the product name */
+.product-name {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Style the product price */
+.product-price {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Style the before and after price */
+.product-price .before {
+  text-decoration: line-through;
+  margin-right: 10px;
+  color: #999;
+}
+
+.product-price .after {
+  color: darkred;
+}
+
+/* Style the product discount */
+.product-discount {
+  margin-bottom: 20px;
+  color: #f00;
+}
+
+/* Style the product description */
+.product-description {
+  margin-bottom: 20px;
+}
+
+/* Style the add-to-cart button */
+.add-to-cart-button {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: darkred;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.add-to-cart-button:hover {
+  background-color:cornflowerblue;
+}
+/* Style the size buttons */
+.size-button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: darkred;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.size-button:hover {
+  background-color: cornflowerblue;
+  transform: scale(1.1);
+}
+
+.size-button:active {
+  background-color: darkblue;
+  transform: scale(0.9);
+}
+
+/* Style the product sizes container */
+.product-sizes {
+  margin-bottom: 20px;
+}
+
+/* Style the chosen size button */
+.size-button.chosen {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+/* Style the arrow links */
+.Rbutton, .Lbutton {
+  margin-top: 170px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: darkred;
+  border-radius: 100px;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.2s ease;
+  outline: none; /* Add this line to remove the button outline */
+}
+
+/* Add the rest of the button styles */
+.Rbutton:hover, .Lbutton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.Rbutton {
+  float: right;
+}
+
+.Lbutton {
+  float: left;
+}

@@ -1,55 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/productpage.css">
     <title>Boomy's Item</title>
 </head>
-
 <body>
-    <%- include("./Partials/NavUser.ejs") %>
+  <%- include("./Partials/NavUser.ejs") %>
     <%- include("./Partials/chat.ejs") %>
+<div class="container">
 
-            <div class="container">
-
-                        
-                                <div class="column">
-                                    <div>
-                                        <div class="images">
-                                            <img src="/uploads/<%= product1.images[0] %>">
-                                            <img src="/uploads/<%= product1.images[1] %>" class="imgtop">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column">     
-                                <div class="text">
-                                            <h2>
-                                                <%= product1.itemName %>
-                                            </h2>
-                                            <h5 class="before">EGP
-                                                <%= product1.price_before %>.00</h5>
-                                            <h3 class="after">EGP
-                                                <%= product1.price_after %>.00</h3>
-                                            <p class="after">
-                                                <%= product1.Sales %>% Discount %></p>
-                                            <p> <%= product1.description %></p>
-                                            <button class="addbutton" type="submit">Add To Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
+  <div class="row">
+      <div class="col-12 col-md-6">
+          <div class="product-image">
+              <img src="/uploads/<%= product1.images[0] %>" class="mySlides">
+              <img src="/uploads/<%= product1.images[1] %>" id="alt-img" class="mySlides">
+              <button class="Lbutton" onclick="plusDivs(-1)"><i class="material-icons">keyboard_arrow_left</i></a>
+              <button class="Rbutton" onclick="plusDivs(1)"><i class="material-icons">keyboard_arrow_right</i></a>
+          </div>
+      </div>
+      <div class="col-12 col-md-6">
+          <div class="product-details">
+              <h1 class="product-name"><%= product1.itemName %></h1>
+              <h2 class="product-price">
+                <span class="before">EGP <%= product1.price_before %>.00</span>
+                <span class="after">EGP <%= product1.price_after %>.00</span>
+              </h2>
+              <p class="product-discount"><%= product1.Sales %>% Discount</p>
+              <div class="product-sizes">
+                  <h4 class="product-name">Size:</h4>
+                  <button class="size-button" id="size-s" onclick="chooseSize('S')">S</button>
+                  <button class="size-button" id="size-m" onclick="chooseSize('M')">M</button>
+                  <button class="size-button" id="size-l" onclick="chooseSize('L')">L</button>
+                  <button class="size-button" id="size-xl" onclick="chooseSize('XL')">XL</button>
+                  <button class="size-button" id="size-xxl" onclick="chooseSize('XXL')">XXL</button>
+                </div>
+              </div>
+              <p class="product-description"><%= product1.description %></p>
+              <a class="add-to-cart-button" href="/cart/add/<%= product1._id %>">Add To Cart</a>
             </div>
-
-</body>
+      </div>
+  </div>
+</div>
 
 <footer>
     <%- include("./Partials/footer.ejs") %>
 </footer>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+function chooseSize(size) {
+  // Get all the size buttons
+  var sizeButtons = document.querySelectorAll('.size-button');
+  
+  // Loop through all the size buttons
+  for (var i = 0; i < sizeButtons.length; i++) {
+    // Remove the 'chosen' class from all buttons
+    sizeButtons[i].classList.remove('chosen');
+  }
+  
+  // Add the 'chosen' class to the clicked button
+  var chosenButton = document.getElementById('size-' + size.toLowerCase());
+  chosenButton.classList.add('chosen');
+  
+  // Set the chosen size next to the "Size:" label
+  var sizeLabel = document.querySelector('.product-sizes h4');
+  sizeLabel.innerHTML = 'Size: ' + size;
+}
+</script>
 
 </html>
