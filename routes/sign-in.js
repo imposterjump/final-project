@@ -59,12 +59,30 @@ router.post('/user', function(req, res, next) {
                         } else if (mytype == 'admin') {
                             req.session.user = me;
                             console.log(req.session.user);
+                            const analyticsdata = {
+                                numberOforderschartdata: [10, 20, 30, 40, 50],
+                                numberofvisitorschartdata: [5, 10, 15, 20, 25],
+                                numberoforders: 550,
+                                numberofordersch: 550,
+                                numberofvisitorstoday: 600,
+                                numberofvisitorsch: 600,
+                                registeredusers: 6500,
+                                registeredusersch: 6500,
+                                tobefulfilled: 26,
+                                tobefulfilledch: 26,
+                                totalsales: 8125,
+                                totalsales: 130
+
+
+                            };
                             users.find()
                                 .then(result => {
                                     console.log(result);
-                                    res.render('admin_user_controls', {
+                                    res.render('adminhome', {
+                                        analyticsdata,
+
                                         users: result,
-                                        TITLE: 'SIGNUP PAGE',
+                                        TITLE: 'admin home page',
                                         message: '',
                                         user: (req.session.user === undefined ? "" : req.session.user)
 

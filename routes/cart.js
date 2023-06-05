@@ -1,85 +1,78 @@
 import { Router } from 'express';
-var router = Router();
 import Product from '../models/Product.js';
-//render
-router.get('/cart', function(req, res, next) {
-    const arr=req.session.user.cart;
-  
-  Product.find({ _id: { $in: arr } })
-    .then( result=> { console.log(result); res.render("cart",{ product: result , user: (req.session.user === undefined ? "" : req.session.user) });})
-    .catch((err)=> { console.log(err)});
-    
-    
-  });
-  //add
-  router.get("add/:id",function(req, res, next) {
-  
-   
-    const id1= req.session.user._id;
-    const itemId = req.params.id;
-   
-    console.log(itemId);
-  
-   console.log(req.session.user.cart);
-  
-   
-  
-    let ishere=false;
-    const newcart= req.session.user.cart;
-    const id2={_id:id1};
-    console.log(id1);
-    console.log("------");
-    
-    
-     if(newcart.includes(itemId)){
-       ishere=false;
-       console.log("the product already in the cart");
-       res.redirect("/");
-       
-     }
-     else{
-       ishere=true;
-     }
-    
-     
-    if(ishere){    
-       req.session.user.cart.push(itemId);
-         
-       user1
-       .updateOne( id2 , {cart: newcart })
-       .then( result => {
-         
-         console.log(id1);
-           res.redirect("/")
-       })
-       .catch( err => {
-           console.log(err)
-       })
-         
-    }});
-    //delete
-  router.get("/delete/:id",function(req,res,next){
+import users from '../models/users.js';
 
-    const id1= req.session.user._id;
-    const itemId = req.params.id;
-  
-    const newcart= req.session.user.cart;
-    const id2={_id:id1};
-  
-    var index = newcart.indexOf(itemId);
-    if (index > -1) {
-      newcart.splice(index, 1);
-    }
-  
-    console.log(newcart);
-    user1
-    .updateOne( id2 , {cart: newcart })
-    .then( result => {
-      console.log(id1);
-        res.redirect("/cart")
+const router = Router();
+
+router.use((req, res, next) => {
+  if (req.session.user !== undefined && req.session.user.type === "user") {
+    next();
+  } else {
+    res.render('err', {
+      err: 'You are not signed in as a user. Please sign in.',
+      user: (req.session.user === undefined ? "" : req.session.user)
+    });
+  }
+});
+
+router.get('/', function(req, res, next) {
+  const cart = req.session.user.cart;
+
+  Product.find({ _id: { $in: cart } })
+    .then(products => {
+      console.log(products);
+      res.render("cart", { products, user: (req.session.user === undefined ? "" : req.session.user) });
     })
-    .catch( err => {
-        console.log(err)
+    .catch(err => {
+      console.log(err);
+      res.render("cart", { products: [], user: (req.session.user === undefined ? "" : req.session.user) });
+    });
+});
+
+router.get("/add/:id", function(req, res, next) {
+  const userId = req.session.user._id;
+  const productId = req.params.id;
+  const newCart = req.session.user.cart;
+
+  if (newCart.includes(productId)) {
+    console.log("The product is already in the cart");
+    return res.redirect("back"); // Redirect back to the referring page
+  }
+
+  newCart.push(productId);
+
+  users.updateOne({ _id: userId }, { cart: newCart })
+    .then(result => {
+      console.log(`Product ${productId} added to cart`);
+      res.redirect("back"); // Redirect back to the referring page
     })
-  })
+    .catch(err => {
+      console.log(err);
+      res.redirect("back"); // Redirect back to the referring page
+    });
+});
+
+  
+router.get("/delete/:id", function(req, res, next) {
+  const productId = req.params.id;
+  const cart = req.session.user.cart;
+
+  const newCart = cart.filter(item => item !== productId);
+
+  // Update the cart in session
+  req.session.user.cart = newCart;
+
+  // Update the cart in the database
+  const userId = req.session.user._id;
+  users.updateOne({ _id: userId }, { cart: newCart })
+    .then(() => {
+      console.log(`Product ${productId} removed from cart`);
+      res.redirect("/cart");
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/cart");
+    });
+});
+
 export default router;
