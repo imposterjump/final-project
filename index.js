@@ -34,6 +34,7 @@ import vproducts_router from "./routes/vproducts.js";
 import Product from './models/Product.js';
 import signout_router from "./routes/signout.js";
 import itemdetails_router from "./routes/itemdetails.js";
+import product_router from "./routes/product.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -156,6 +157,7 @@ index.use('/add-product', add_product_router);
 index.use('/edit-product', edit_router);
 index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
+index.use('/product',product_router);
 //port
 // 404 page
 index.use((req, res) => {

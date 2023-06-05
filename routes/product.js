@@ -2,16 +2,19 @@ import express from 'express';
 import Product from '../models/Product.js';
 const router = express.Router();
 
-router.get('/Product/:itemName', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
+const productId = req.params.id;
 
-   const itemName = req.params.itemName;
-   Product.findOne({name: itemName}, (err,Product) => {
-    if(err || !Product){
-        res.status(404).send("Product Not Found");
-    } else {
-        res.render('product', {Product});
-    }
-   });
+    Product.findById(productId)
+        .then((product1) => {
+            res.render('product', { product1, message: '',
+
+                user: (req.session.user === undefined ? "" : req.session.user)});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.redirect('/');
+        });
 
 });
 export default router;

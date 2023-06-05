@@ -35,11 +35,12 @@
                         <div class="row">
                     <% } %>
                     <div class="column">
-                        <div>
+                        <div> <a href="/product/<%= pro.id %>">
                             <div class="images">
                                 <img src="/uploads/<%= pro.images[0] %>">
                                 <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
                             </div>
+                        </a>
                             <div class="text">
                                 <h4>
                                     <%= pro.itemName %>
