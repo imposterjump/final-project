@@ -2,39 +2,39 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link rel="stylesheet" href="/CSS/signup.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/CSS/signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script src="/js/signup.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E"></script>
+
 <body>
 
-    
-  <div class="container">
-    <div class="title">Registration</div>
-    <% if(message !=''){ %>
 
-        <p class="reg_message">
-            <%= message %>
-        </p>
-        <% } %>
-    <div class="content">
-      <form action="/signup" method="post" enctype="multipart/form-data">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" id="username" name="username" minlength="8"
-              maxlength="16" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Email</span>
-            <input type="email" placeholder="Enter your email" id="email " name="email"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Country Code</span>
-            <select class="selector" id="countrycode " name="countrycode ">
+    <div class=" container ">
+        <div class="title ">Registration</div>
+        <% if(message !=''){ %>
+
+            <p class="reg_message ">
+                <%= message %>
+            </p>
+            <% } %>
+                <div class="content ">
+                    <form action="/signup " method="post " enctype="multipart/form-data ">
+                        <div class="user-details ">
+                            <div class="input-box ">
+                                <span class="details ">Username</span>
+                                <input type="text " placeholder="Enter your username " id="username " name="username " minlength="8 " maxlength="16 " required>
+                            </div>
+                            <div class="input-box ">
+                                <span class="details ">Email</span>
+                                <input type="email " placeholder="Enter your email " id="email " name="email " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$ " required>
+                            </div>
+                            <div class="input-box ">
+                                <span class="details ">Country Code</span>
+                                <select class="selector " id="countrycode " name="countrycode ">
               <option value="1 ">United States (+1)</option>
               <option value="86 ">China (+86)</option>
               <option value="91 ">India (+91)</option>
@@ -56,51 +56,49 @@
               <option value="81 ">Japan (+81)</option>
               <option value="86 ">China (+86)</option>
             </select>
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="tel" placeholder="Enter your number" id="phone " name="phone" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Password</span>
-            <input type="password" placeholder="Enter your password" id="pw" name="pw" minlength="8 " maxlength="16 "
-              required>
-          </div>
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="password" placeholder="Confirm your password" id="cpw" name="cpw" minlength="8 " maxlength="16 "
-              required>
-          </div>
-          <label> <input type="checkbox" class="check" name="agree " required> I agree to the Website's terms and conditions </label>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Phone Number</span>
+                                <input type="tel" placeholder="Enter your number " id="phone " name="phone " required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Password</span>
+                                <input type="password" placeholder="Enter your password " id="pw " name="pw " minlength="8 " maxlength="16 " required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Confirm Password</span>
+                                <input type="password" placeholder="Confirm your password " id="cpw " name="cpw " minlength="8 " maxlength="16 " required>
+                            </div>
+                            <label> <input type="checkbox" class="check " name="agree" required> I agree to the Website's terms and conditions </label>
                             <br>
 
-        </div>
-        <div class="button">
-          <input type="submit" class="submit" value="Register">
-        </div>
-      </form>
-      <div class="signup">
-        <span class="signup">Already have an account?
-         <a href="/signin"><label for="check">Login</label></a>
+                        </div>
+                        <div class="button">
+                            <input type="submit" class="submit" value="Register ">
+                        </div>
+                    </form>
+                    <div class="signup">
+                        <span class="signup ">Already have an account?
+         <a href="/signin "><label for="check ">Login</label></a>
         </span>
-      </div>
+                    </div>
+                </div>
     </div>
-  </div>
 
-  <script>
-    // Add a listener to the form submission to check if passwords are matching
+    <script>
+        // Add a listener to the form submission to check if passwords are matching
 
-    document.querySelector('form').addEventListener('submit', function(event) {
-        const password = document.querySelector('#password').value;
-        const confirmPassword = document.querySelector('#confirm-password').value;
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const password = document.querySelector('#password').value;
+            const confirmPassword = document.querySelector('#confirm-password').value;
 
-        // Check if the two passwords match
-        if (password !== confirmPassword) {
-            alert('The two passwords do not match.');
-            event.preventDefault();
-        }
-    });
-</script>
+            // Check if the two passwords match
+            if (password !== confirmPassword) {
+                alert('The two passwords do not match.');
+                event.preventDefault();
+            }
+        });
+    </script>
 
 </body>
 

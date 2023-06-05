@@ -8,6 +8,20 @@ const { isNullOrUndefined } = pkg;
 
 
 const SALT_ROUNDS = 10;
+router.post('/checkUN', function(req, res) {
+    var query = { userame: req.body.userame };
+    users.find(query)
+        .then(result => {
+            if (result.length > 0) {
+                res.send('taken');
+            } else {
+                res.send('available');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
 
 router.get('/', function(req, res, next) {
     res.render('signup', {
