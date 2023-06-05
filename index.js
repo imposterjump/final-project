@@ -1,6 +1,6 @@
 import HttpError from "http-errors";
 import express from "express";
-import path from "path";
+import path, { format } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
@@ -33,6 +33,10 @@ import details_router from "./routes/details.js";
 import vproducts_router from "./routes/vproducts.js";
 import Product from './models/Product.js';
 import signout_router from "./routes/signout.js";
+import itemdetails_router from "./routes/itemdetails.js";
+import product_router from "./routes/product.js";
+import orders_router from "./routes/orders.js";
+import shippingform_router from "./routes/shippingform.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -148,12 +152,16 @@ index.use('/account', account_router);
 index.use('/cart', cart_router);
 index.use('/help', help_router);
 index.use('/signout', signout_router);
+index.use('/itemdetails',itemdetails_router);
 
+index.use('/shippingform',shippingform_router);
 //product
 index.use('/add-product', add_product_router);
 index.use('/edit-product', edit_router);
 index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
+index.use('/product',product_router);
+index.use('/orders',orders_router)
 //port
 // 404 page
 index.use((req, res) => {

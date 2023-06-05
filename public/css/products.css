@@ -1,8 +1,46 @@
 html, body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
     margin: 0;
     background-color: white;
+    text-align: left;
+}
+.product-details {
+    padding: 20px;
 }
 
+/* Style the product name */
+.product-name {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Style the product price */
+.product-price {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Style the before and after price */
+.product-price .before {
+    text-decoration: line-through;
+    margin-right: 10px;
+    color: #999;
+}
+
+.product-price .after {
+    color: darkred;
+}
+
+/* Style the product discount */
+.product-discount {
+    margin-bottom: 20px;
+    color: #f00;
+}
 .container {
     max-width: 1300px;
     margin: auto;
@@ -10,7 +48,6 @@ html, body {
     padding-right: 15px;
     display: grid;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .row {
@@ -19,7 +56,11 @@ html, body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
+.text2{
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+}
 .column {
     flex-basis: 30%;
     min-width: 350px;
@@ -31,49 +72,12 @@ html, body {
     border-radius: 10px;
 }
 
-.text {
-    text-align: left;
-    color: white;
-}
 
 .column img {
     width: 100%;
     height: 100%;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #0f2130;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
 
 @media screen and (max-height: 450px) {
     .sidenav {
@@ -85,34 +89,6 @@ html, body {
     }
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #0f2130;
-    position: -webkit-sticky; /* Safari */
-    position: static;
-    top: 0;
-    opacity: 85%;
-}
-
-li {
-    float: right;
-}
-
-li a {
-    display: block;
-    color: #0f2130;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-li a:hover {
-    background-color: lightblue;
-}
 
 .logo img {
     position: absolute;
@@ -125,38 +101,6 @@ li a:hover {
     margin-left: 15px;
 }
 
-.before {
-    font-weight: lighter;
-    text-decoration: line-through;
-    color: white;
-}
-
-.after {
-    color: darkred;
-}
-
-hr {
-    border: 2px solid black;
-}
-
-.types {
-    list-style-type: none;
-    margin: 10px;
-    padding: 0;
-    overflow: hidden;
-    background-color: white;
-    top: 0;
-    display: inline-block;
-    font-size: 15pt;
-    position: static;
-}
-
-li .types2 {
-    float: none;
-    text-align: center;
-    text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
 .images {
     position: relative;
@@ -180,26 +124,30 @@ li .types2 {
     left: 50%;
 }
 
-.text2 {
-    text-align: left;
-}
 
-.addbutton {
-    background-color: darkred;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    border-radius: 10px;
-    width: 100%;
-    margin-bottom: 7px;
-}
+
 
 .inline {
     display: inline-block;
+}
+.add-to-cart-button, .add-to-wishlist-button {
+    display: block;
+    flex-direction: row;
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: darkred;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-to-cart-button:hover, .add-to-wishlist-button:hover {
+    background-color:cornflowerblue;
 }
 
 .filter {
@@ -277,4 +225,45 @@ li .types2 {
 .filter select:focus:before,
 .filter select:focus:after {
     border-color: #007bff transparent transparent transparent;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pagination-button {
+    display: block;
+    width: 100px;
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: darkred;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.pagination-button :hover{
+    background-color: #0f2130;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.add-to-wishlist-button{
+    margin-left: 5px;
+}
+.add-to-cart-button{
+    margin-right: 5px;
 }

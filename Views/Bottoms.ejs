@@ -19,7 +19,7 @@
             <h3>Bottoms</h3>
         </div>
         <div class="filter">
-            <label for="sort">Filter</label>
+            <label for="sort">Sort by:</label>
             <select id="sort" onchange="sortProducts(this.value)">
                 <option value="default">Default</option>
                 <option value="highToLow">Price: High to Low</option>
@@ -35,20 +35,24 @@
                         <div class="row">
                     <% } %>
                     <div class="column">
-                        <div>
+                        <div> <a href="/product/<%= pro.id %>"> 
                             <div class="images">
                                 <img src="/uploads/<%= pro.images[0] %>">
                                 <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
                             </div>
-                            <div class="text">
-                                <h4>
-                                    <%= pro.itemName %>
-                                </h4>
-                                <h5 class="before">EGP <%= pro.price_before %>.00</h5>
-                                <h5 class="after">EGP <%= pro.price_after %>.00</h5>
-                                <p class="after"><%= pro.Sales %>% Discount</p>
-                                <button class="addbutton" type="submit">Add To Cart</button>
-                            </div>
+                        </a>
+                        <div class="product-details">
+                            <h1 class="product-name"><%= pro.itemName %></h1>
+                            <h2 class="product-price">
+                                <span class="before">EGP <%= pro.price_before %>.00</span>
+                                <span class="after">EGP <%= pro.price_after %>.00</span>
+                            </h2>
+                            <p class="product-discount"><%= pro.Sales %>% Discount</p>
+                            <span class="buttons">
+                                <a class="add-to-cart-button" href="/cart/add/<%= pro._id %>">Add To Cart</a>
+                                <a class="add-to-wishlist-button" href="#">Wishlist</a>
+                                </span>
+                        </div>
                         </div>
                     </div>
                     <% i++; %>
@@ -57,6 +61,10 @@
         <% } else { %>
             <p>There are no products to display...</p>
         <% } %>
+        <div class="pagination">
+            <a href="#" class="pagination-button" id="previous-button">Previous</a>
+            <a href="#" class="pagination-button" id="next-button">Next</a>
+        </div>
     </div>
 
     <footer>
@@ -86,4 +94,76 @@
                 container.appendChild(product);
             });
         }
+        const products = Array.from(document.querySelectorAll('.column'));
+const previousButton = document.getElementById('previous-button');
+const nextButton = document.getElementById('next-button');
+
+// Set the number of products per page
+const productsPerPage = 6;
+
+// Set the initial page number to 1
+let currentPage = 1;
+
+// Calculate the number of pages based on the number of products and the products per page
+const totalPages = Math.ceil(products.length / productsPerPage);
+
+// Define a function to show the products for the current page
+function showProductsForPage(pageNumber) {
+    // Calculate the start and end index for the products on the current page
+    const startIndex = (pageNumber - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+
+    // Hide all products
+    products.forEach(product => product.style.display = 'none');
+
+    // Show the products for the current page
+    products.slice(startIndex, endIndex).forEach(product => product.style.display = 'block');
+}
+
+// Show the products for the initial page
+showProductsForPage(currentPage);
+
+// Add a click event listener to the previous button
+previousButton.addEventListener('click', () => {
+    // Decrement the current page number
+    currentPage--;
+
+    // Disable the previous button if on the first page
+    if (currentPage === 1) {
+        previousButton.disabled = true;
+    }
+
+    // Enable the next button
+    nextButton.disabled = false;
+
+    // Show the products for the new current page
+    showProductsForPage(currentPage);
+});
+
+// Add a click event listener to the next button
+nextButton.addEventListener('click', () => {
+    // Increment the current page number
+    currentPage++;
+
+    // Disable the next button if on the last page
+    if (currentPage === totalPages) {
+        nextButton.disabled = true;
+    }
+
+    // Enable the previous button
+    previousButton.disabled = false;
+
+    // Show the products for the new current page
+    showProductsForPage(currentPage);
+});
+
+// Disable the previous button if on the first page
+if (currentPage === 1) {
+    previousButton.disabled = true;
+}
+
+// Disable the next button if on the last page
+if (currentPage === totalPages) {
+    nextButton.disabled = true;
+}
     </script>
