@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
 
     Product.findById(productId)
         .then((product) => {
-            res.render('details', { product });
+            res.render('details', { product, user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((err) => {
             console.log(err);
@@ -31,7 +31,7 @@ router.delete('/:id', (req, res) => {
 
     Product.findByIdAndDelete(productId)
         .then(() => {
-            res.json({ mylink: '/vproducts' });
+            res.json({ mylink: '/vproducts', user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((err) => {
             console.log(err);

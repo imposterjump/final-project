@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Product from '../models/Product.js';
+import products from '../models/Product.js';
 import users from '../models/users.js';
 import Order from '../models/order.js';
 
@@ -8,11 +8,23 @@ const router = Router();
 router.post('/', (req, res) => {
     if (req.session.user.cart != "") {
         console.log(req.session.user.cart);
-        let size = req.session.user.cart.length;
+        let size = req.session.user.cart.length
         console.log(size);
         let quanitity_arr = new Array(size);
-        for (i = 0; i < size; i++) {
-            //quanitity_arr[i] = req.body.
+        for (let i = 0; i < size; i++) {
+            products.findById(req.session.user.cart[i])
+                .then(result => {
+
+                    console.log(result.itemName);
+
+
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+
+            req.session.user.cart
 
         }
 

@@ -57,7 +57,12 @@ router.get('/all-articles/:id', (req, res) => {
 
     Product.findById(productId)
         .then((product) => {
-            res.render('details', { product });
+            res.render('details', {
+                product,
+
+                user: (req.session.user === undefined ? "" : req.session.user)
+
+            });
         })
         .catch((err) => {
             console.log(err);
@@ -70,7 +75,12 @@ router.delete('/all-articles/:id', (req, res) => {
 
     Product.findByIdAndDelete(productId)
         .then(() => {
-            res.json({ mylink: '/' });
+            res.json({
+                mylink: '/',
+
+                user: (req.session.user === undefined ? "" : req.session.user)
+
+            });
         })
         .catch((err) => {
             console.log(err);
@@ -83,7 +93,7 @@ router.get('/edit-product/:id', (req, res) => {
 
     Product.findById(productId)
         .then((product) => {
-            res.render('edit', { product });
+            res.render('edit', { product, user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((err) => {
             console.log(err);

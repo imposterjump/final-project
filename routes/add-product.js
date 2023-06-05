@@ -24,7 +24,9 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-    res.render('add-product');
+    res.render('add-product', {
+        user: (req.session.user === undefined ? "" : req.session.user)
+    });
 });
 
 router.post('/', (req, res) => {
@@ -74,7 +76,9 @@ router.post('/', (req, res) => {
             return product.save();
         })
         .then((result) => {
-            res.render('admin-product-management');
+            res.render('admin-product-management', {
+                user: (req.session.user === undefined ? "" : req.session.user)
+            });
         })
         .catch((err) => {
             console.error(err);

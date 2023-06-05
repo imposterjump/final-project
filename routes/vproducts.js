@@ -15,7 +15,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
     Product.find()
         .then((result) => {
-            res.render('vproducts', { arrproduct: result });
+            res.render('vproducts', { arrproduct: result, user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((err) => {
             console.log(err);
@@ -27,7 +27,7 @@ router.get('/details/:id', (req, res) => {
 
     Product.findById(productId)
         .then((product) => {
-            res.render('details', { product });
+            res.render('details', { product, user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((err) => {
             console.log(err);
