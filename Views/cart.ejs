@@ -1,33 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Cart</title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/cart.css">
-</head>
-<body>
-  <h1>Cart</h1>
-  
-  <% if (product.length === 0) { %>
-    <p>Your cart is empty.</p>
-  <% } else { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Product Name</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% product.forEach(function(item) { %>
-          <tr>
-            <td><%= item.itemName %></td>
-            <td><%= item.price_after %></td>
-          </tr>
-        <% }); %>
-      </tbody>
-    </table>
-  <% } %>
-  
-  <a href="/">Back to Home</a>
-</body>
-</html>
+<div class='container'>
+  <div class='window'>
+    <div class='order-info'>
+      <div class='order-info-content'>
+        <h2>Order Summary</h2>
+        <div class='line'></div>
+
+        <% if (products.length > 0) { %>
+          <% products.forEach((item) => { %>
+            <table class='order-table'>
+              <tbody>
+                <tr>
+                  <td class="image-container">
+                    <img src="/uploads/<%= item.images[0] %>">
+                  </td>
+                  <td>
+                    <br> <span class='thin'><%= item.itemName %></span>
+                  </td>
+                  <td>
+                    <div class='price'>$<%= item.price_after %></div>
+                  </td>
+                  <td>
+                    <a class="delete-button" href="/cart/delete/<%= item._id %>">
+                      <img class="delete-icon" src="images/delete.png" alt="delete photo">
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class='line'></div>
+          <% }); %>
+
+          <div class='line'></div>
+          <div class='total'>
+            <span style='float:left;'>
+              <div class='thin dense'>VAT 19%</div>
+              <div class='thin dense'>Delivery</div>
+              TOTAL
+            </span>
+            <span style='float:right; text-align:right;'>
+              <div class='thin dense'>$68.75</div>
+              <div class='thin dense'>$4.95</div>
+              $435.55
+            </span>
+          </div>
+        <% } else { %>
+          <p>Your cart is empty.</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="pay-btn" href="/checkout">Proceed to Checkout</a>
+<link rel="stylesheet" href="/css/cart.css">
+

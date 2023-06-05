@@ -35,11 +35,12 @@
                         <div class="row">
                     <% } %>
                     <div class="column">
-                        <div>
+                        <div> <a href="/product/<%= pro.id %>"> 
                             <div class="images">
                                 <img src="/uploads/<%= pro.images[0] %>">
                                 <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
                             </div>
+                        </a>
                             <div class="text">
                                 <h4>
                                     <%= pro.itemName %>
@@ -47,7 +48,7 @@
                                 <h5 class="before">EGP <%= pro.price_before %>.00</h5>
                                 <h5 class="after">EGP <%= pro.price_after %>.00</h5>
                                 <p class="after"><%= pro.Sales %>% Discount</p>
-                                <button class="addbutton" type="submit">Add To Cart</button>
+                                <a class="addbutton" href="/cart/add/<%= pro._id %>">Add To Cart</a>
                             </div>
                         </div>
                     </div>
