@@ -14,7 +14,7 @@ router.use((req, res, next) => {
 
 router.get('/', function(req, res, next) {
     const analyticsdata = {
-        numberOforderschartdata: [10, 20, 30, 40, 50],
+        numberoforderschartdata: [10, 20, 30, 5, 35],
         numberofvisitorschartdata: [5, 10, 15, 20, 25],
         numberoforders: 550,
         numberofordersch: 550,
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
         tobefulfilled: 26,
         tobefulfilledch: 26,
         totalsales: 8125,
-        totalsales: 130
+        totalsalesch: 130
 
 
     };
