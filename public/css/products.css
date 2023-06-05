@@ -1,8 +1,46 @@
 html, body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
     margin: 0;
     background-color: white;
+    text-align: left;
+}
+.product-details {
+    padding: 20px;
 }
 
+/* Style the product name */
+.product-name {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Style the product price */
+.product-price {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+/* Style the before and after price */
+.product-price .before {
+    text-decoration: line-through;
+    margin-right: 10px;
+    color: #999;
+}
+
+.product-price .after {
+    color: darkred;
+}
+
+/* Style the product discount */
+.product-discount {
+    margin-bottom: 20px;
+    color: #f00;
+}
 .container {
     max-width: 1300px;
     margin: auto;
@@ -200,6 +238,24 @@ li .types2 {
 
 .inline {
     display: inline-block;
+}
+.add-to-cart-button {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: darkred;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-to-cart-button:hover {
+    background-color:cornflowerblue;
 }
 
 .filter {

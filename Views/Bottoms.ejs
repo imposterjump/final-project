@@ -41,15 +41,15 @@
                                 <img src="/uploads/<%= pro.images[1] %>" class="imgtop">
                             </div>
                         </a>
-                            <div class="text">
-                                <h4>
-                                    <%= pro.itemName %>
-                                </h4>
-                                <h5 class="before">EGP <%= pro.price_before %>.00</h5>
-                                <h5 class="after">EGP <%= pro.price_after %>.00</h5>
-                                <p class="after"><%= pro.Sales %>% Discount</p>
-                                <a class="addbutton" href="/cart/add/<%= pro._id %>">Add To Cart</a>
-                            </div>
+                        <div class="product-details">
+                            <h1 class="product-name"><%= pro.itemName %></h1>
+                            <h2 class="product-price">
+                                <span class="before">EGP <%= pro.price_before %>.00</span>
+                                <span class="after">EGP <%= pro.price_after %>.00</span>
+                            </h2>
+                            <p class="product-discount"><%= pro.Sales %>% Discount</p>
+                            <a class="add-to-cart-button" href="/cart/add/<%= pro._id %>">Add To Cart</a>
+                        </div>
                         </div>
                     </div>
                     <% i++; %>
