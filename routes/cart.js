@@ -30,27 +30,28 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/add/:id", function(req, res, next) {
-    const userId = req.session.user._id;
-    const productId = req.params.id;
-    const newCart = req.session.user.cart;
-  
-    if (newCart.includes(productId)) {
-      console.log("The product is already in the cart");
-      return res.redirect("/");
-    }
-  
-    newCart.push(productId);
-  
-    users.updateOne({ _id: userId }, { cart: newCart })
-      .then(result => {
-        console.log(`Product ${productId} added to cart`);
-        res.redirect("/");
-      })
-      .catch(err => {
-        console.log(err);
-        res.redirect("/");
-      });
-  });
+  const userId = req.session.user._id;
+  const productId = req.params.id;
+  const newCart = req.session.user.cart;
+
+  if (newCart.includes(productId)) {
+    console.log("The product is already in the cart");
+    return res.redirect("back"); // Redirect back to the referring page
+  }
+
+  newCart.push(productId);
+
+  users.updateOne({ _id: userId }, { cart: newCart })
+    .then(result => {
+      console.log(`Product ${productId} added to cart`);
+      res.redirect("back"); // Redirect back to the referring page
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("back"); // Redirect back to the referring page
+    });
+});
+
   
 router.get("/delete/:id", function(req, res, next) {
   const productId = req.params.id;
