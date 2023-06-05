@@ -5,7 +5,7 @@
   <div class='window'>
     <div class='order-info'>
       <div class='order-info-content'>
-        <h2>WishList</h2>
+        <h2>Wishlist</h2>
         <div class='line'></div>
 
         <% if (products.length > 0) { %>
@@ -31,7 +31,7 @@
                         <img class="delete-icon" src="images/delete.png" alt="Delete Product">
                       </a>
                       <a class="addcart-button" href="/cart/add/<%= item._id %>">
-                        <img class="delete-icon" src="images/trolley-cart.png" alt="Delete Product">
+                        <img class="delete-icon" src="images/trolley-cart.png"  alt="Add to Cart">
                       </a>
                     </div>
                   </td>
@@ -42,7 +42,7 @@
           <% }); %>
           
         <% } else { %>
-          <p class="empty-cart">Your WishList is empty.</p>
+          <p class="empty-cart">Your Wishlist is empty.</p>
         <% } %>
       </div>
     </div>
