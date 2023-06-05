@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
         counter = false;
         res.render('signup', {
             TITLE: 'SIGNUP PAGE',
-            message: 'Fill all fields ',
+            message: 'Fill all fields',
             user: (req.session.user === undefined ? "" : req.session.user)
 
         });
