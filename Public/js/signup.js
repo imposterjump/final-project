@@ -7,4 +7,13 @@ document.querySelector('form').addEventListener('submit', function(event) {
         alert('The two passwords do not match.');
         event.preventDefault();
     }
+
+
 });
+
+function validate() {
+    if (document.getElementById('result').innerHTML.includes('taken'))
+        return false;
+    else
+        return true;
+}
