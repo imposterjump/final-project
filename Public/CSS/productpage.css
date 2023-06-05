@@ -81,7 +81,7 @@ body {
 }
 
 /* Style the add-to-cart button */
-.add-to-cart-button {
+.add-to-cart-button, .add-to-wishlist-button {
   display: block;
   width: 100%;
   max-width: 200px;
@@ -98,7 +98,7 @@ body {
   text-decoration: none;
 }
 
-.add-to-cart-button:hover {
+.add-to-cart-button:hover, .add-to-wishlist-button:hover {
   background-color:cornflowerblue;
 }
 /* Style the size buttons */
@@ -162,4 +162,14 @@ body {
 
 .Lbutton {
   float: left;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+}
+.add-to-wishlist-button{
+  margin-left: 5px;
+}
+.add-to-cart-button{
+  margin-right: 5px;
 }
