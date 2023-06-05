@@ -8,35 +8,36 @@ function openNav() {
   }
  
 
+
 document.addEventListener('DOMContentLoaded', function() {
-const donutChart = document.getElementById('donutChart').getContext('2d');
-const doughnutChart = new Chart(donutChart, {
-  type: 'doughnut',
-  data: {
-    labels: ['EGY', 'FR', 'GER', 'USA', 'UAE'],
-    datasets: [{
-      data:<%=analyticsdata.numberoforderschartdata%>,
-      backgroundColor: [
-        '#FF6384', '#36A2EB', '#FFCE56', '#33FF9E', '#B533FF'
-      ],
-    }]
-  },
-});
+    const donutChart = document.getElementById('donutChart').getContext('2d');
+    const doughnutChart = new Chart(donutChart, {
+        type: 'doughnut',
+        data: {
+            labels: ['EGY', 'FR', 'GER', 'USA', 'UAE'],
+            datasets: [{
+                data: [<%=JSON.stringify analyticsdata.numberoforderschartdata %>],
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#33FF9E', '#B533FF'
+                ],
+            }]
+        },
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-const donutChart2 = document.getElementById('donutChart2').getContext('2d');
-const doughnutChart2 = new Chart(donutChart2, {
-  type: 'doughnut',
-  data: {
-    labels: ['Egypt', 'France', 'Germany', 'UAE', 'USA'],
-    datasets: [{
-      data: <%=analyticsdata.numberofvisitorschartdata %>,
-      backgroundColor: [
-        '#FF6384', '#36A2EB', '#FFCE56', '#33FF9E', '#B533FF'
-      ],
-    }]
-  },
-});
+    const donutChart2 = document.getElementById('donutChart2').getContext('2d');
+    const doughnutChart = new Chart(donutChart2, {
+        type: 'doughnut',
+        data: {
+            labels: ['Egypt', 'France', 'Germany', 'UAE', 'USA'],
+            datasets: [{
+                data: <%=JSON.stringify (analyticsdata.numberofvisitorschartdata) %>,
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#33FF9E', '#B533FF'
+                ],
+            }]
+        },
+    });
 });
 
