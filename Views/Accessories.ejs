@@ -92,8 +92,7 @@
 
             products.forEach(product => container.appendChild(product));
         }
-        // Get all the products and the pagination buttons
-const products = Array.from(document.querySelectorAll('.column'));
+        const products = Array.from(document.querySelectorAll('.column'));
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
 
@@ -125,15 +124,19 @@ showProductsForPage(currentPage);
 // Add a click event listener to the previous button
 previousButton.addEventListener('click', () => {
     // Decrement the current page number
-    currentPage--;
+    
 
     // Disable the previous button if on the first page
     if (currentPage === 1) {
         previousButton.disabled = true;
     }
+    else{
+        currentPage--;
+    }
 
     // Enable the next button
     nextButton.disabled = false;
+    
 
     // Show the products for the new current page
     showProductsForPage(currentPage);
@@ -142,15 +145,18 @@ previousButton.addEventListener('click', () => {
 // Add a click event listener to the next button
 nextButton.addEventListener('click', () => {
     // Increment the current page number
-    currentPage++;
-
+    
     // Disable the next button if on the last page
     if (currentPage === totalPages) {
         nextButton.disabled = true;
     }
-
+    else{
+        currentPage++;
+    }
     // Enable the previous button
     previousButton.disabled = false;
+    
+
 
     // Show the products for the new current page
     showProductsForPage(currentPage);
