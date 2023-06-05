@@ -42,7 +42,10 @@
                 </div>
               </div>
               <p class="product-description"><%= product1.description %></p>
-              <a class="add-to-cart-button" href="/cart/add/<%= product1._id %>">Add To Cart</a>
+              <span class="buttons">
+                <a class="add-to-cart-button" href="/cart/add/<%= product1._id %>">Add To Cart</a>
+                <a class="add-to-wishlist-button" href="#">Wishlist</a>
+                </span>
             </div>
       </div>
   </div>
@@ -73,20 +76,17 @@ function showDivs(n) {
 function chooseSize(size) {
   // Get all the size buttons
   var sizeButtons = document.querySelectorAll('.size-button');
-  
-  // Loop through all the size buttons
-  for (var i = 0; i < sizeButtons.length; i++) {
-    // Remove the 'chosen' class from all buttons
-    sizeButtons[i].classList.remove('chosen');
-  }
-  
-  // Add the 'chosen' class to the clicked button
+
   var chosenButton = document.getElementById('size-' + size.toLowerCase());
-  chosenButton.classList.add('chosen');
-  
-  // Set the chosen size next to the "Size:" label
   var sizeLabel = document.querySelector('.product-sizes h4');
-  sizeLabel.innerHTML = 'Size: ' + size;
+  if (chosenButton.classList.contains('chosen')) {
+    sizeLabel.innerHTML = 'Size:';
+    chosenButton.classList.remove('chosen');
+  } else {
+    chosenButton.classList.add('chosen');
+    
+    sizeLabel.innerHTML = 'Size: ' + size;
+  }
 }
 </script>
 

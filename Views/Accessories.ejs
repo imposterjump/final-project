@@ -48,7 +48,10 @@
                                 <span class="after">EGP <%= pro.price_after %>.00</span>
                             </h2>
                             <p class="product-discount"><%= pro.Sales %>% Discount</p>
+                            <span class="buttons">
                             <a class="add-to-cart-button" href="/cart/add/<%= pro._id %>">Add To Cart</a>
+                            <a class="add-to-wishlist-button" href="#">Wishlist</a>
+                            </span>
                         </div>
                         </div>
                     </div>
@@ -89,8 +92,7 @@
 
             products.forEach(product => container.appendChild(product));
         }
-        // Get all the products and the pagination buttons
-const products = Array.from(document.querySelectorAll('.column'));
+        const products = Array.from(document.querySelectorAll('.column'));
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
 

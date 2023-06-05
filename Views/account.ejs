@@ -27,10 +27,13 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control"value=<%= user.email %>></div>
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="tel" class="form-control" value=<%= user.phone_number %>></div>
+                        <form action="/account/edit" method="post">
+                        <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" name="email" value=<%= user.email %>></div>
+                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" required class="form-control" name="phone" value=<%= user.phone_number %>></div>
+                        <input type="submit"  class="mt-5 text-center" value="save">
+                    </form>
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    
                 </div>
             </div>
             <div class="col-md-4">

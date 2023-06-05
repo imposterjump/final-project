@@ -49,7 +49,10 @@
                                 <span class="after">EGP <%= pro.price_after %>.00</span>
                             </h2>
                             <p class="product-discount"><%= pro.Sales %>% Discount</p>
-                            <a class="add-to-cart-button" href="/cart/add/<%= pro._id %>">Add To Cart</a>
+                            <span class="buttons">
+                                <a class="add-to-cart-button" href="/cart/add/<%= pro._id %>">Add To Cart</a>
+                                <a class="add-to-wishlist-button" href="#">Wishlist</a>
+                                </span>
                         </div>
                         </div>
                     </div>
@@ -92,6 +95,8 @@
                 container.appendChild(product);
             });
         }
+       
+       
         const products = Array.from(document.querySelectorAll('.column'));
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');

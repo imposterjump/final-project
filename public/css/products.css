@@ -130,9 +130,10 @@ html, body {
 .inline {
     display: inline-block;
 }
-.add-to-cart-button {
+.add-to-cart-button, .add-to-wishlist-button {
     display: block;
-    width: 100%;
+    flex-direction: row;
+    width: 50%;
     margin: 0 auto;
     padding: 10px;
     font-size: 16px;
@@ -145,7 +146,7 @@ html, body {
     text-decoration: none;
 }
 
-.add-to-cart-button:hover {
+.add-to-cart-button:hover, .add-to-wishlist-button:hover {
     background-color:cornflowerblue;
 }
 
@@ -249,10 +250,16 @@ html, body {
     text-decoration: none;
 }
 
-.pagination-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
 .pagination-button :hover{
     background-color: #0f2130;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.add-to-wishlist-button{
+    margin-left: 5px;
+}
+.add-to-cart-button{
+    margin-right: 5px;
 }
