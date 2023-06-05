@@ -56,11 +56,12 @@
             <% } else { %>
             <p>There are no products to display...</p>
             <% } %>
-            <div class="pagination">
+           
+        </div>
+         <div class="pagination">
                 <a href="#" class="pagination-button" id="previous-button">Previous</a>
                 <a href="#" class="pagination-button" id="next-button">Next</a>
             </div>
-        </div>
     </div>
 
     <footer>
@@ -90,6 +91,7 @@
                 container.appendChild(product);
             });
         }
+       
         const products = Array.from(document.querySelectorAll('.column'));
 const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
