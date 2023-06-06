@@ -42,9 +42,11 @@ router.get("/add/:id", function(req, res, next) {
 
   newlist.push(productId);
 
-  users.updateOne({ _id: userId }, { list: newlist })
+  users.updateOne({ _id: userId }, { wishlist: newlist }) // Update the wishlist field
     .then(result => {
-      console.log(`Product ${productId} added to cart`);
+      console.log(`Product ${productId} added to wishlist`);
+      // Update the wishlist in the session
+      req.session.user.wishlist = newlist;
       res.redirect("back"); // Redirect back to the referring page
     })
     .catch(err => {
@@ -53,12 +55,12 @@ router.get("/add/:id", function(req, res, next) {
     });
 });
 
+
   
 router.get("/delete/:id", function(req, res, next) {
   const productId = req.params.id;
   const wishlist = req.session.user.wishlist;
-
-  const newlist = cart.filter(item => item !== productId);
+  const newlist = wishlist.filter(item => item !== productId);
 
   // Update the cart in session
   req.session.user.wishlist= newlist;
