@@ -4,7 +4,7 @@
     "description": "clothing store website",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "node ./bin/www.js",
         "watch": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
