@@ -1,26 +1,23 @@
 $(document).ready(function() {
-    $("#username").on('keyup', function(e) {
+    $("#un").on('keyup', function(e) {
         e.preventDefault();
-        var value = $('#username').val();
+        var data = $('#username').val();
         $.ajax({
-            url: '/sign-up/checkUN',
+            url: '/signup/checkUN',
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ username: value }),
-            success: function(result) {
-                $('#result').html('username' + result);
+            data: JSON.stringify({ username: data }),
+            success: function(response) {
+                $('#result').html('UserName is ' + response);
 
-                if (result == 'taken') {
+                if (response == 'taken') {
                     $('#result').css("color", "red");
-                    $('#btn-sub').css("background-color", "red");
-                    $('#btn-sub').prop("disabled", true);
                 } else {
                     $('#result').css("color", "green");
-                    $('#btn-sub').prop("disabled", false);
                 }
             },
             error: function(err) {
-                console.log(err);
+
             }
         });
     });

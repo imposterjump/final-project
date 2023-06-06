@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <script src="/js/signup.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js%22%3E"></script>
+<script src="/js/ajax.js"></script>
 
 <body>
 
@@ -19,14 +21,19 @@
 
             <p class="reg_message ">
                 <%= message %>
+
+
             </p>
             <% } %>
                 <div class="content ">
-                    <form action="/signup" enctype="multipart/form-data " method="post">
+
+
+                    <form action="/signup" enctype="multipart/form-data " onsubmit="return validate()" method="post">
                         <div class="user-details ">
                             <div class="input-box ">
                                 <span class="details ">Username</span>
                                 <input type="text " placeholder="Enter your username" id="username" name="username" minlength="8 " maxlength="16 " required>
+                                <span id="result"></span>
                             </div>
                             <div class="input-box ">
                                 <span class="details ">Email</span>
