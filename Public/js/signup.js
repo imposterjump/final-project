@@ -8,10 +8,12 @@ document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
     }
 
-    function validate() {
-        if (document.getElementById('result').innerHTML.includes('taken'))
-            return false;
-        else
-            return true;
-    }
+
 });
+
+function validate() {
+    if (document.getElementById('result').innerHTML.includes('taken'))
+        return false;
+    else
+        return true;
+}

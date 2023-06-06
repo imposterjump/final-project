@@ -11,6 +11,7 @@ const SALT_ROUNDS = 10;
 router.post('/checkUN', function(req, res) {
 
     var query = { username: req.body.username };
+    console.log(" i am in ajax ");
     users.find(query)
         .then(result => {
             if (result.length > 0) {

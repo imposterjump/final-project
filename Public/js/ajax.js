@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#un").on('keyup', function(e) {
+    $("#username").on('keyup', function(e) {
         e.preventDefault();
         var data = $('#username').val();
         $.ajax({
