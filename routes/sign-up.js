@@ -122,7 +122,7 @@ router.post('/', (req, res) => {
                     user.save()
                         .then(result => {
                             console.log(result + "added user");
-                            res.render('HomePage', { user: (req.session.user === undefined ? "" : req.session.user) });
+                            res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
                         })
                         .catch(err => {
                             console.log(err);

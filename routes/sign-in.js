@@ -54,7 +54,7 @@ router.post('/user', function(req, res, next) {
                         console.log("correct password and type = " + mytype);
                         if (mytype == 'user') {
                             req.session.user = me;
-                            res.render('HomePage', { user: (req.session.user === undefined ? "" : req.session.user) });
+                            res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
                             return true;
                         } else if (mytype == 'admin') {
                             req.session.user = me;
