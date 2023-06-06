@@ -1,90 +1,124 @@
 <link rel="stylesheet" href="/css/cart.css">
 <%- include("./Partials/NavUser.ejs") %>
-    <%- include("./Partials/chat.ejs") %>
-        <div class='container'>
-            <div class='window'>
-                <div class='order-info'>
-                    <div class='order-info-content'>
-                        <h2>Order Summary</h2>
-                        <div class='line'></div>
+<%- include("./Partials/chat.ejs") %>
+<div class='container'>
+  <div class='window'>
+    <div class='order-info'>
+      <div class='order-info-content'>
+        <h2>Order Summary</h2>
+        <div class='line'></div>
 
-                        <% if (products.length > 0) { %>
-                            <form action="/shippingform" method="post" enctype="multipart/form-data ">
-                                <% products.forEach((item) => { %>
-                                    <table class='order-table'>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="product-wrapper">
-                                                        <div class="image-container">
-                                                            <img src="/uploads/<%= item.images[0] %>" alt="Product Image">
-                                                        </div>
-                                                        <div class="product-details">
-                                                            <div class="product-name">
-                                                                <%= item.itemName %>
-                                                            </div>
-                                                            <div class="product-price">$
-                                                                <%= item.price_after %>
-                                                            </div>
-                                                            <div class="product-quantity">
-                                                                <input id="<%= item.itemName %>" class="quantity-select" type="number" min="1" value="1">
-                                                            </div>
-                                                        </div>
-                                                        <a class="delete-button" href="/cart/delete/<%= item._id %>">
-                                                            <img class="delete-icon" src="images/delete.png" alt="Delete Product">
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="line"></div>
-                                    <% }); %>
-                                        <div class="total">
-                                            <span class="total-title">Total:</span>
-                                            <span class="total-value">$10.00</span>
-                                            <div class="proceed-checkout">
-                                                <input type="submit" class="pay-btn" value="Proceed to Checkout">
-
-                                            </div>
-                                        </div>
-                            </form>
-
-                            <% } else { %>
-                                <p class="empty-cart">Your cart is empty.</p>
-                                <% } %>
-                    </div>
-                </div>
+        <% if (products.length > 0) { %>
+          <form id="orderForm" action="/shippingform" method="post" enctype="multipart/form-data">
+            <table class='order-table'>
+              <tbody>
+                <% products.forEach((item) => { %>
+                  <tr>
+                    <td>
+                      <div class="product-wrapper">
+                        <div class="image-container">
+                          <img src="/uploads/<%= item.images[0] %>" alt="Product Image" style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="product-details">
+                          <div class="product-name">
+                            <%= item.itemName %>
+                          </div>
+                          <div class="product-price">
+                            EGP <%= item.price_after %>
+                          </div>
+                          <div class="product-quantity">
+                            <input type="hidden" name="productId[]" value="<%= item._id %>">
+                            <input name="quantity[]" class="quantity-select" type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="delete-button">
+                          <a href="/cart/delete/<%= item._id %>">
+                            <img class="delete-icon" src="images/delete.png" alt="Delete Product">
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="line"></div>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <div class="line"></div>
+            <div class="total">
+              <span class="total-title">Total:</span>
+              <span class="total-value">EGP 10.00</span>
+              <div class="proceed-checkout">
+                <input type="submit" class="pay-btn" value="Proceed to Checkout">
+              </div>
             </div>
-        </div>
+          </form>
+        <% } else { %>
+          <p class="empty-cart">Your cart is empty.</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <footer>
-            <%- include("./Partials/footer.ejs") %>
-        </footer>
+<footer>
+  <%- include("./Partials/footer.ejs") %>
+</footer>
 
-        <script>
-            // Add event listener to quantity selects
-            const quantitySelects = document.querySelectorAll('.quantity-select');
-            quantitySelects.forEach((select) => {
-                select.addEventListener('change', updateTotal);
-            });
-
-            // Function to calculate and update the total price
-            function updateTotal() {
-                let total = 0;
-                const prices = document.querySelectorAll('.product-price');
-                const quantities = document.querySelectorAll('.quantity-select');
-
-                for (let i = 0; i < prices.length; i++) {
-                    const price = parseFloat(prices[i].textContent.replace('$', ''));
-                    const quantity = parseInt(quantities[i].value);
-                    total += price * quantity;
-                }
-
-                const totalElement = document.querySelector('.total-value');
-                totalElement.textContent = '$' + total.toFixed(2);
-            }
-
-            // Initial update of the total
-            updateTotal();
-        </script>
+<script>
+    function updateTotal() {
+      let total = 0;
+      const prices = document.querySelectorAll('.product-price');
+      const quantities = document.querySelectorAll('.quantity-select');
+  
+      for (let i = 0; i < prices.length; i++) {
+        const price = parseFloat(prices[i].textContent.replace('EGP', ''));
+        const quantity = parseInt(quantities[i].value);
+        total += price * quantity;
+      }
+  
+      const totalElement = document.querySelector('.total-value');
+      totalElement.textContent = 'EGP ' + total.toFixed(2);
+    }
+  
+    updateTotal();
+  
+    const form = document.querySelector('#orderForm');
+    const quantityInputs = document.querySelectorAll('.quantity-select');
+  
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+  
+      const formData = new FormData(form);
+      const productId = formData.getAll('productId[]');
+      const quantity = formData.getAll('quantity[]');
+  
+      try {
+        const response = await fetch('/shippingform', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ productId, quantity }),
+        });
+  
+        if (response.ok) {
+          const savedOrderItems = await response.json();
+          // Handle the response as needed
+        } else {
+          // Handle the error response
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle any network or server error
+      }
+    });
+  
+    quantityInputs.forEach((input) => {
+      input.addEventListener('input', updateTotal);
+    });
+  </script>
+  

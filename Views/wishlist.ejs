@@ -23,16 +23,15 @@
                           <%= item.itemName %>
                         </div>
                         <div class="product-price">$<%= item.price_after %></div>
-                        <div class="product-quantity">
-                          <input class="quantity-select" type="number" min="1" value="1">
-                        </div>
+                        
                       </div>
+                      <a class="delte-button" href="/cart/add/<%= item._id %>">
+                        <img class="delete-icon" src="images/trolley-cart.png"  alt="Add to Cart">
+                      </a>
                       <a class="delete-button" href="/wishlist/delete/<%= item._id %>">
                         <img class="delete-icon" src="images/delete.png" alt="Delete Product">
                       </a>
-                      <a class="addcart-button" href="/cart/add/<%= item._id %>">
-                        <img class="delete-icon" src="images/trolley-cart.png"  alt="Add to Cart">
-                      </a>
+                      
                     </div>
                   </td>
                 </tr>

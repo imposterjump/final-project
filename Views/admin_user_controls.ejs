@@ -2,7 +2,7 @@
 
 <html lang="en">
 
-<body style="background-color:#f7e7ce;"></body>
+
 <!--HEADER STARTS HERE -->
 
 <head>
@@ -13,6 +13,7 @@
     <title>User management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
 </head>
 
 <script src="/js/admin_user.js"></script>
@@ -21,7 +22,7 @@
     <%- include("./Partials/navadmin.ejs") %>
 
 
-    <h1 class="title">welcome to users management tool </h1>
+    <h1 class="title">User Details</h1>
     <br>
     <div class="searchbar_div">
         <form action="/admin-user-management/search" method="post">
@@ -42,21 +43,34 @@
 
                 <% if (users.length > 0) { %>
 
+                    <table class="headers">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Type</th>
+                                <th> Edit</th>
+                                <th>Delete</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                    </table>
 
                     <% users.forEach(user=> { %>
 
 
                         <div class="user-container">
+                            
+                            
                             <table class="customers">
-
+                             
 
                                 <tr>
-                                    <td>
-                                        Username:
+                                    <td class="usernames">
+                                        
                                         <%= user.username %>
                                     </td>
                                     <td>
-                                        Type:
+                                        
                                         <%= user.type %>
                                     </td>
                                     <td>

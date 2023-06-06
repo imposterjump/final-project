@@ -110,18 +110,7 @@ html,body{
   
   
 
-  .account
-  {
-    
-    color: #0f2130;
-    background-color: whitesmoke;
-    border: none;
-    padding: 5px 5px;
-    margin-top: 0%;
-    float: right;
-    margin-right: 147px;
-  }
-
+  
   .lowerbar
   {
     background-color: #0f2130;
@@ -163,5 +152,26 @@ html,body{
     color: white;
     font-family: Exo;
 
+  }
+
+  .account
+  {
+    
+    color: #0f2130;
+    background-color: whitesmoke;
+    border: none;
+    padding: 5px 5px;
+    margin-top: 0%;
+    float: right;
+    margin-right: 73px;
+  }
+
+
+  .cart, .wishlist
+  {
+    float: right;
+    color: #0f2130;
+    border: none;
+    margin-top: 8px;
   }
    
