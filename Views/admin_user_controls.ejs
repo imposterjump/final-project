@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/admin_user.css">
+    <link rel="stylesheet" href="/CSS/admin_user.css">
     <title>User management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,95 +22,95 @@
     <%- include("./Partials/navadmin.ejs") %>
 
 
-    <h1 class="title">User Details</h1>
-    <br>
-    <div class="searchbar_div">
-        <form action="/admin-user-management/search" method="post">
-            <input type="text" class="searchbar" id="search_bar_users" name="search_bar_users" placeholder="Search for a user with username..">
-            <input type="submit" value="search" class="buttons">
-        </form>
+        <h1 class="title">User Details</h1>
+        <br>
+        <div class="searchbar_div">
+            <form action="/admin-user-management/search" method="post">
+                <input type="text" class="searchbar" id="search_bar_users" name="search_bar_users" placeholder="Search for a user with username..">
+                <input type="submit" value="search" class="buttons">
+            </form>
 
-    </div>
+        </div>
 
-    <div class="user-container" id="userscontainer">
-        <% if(message !=''){ %>
+        <div class="user-container" id="userscontainer">
+            <% if(message !=''){ %>
 
-            <p class="reg_message">
-                <%= message %>
-            </p>
-            <% } %>
-
-
-                <% if (users.length > 0) { %>
-
-                    <table class="headers">
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Type</th>
-                                <th> Edit</th>
-                                <th>Delete</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                    </table>
-
-                    <% users.forEach(user=> { %>
+                <p class="reg_message">
+                    <%= message %>
+                </p>
+                <% } %>
 
 
-                        <div class="user-container">
-                            
-                            
-                            <table class="customers">
-                             
+                    <% if (users.length > 0) { %>
 
+                        <table class="headers">
+                            <thead>
                                 <tr>
-                                    <td class="usernames">
-                                        
-                                        <%= user.username %>
-                                    </td>
-                                    <td>
-                                        
-                                        <%= user.type %>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
-                                    </td>
-                                    <td>
-                                        <button type="button " class="buttons " onclick="edit_user('<%= user.id %>') "> delete </button>
-                                    </td>
-                                    <td>
-                                        <button type="button " class="buttons  " onclick="view_more('<%= users.id %>') "> view more </button>
-                                    </td>
-
-
-
-
+                                    <th>Username</th>
+                                    <th>Type</th>
+                                    <th> Edit</th>
+                                    <th>Delete</th>
+                                    <th>View</th>
                                 </tr>
+                            </thead>
+                        </table>
+
+                        <% users.forEach(user=> { %>
+
+
+                            <div class="user-container">
+
+
+                                <table class="customers">
+
+
+                                    <tr>
+                                        <td class="usernames">
+
+                                            <%= user.username %>
+                                        </td>
+                                        <td>
+
+                                            <%= user.type %>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
+                                        </td>
+                                        <td>
+                                            <button type="button " class="buttons " onclick="edit_user('<%= user.id %>') "> delete </button>
+                                        </td>
+                                        <td>
+                                            <button type="button " class="buttons  " onclick="view_more('<%= users.id %>') "> view more </button>
+                                        </td>
 
 
 
-                            </table>
 
-                            <div class="formcontainer2" id="<%= user.username %>" hidden>
-                                <p>pls fill the information again </p>
-                                <form action="/admin-user-management/edit/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
+                                    </tr>
 
-                                    <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
-                                    <br>
-                                    <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-                                    <br>
 
-                                    <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                                    <br>
 
-                                    <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                                    <br>
-                                    <label class="phone_label " for="phone_label">Phone Number:</label>
+                                </table>
 
-                                    <div class="input-group ">
+                                <div class="formcontainer2" id="<%= user.username %>" hidden>
+                                    <p>pls fill the information again </p>
+                                    <form action="/admin-user-management/edit/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
 
-                                        <select id="countrycode " name="countrycode ">
+                                        <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
+                                        <br>
+                                        <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
+                                        <br>
+
+                                        <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                                        <br>
+
+                                        <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                                        <br>
+                                        <label class="phone_label " for="phone_label">Phone Number:</label>
+
+                                        <div class="input-group ">
+
+                                            <select id="countrycode " name="countrycode ">
                              <option value="1 ">United States (+1)</option>
                              <option value="86 ">China (+86)</option>
                              <option value="91 ">India (+91)</option>
@@ -133,27 +133,27 @@
                              <option value="86 ">China (+86)</option>
                              </select>
 
-                                    </div>
-                                    <br>
-                                    <input type="text" class="" id="phone " name="phone" required>
+                                        </div>
+                                        <br>
+                                        <input type="text" class="" id="phone " name="phone" required>
 
-                                    <br>
-
-
-                                    <input type="submit" class="submit" value="edit now ">
-                                </form>
+                                        <br>
 
 
+                                        <input type="submit" class="submit" value="edit now ">
+                                    </form>
+
+
+                                </div>
+                                <div class="formcontainer2" id="<%= user.id %>" hidden="hidden">
+
+                                    <p>are you sure you want to delete ?</p>
+                                    <form action="/admin-user-management/delete/<%= user.username %>" method="post">
+                                        <input type="submit" class="submit" value="delete">
+                                    </form>
+
+                                </div>
                             </div>
-                            <div class="formcontainer2" id="<%= user.id %>" hidden="hidden">
-
-                                <p>are you sure you want to delete ?</p>
-                                <form action="/admin-user-management/delete/<%= user.username %>" method="post">
-                                    <input type="submit" class="submit" value="delete">
-                                </form>
-
-                            </div>
-                        </div>
 
 
 
@@ -162,45 +162,45 @@
 
 
 
-                        <br>
-                        <% }) %>
+                            <br>
+                            <% }) %>
 
-                            <% } 
+                                <% } 
             
             else { %>
 
-                                <p>There but there is zero users to display ...</p>
+                                    <p>There but there is zero users to display ...</p>
 
-                                <% } %>
-
-
+                                    <% } %>
 
 
 
 
 
-    </div>
-    <div class=" formcontainer ">
 
-        <br>
-        <p>pls fill the information again </p>
-        <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data" class="myform">
 
-            <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
+        </div>
+        <div class=" formcontainer ">
+
             <br>
-            <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-            <br>
+            <p>pls fill the information again </p>
+            <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data" class="myform">
 
-            <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-            <br>
+                <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
+                <br>
+                <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
+                <br>
 
-            <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-            <br>
-            <label class="phone_label " for="phone_label">Phone Number:</label>
+                <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                <br>
 
-            <div class="input-group ">
+                <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                <br>
+                <label class="phone_label " for="phone_label">Phone Number:</label>
 
-                <select id="countrycode " name="countrycode ">
+                <div class="input-group ">
+
+                    <select id="countrycode " name="countrycode ">
                              <option value="1 ">United States (+1)</option>
                              <option value="86 ">China (+86)</option>
                              <option value="91 ">India (+91)</option>
@@ -223,23 +223,23 @@
                              <option value="86 ">China (+86)</option>
                              </select>
 
-            </div>
+                </div>
 
-            <input type="text" class="" id="phone " name="phone" required>
+                <input type="text" class="" id="phone " name="phone" required>
 
 
-            <br>
-            <select id="type" name="type" required>
+                <br>
+                <select id="type" name="type" required>
             <option value="admin">admin</option>
             <option value="user">user</option>
             </select>
 
-            <br>
-            <input type="submit" class="submit" value="add user ">
-        </form>
+                <br>
+                <input type="submit" class="submit" value="add user ">
+            </form>
 
 
-    </div>
+        </div>
 
 
 

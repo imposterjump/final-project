@@ -7,20 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/productpage.css">
+    <link rel="stylesheet" href="/CSS/productpage.css">
     <title>Boomy's Item</title>
 </head>
-<body>
-  <%- include("./Partials/NavUser.ejs") %>
-    <%- include("./Partials/chat.ejs") %>
-<div class="container">
 
-  <div class="row">
-      <div class="col-12 col-md-6">
-          <div class="product-image">
-              <img src="/uploads/<%= product1.images[0] %>" class="mySlides">
-              <img src="/uploads/<%= product1.images[1] %>" id="alt-img" class="mySlides">
-              <button class="Lbutton" onclick="plusDivs(-1)"><i class="material-icons">keyboard_arrow_left</i></a>
+<body>
+    <%- include("./Partials/NavUser.ejs") %>
+        <%- include("./Partials/chat.ejs") %>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="product-image">
+                            <img src="/uploads/<%= product1.images[0] %>" class="mySlides">
+                            <img src="/uploads/<%= product1.images[1] %>" id="alt-img" class="mySlides">
+                            <button class="Lbutton" onclick="plusDivs(-1)"><i class="material-icons">keyboard_arrow_left</i></a>
               <button class="Rbutton" onclick="plusDivs(1)"><i class="material-icons">keyboard_arrow_right</i></a>
           </div>
       </div>
@@ -35,59 +36,66 @@
               <div class="product-sizes">
                   <h4 class="product-name">Size:</h4>
                   <button class="size-button" id="size-s" onclick="chooseSize('S')">S</button>
-                  <button class="size-button" id="size-m" onclick="chooseSize('M')">M</button>
-                  <button class="size-button" id="size-l" onclick="chooseSize('L')">L</button>
-                  <button class="size-button" id="size-xl" onclick="chooseSize('XL')">XL</button>
-                  <button class="size-button" id="size-xxl" onclick="chooseSize('XXL')">XXL</button>
-                </div>
-              </div>
-              <p class="product-description"><%= product1.description %></p>
-              <span class="buttons">
+                            <button class="size-button" id="size-m" onclick="chooseSize('M')">M</button>
+                            <button class="size-button" id="size-l" onclick="chooseSize('L')">L</button>
+                            <button class="size-button" id="size-xl" onclick="chooseSize('XL')">XL</button>
+                            <button class="size-button" id="size-xxl" onclick="chooseSize('XXL')">XXL</button>
+                        </div>
+                    </div>
+                    <p class="product-description">
+                        <%= product1.description %>
+                    </p>
+                    <span class="buttons">
                 <a class="add-to-cart-button" href="/cart/add/<%= product1._id %>">Add To Cart</a>
                 <a class="add-to-wishlist-button" href="/wishlist/add/<%=product1._id %>">Wishlist</a>
                 </span>
+                </div>
             </div>
-      </div>
-  </div>
-</div>
+            </div>
+            </div>
 
-<footer>
-    <%- include("./Partials/footer.ejs") %>
-</footer>
+            <footer>
+                <%- include("./Partials/footer.ejs") %>
+            </footer>
 
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
+            <script>
+                var slideIndex = 1;
+                showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+                function plusDivs(n) {
+                    showDivs(slideIndex += n);
+                }
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-function chooseSize(size) {
-  // Get all the size buttons
-  var sizeButtons = document.querySelectorAll('.size-button');
+                function showDivs(n) {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    if (n > x.length) {
+                        slideIndex = 1
+                    }
+                    if (n < 1) {
+                        slideIndex = x.length
+                    }
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    x[slideIndex - 1].style.display = "block";
+                }
 
-  var chosenButton = document.getElementById('size-' + size.toLowerCase());
-  var sizeLabel = document.querySelector('.product-sizes h4');
-  if (chosenButton.classList.contains('chosen')) {
-    sizeLabel.innerHTML = 'Size:';
-    chosenButton.classList.remove('chosen');
-  } else {
-    chosenButton.classList.add('chosen');
-    
-    sizeLabel.innerHTML = 'Size: ' + size;
-  }
-}
-</script>
+                function chooseSize(size) {
+                    // Get all the size buttons
+                    var sizeButtons = document.querySelectorAll('.size-button');
+
+                    var chosenButton = document.getElementById('size-' + size.toLowerCase());
+                    var sizeLabel = document.querySelector('.product-sizes h4');
+                    if (chosenButton.classList.contains('chosen')) {
+                        sizeLabel.innerHTML = 'Size:';
+                        chosenButton.classList.remove('chosen');
+                    } else {
+                        chosenButton.classList.add('chosen');
+
+                        sizeLabel.innerHTML = 'Size: ' + size;
+                    }
+                }
+            </script>
 
 </html>
