@@ -38,6 +38,7 @@ import product_router from "./routes/product.js";
 import orders_router from "./routes/orders.js";
 import shippingform_router from "./routes/shippingform.js";
 import wishlist_router from "./routes/wishlist.js";
+import OrderItem from "./models/order-item.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -127,6 +128,7 @@ index.post('/edit-product/:id', function(req, res, next) {
 
 });
 
+  
 
 // routes setup (pls focus team while filling this )
 //home and about pages
