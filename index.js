@@ -46,7 +46,7 @@ export const __dirname = path.dirname(__filename);
 // Middleware
 index.use(express.urlencoded({ extended: false }));
 // setting where i am taking the views pages and setting views engine to ejs  
-index.set('views', path.join(__dirname, "views"));
+index.set('views', path.join(__dirname, "Views"));
 index.set("view engine", "ejs");
 // gettingg project path and displaying it 
 
@@ -61,7 +61,7 @@ index.use(session({ secret: 'Your_Secret_Key' }));
 index.use(cookieParser());
 
 //setup static folder for serving static files in Express
-index.use(express.static(path.join(__dirname, 'public')));
+index.use(express.static(path.join(__dirname, 'Public')));
 
 
 
@@ -128,7 +128,7 @@ index.post('/edit-product/:id', function(req, res, next) {
 
 });
 
-  
+
 
 // routes setup (pls focus team while filling this )
 //home and about pages
@@ -155,19 +155,19 @@ index.use('/account', account_router);
 index.use('/cart', cart_router);
 index.use('/help', help_router);
 index.use('/signout', signout_router);
-index.use('/itemdetails',itemdetails_router);
-index.use('/wishlist',wishlist_router);
+index.use('/itemdetails', itemdetails_router);
+index.use('/wishlist', wishlist_router);
 
-index.use('/shippingform',shippingform_router);
+index.use('/shippingform', shippingform_router);
 //product
 index.use('/add-product', add_product_router);
 index.use('/edit-product', edit_router);
 index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
-index.use('/product',product_router);
-index.use('/orders',orders_router)
-//port
-// 404 page
+index.use('/product', product_router);
+index.use('/orders', orders_router)
+    //port
+    // 404 page
 index.use((req, res) => {
     res.status(404).send('404  page not found ' /*, { user: (req.session.user === undefined ? "" : req.session.user) }*/ );
 
