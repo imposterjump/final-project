@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
-
 body, html {
   height: 100%;
   margin: 0;
@@ -71,6 +69,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 20px; 
 }
 
 .product-details {
@@ -79,8 +78,8 @@ h2 {
 }
 
 .image-container {
-  width: 176px;
-  height: 176px;
+  width: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,9 +87,9 @@ h2 {
 }
 
 .image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 250px;
+  height: 250px; 
+  object-fit: contain;
   border-radius: 5px;
 }
 
@@ -98,7 +97,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 0x;
+  width: 0px;
   height: 0px;
   background-color: #ff0000;
   color: #fff;
@@ -106,11 +105,14 @@ h2 {
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  left: 100px;
+  margin-left: 120px;
+  margin-top: 13px;
 }
 
 .delete-icon {
-  width: 16px;
-  height: 16px;
+  width: 40px;
+  height: 40px;
 }
 
 .quantity-select {
