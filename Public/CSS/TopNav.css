@@ -128,7 +128,7 @@ html,body{
     
   }
 
-  .logoutbutton 
+  .ordersbutton 
   {
     float: right;
     width: 100px;
@@ -175,4 +175,20 @@ html,body{
     border: none;
     margin-top: 8px;
   }
+
+  .logoutbutton 
+  {
+    
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    font-family: Exo;
+
+  }
+
+
+  
    

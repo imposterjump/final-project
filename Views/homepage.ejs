@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body style="background-color:white;"></body>
+
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -20,27 +20,72 @@
     <title>HomePage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <link href="/CSS/HomePage.css" rel="stylesheet" />
 
 
 </head>
 
-
+<script src="/js/HomePage.js"></script>
 
 <body>
 
     <%- include("./Partials/NavUser.ejs") %>
         <%- include("./Partials/chat.ejs") %>
 
-            <div class="firstimg"></div>
-            <div class="center">
-                <div class="title">Learn About</div>
-                <div class="sub_title">How BOOMY Rose To Fame</div>
-                <div class="btns">
-                    <a href="/about"><button>Learn More</button></a>
-                </div>
-            </div>
-
+        <style>
+            .slideshow {
+              position: relative;
+              width: 100%;
+              height: 500px;
+              overflow: hidden;
+            }
+          
+            .slideshow img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+              z-index: -1;
+            }
+          
+            .slideshow img.active {
+              opacity: 1;
+              z-index: 1;
+              
+            }
+          </style>
+          
+          <div class="slideshow">
+            <a href="/jackets"><img src="/images/HomePage/backnew1.png" alt="Slide 1" class="active"></a>
+            <a href="/tops"><img src="/images/HomePage/backnew2.png" alt="Slide 2"></a>
+            <a href="/bottoms"><img src="/images/HomePage/backnew3.png" alt="Slide 3"></a>
+            <a href="/accessories"><img src="/images/HomePage/backnew4.png" alt="Slide 4"></a>
+          </div>
+          
+          <script>
+            const slideshow = document.querySelector('.slideshow');
+            const slides = slideshow.querySelectorAll('img');
+            let index = 0;
+          
+            function showSlide(n) {
+              slides[index].classList.remove('active');
+              index = (n + slides.length) % slides.length;
+              slides[index].classList.add('active');
+            }
+          
+            function nextSlide() {
+              showSlide(index + 1);
+            }
+          
+            setInterval(nextSlide, 5000); // change slide every 5 seconds
+          </script>
+       
+       
 
             <div class="mainn">
                 <div class="marquee">
@@ -94,29 +139,19 @@
                 </div>
             </div>
 
-            <div class="main">
-                <section class="featured-product-cta card-container">
-                  <div class="featured-product-image card-item">
-                    <figure class="card-figure">
-                      <img class="card-image" src="https://github.com/m-Colen/kona-coffee/blob/main/images/featured-product.jpg?raw=true" alt="Person holding green coffee beverage" />
-                      <figcaption class="card-caption">
-                        Photo by
-                        <a href="https://unsplash.com/@lauraashtonashley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Laura Barry</a>
-                        on
-                        <a href="https://unsplash.com/s/photos/frappe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
-                      </figcaption>
-                    </figure>
-                  </div>
-                  <div class="featured-product-cta card-item text-block-padding column">
-                    <h2>Hooray for Matcha</h2>
-                    <p>
-                      The new Match frappe is a happy mix of green tea leaves and whole
-                      milk, ice, & whipped cream.
-                    </p>
-                    <a class="button button-light no-decoration" href="#">Order now</a>
-                  </div>
-                </section>
+            
+           
+
+              <div class="firstimg">
+              <div class="center">
+                <div class="title">How BOOMY</div>
+                <div class="sub_title"> Rose To Fame</div>
+                <div class="btns">
+                    <a href="/about"><button>Learn More</button></a>
+                </div>
             </div>
+        </div>
+           
 
 </body>
 <footer>
