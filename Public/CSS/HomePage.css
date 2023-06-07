@@ -12,6 +12,7 @@ body {
 
 .mainn {
   min-height: 100vh;
+  margin-top: 20px;
 }
 
 .mainn {
@@ -62,24 +63,14 @@ body {
 }
 
 .marquee__group p {
-  background-image: linear-gradient(
-    75deg,
-    hsl(240deg 70% 49%) 0%,
-    hsl(253deg 70% 49%) 11%,
-    hsl(267deg 70% 49%) 22%,
-    hsl(280deg 71% 48%) 33%,
-    hsl(293deg 71% 48%) 44%,
-    hsl(307deg 71% 48%) 56%,
-    hsl(320deg 71% 48%) 67%,
-    hsl(333deg 72% 48%) 78%,
-    hsl(347deg 72% 48%) 89%,
-    hsl(0deg 73% 47%) 100%
-  );
+  background-image: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .marquee--borders {
-  border-block: 3px solid dodgerblue;
+  border-block: 3px solid #0f2130;
   padding-block: 0.75rem;
 }
 
@@ -98,7 +89,6 @@ body {
   }
 }
 
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 
 .account
   {
@@ -110,120 +100,67 @@ body {
     background-color: whitesmoke;
   }
 
-  .modaltext {
+  .firstimg{
+    background: url('/images/HomePage/background.png')no-repeat;
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  /* Set a style for all buttons */
-  .modalbutton {
-    background-color: #0f2130;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Extra styles for the cancel button */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
-  
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
     position: relative;
   }
-  
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
-  
-  .container {
-    padding: 16px;
-  }
-  
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button (x) */
-  .close {
+  .firstimg::before{
+    content: '';
     position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
   }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
+  .center{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .center .title{
+    color: #fff;
+    font-size: 55px;
+    font-weight: 600;
+  }
+  .center .sub_title{
+    color: #fff;
+    font-size: 52px;
+    font-weight: 600;
+  }
+  .center .btns{
+    margin-top: 20px;
+  }
+  .center .btns button{
+    height: 55px;
+    width: 170px;
+    border-radius: 5px;
+    border: none;
+    margin: 0 10px;
+    border: 2px solid white;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0 10px;
     cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
   }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+  .center .btns button:first-child{
+    color: #fff;
+    background: none;
   }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
+  .btns button:first-child:hover{
+    background: white;
+    color: black;
   }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
+  .center .btns button:last-child{
+    background: white;
+    color: black;
   }
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-  }
+ 

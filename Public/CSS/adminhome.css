@@ -21,7 +21,7 @@
     justify-content: space-between;
     width: 98%;
     height: 130px;
-    margin-top: 50px;
+    margin-top: 25px;
   }
   
   .container .row .box {
@@ -36,7 +36,7 @@
     margin-bottom: 26px;
   }
 .container .row .box .box-title {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 500;
 }
 
@@ -107,14 +107,14 @@
 }
 .recent-sales.box {
     /* Adjust the width and height to make the box quarter the page size */
-    width: 57%;
+    width: 60%;
     height: 450px;
     background: #fff;
     padding: 15px 30px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 26px;
-    margin-right: 700px;
+    margin-right: 690px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,8 +125,9 @@
   
   .recent-sales.box .title {
     /* Update the font size to match the style of other boxes */
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 23px;
+    font-weight: 500;
+    margin-top: 10px;
     margin-right:650px;
   }
   
@@ -142,14 +143,21 @@
     align-items: center;
     margin: 0 30px;
     font-size: 17px;
-    line-height: 250%;
-    
+    line-height: 300%;
+    margin-top: 30px;
+    margin-right:40px;
   }
-  
+
+  .recent-sales.box .details li {
+    margin-bottom: 10px; /* Add margin-bottom to create space between each item */
+    margin-left:60px ;
+  }
+
   .recent-sales.box .details .topic {
     font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 17px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    
   }
   
   .recent-sales.box .details a {
@@ -168,16 +176,17 @@
     flex-direction: column;
     align-items: center;
     width: 32%;
+    height: 452px;
     background: #fff;
     padding: 15px 20px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
    margin-top:-506px;
-    margin-left: 947px;
+    margin-left: 985px;
   }
   
   .top-sales.box .title {
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 500;
     margin-bottom: 10px;
   }
