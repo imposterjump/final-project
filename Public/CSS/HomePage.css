@@ -1,6 +1,7 @@
 html,
 body {
     margin: 0;
+    
 }
 
 
@@ -107,6 +108,7 @@ body {
     background-size: cover;
     background-position: center;
     position: relative;
+    margin-top: 20px;
   }
   .firstimg::before{
     content: '';
@@ -167,157 +169,7 @@ button:hover {
   cursor: pointer;
 }
 
-/* Button styling for links */
-
-.hidden {
-  display: none !important;
+.w3-row-padding ,.w3-padding-16, .w3-center
+{
+  margin-top: 0px;
 }
-
-.block-link {
-  display: block;
-  color: var(--primary-color);
-}
-
-.block {
-  display: block !important;
-}
-
-.flex {
-  display: flex;
-}
-
-.column {
-  flex-flow: column;
-}
-
-.text-block-padding {
-  padding: 3rem 2rem;
-}
-
-/* Adds outline effect to special highlighted text */
-.stroke {
-  color: #d4e9e2;
-  text-shadow: -1px -1px 0 var(--primary-color), 1px -1px 0 var(--primary-color),
-    -1px 1px 0 var(--primary-color), 1px 1px 0 var(--primary-color);
-}
-
-.secondary-color {
-  color: var(--secondary-color);
-}
-
-.rotate-180 {
-  transform: rotate(180deg);
-}
-
-
-
-/********** Main Content **********/
-
-.main {
-  max-width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-/* General card styles */
-.card-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.card-item > p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-}
-
-
-
-/* Shared card styles */
-
-.card-figure {
-  height: 70vh;
-  width: 100%;
-  margin: 0;
-  position: relative;
-}
-
-.card-image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-caption {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: var(--primary-color);
-  opacity: 0.9;
-  color: #fff;
-  padding: 1rem 0;
-}
-
-.card-caption a {
-  color: #fff;
-}
-
-.card-caption a:hover {
-  color: dodgerblue;
-}
-
-/* Featured product CTA section */
-
-.featured-product-cta {
-  background-color: #007042;
-  color: #fff;
-}
-
-
-@media only screen and (min-width: 850px) {
-  .card-container {
-    display: flex;
-  }
-  .card-item {
-    width: 50%;
-  }
-  .card-item > p {
-    max-width: 80%;
-  }
-  .footer-links {
-    font-size: 0.8rem;
-  }
-  .footer-links i {
-    display: none;
-  }
-  .footer-links > ul {
-    display: flex;
-    justify-content: space-between;
-  }
-  .footer-links > ul > li {
-    width: calc(100% / 5);
-    padding: 0.25rem;
-  }
-  .about-hidden,
-  .careers-hidden,
-  .social-impact-hidden,
-  .business-partners-hidden,
-  .order-hidden {
-    display: block !important;
-  }
-  .supplemental-links {
-    flex-flow: row;
-    gap: 25px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  html {
-    font-size: 0.8rem;
-  }
-}
-  
- 
