@@ -2,7 +2,7 @@ import index from '../index.js';
 import { createServer } from 'http';
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
-
+import { google } from 'googleapis';
 
 dotenv.config()
 
@@ -64,5 +64,27 @@ function onListening() {
     var bind = 'Port ' + addr.port;
     console.log('Listening on ' + bind);
 }
+
+const credentials = {
+    client_id: '318984115104-34d891k9354omicok72aekmltv26algb.apps.googleusercontent.com',
+    client_secret: process.env.CLIENT_SECRET,
+    redirect_uris: ["http://boomy.store","http://boomy.store/signup","http://boomy.store/admin-user-management","http://boomy.store/ordertrack"]
+  };
+  // Create the OAuth2 client and set credentials
+  const oAuth2Client = new google.auth.OAuth2(
+    credentials.client_id,
+    credentials.client_secret,
+    credentials.redirect_uris[0]
+  );
+
+  // Set the credentials on the client
+  oAuth2Client.setCredentials(credentials);
+
+
+  const analyticsreporting = google.analyticsreporting({
+    version: 'v4',
+    auth: oAuth2Client
+  });
+
 
 
