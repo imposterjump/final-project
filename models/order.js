@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const Schema = mongoose.Schema;
 
@@ -26,6 +27,9 @@ status: {
   required: true,
   default: 'Pending',
 },
+username: {
+  type:String,
+}
 });
 
 const Order = mongoose.model('Order', orderSchema);
