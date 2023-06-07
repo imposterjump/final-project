@@ -22,14 +22,13 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now,
 },
+usernamee: { type: String, required: true }, 
 status: {
   type: String,
   required: true,
   default: 'Pending',
 },
-username: {
-  type:String,
-}
+
 });
 
 const Order = mongoose.model('Order', orderSchema);

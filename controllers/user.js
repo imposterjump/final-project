@@ -1,6 +1,6 @@
 import Product from '../models/Product.js';
 import users from '../models/users.js';
-
+import Order from '../models/order.js';
 import bcrypt from 'bcrypt'
 
 //function line numbers 
@@ -166,17 +166,6 @@ const edit_user_password = function(req, res, next) {
                 console.log(err);
             });
 
-
-
-
-
-
-
-
-
-
-
-
     }
 }
 
@@ -196,7 +185,7 @@ const get_order_item = async(req, res) => {
 
 const create_order = async(req, res) => {
     const order = new Order({
-        user: req.body.user.username,
+       
         orderItems: req.body.orderItems,
         address: req.body.address,
         city: req.body.city,
@@ -205,6 +194,7 @@ const create_order = async(req, res) => {
         itemsPrice: req.body.itemsPrice,
         shippingPrice: req.body.shippingPrice,
         totalPrice: req.body.totalPrice,
+       
     });
 
     try {
@@ -233,6 +223,7 @@ const shippingform_checkout = (req, res) => {
         address,
         city,
         paymentMethod,
+        usernamee:req.session.user.username,
     });
 
     console.log("Order Details:", order);
