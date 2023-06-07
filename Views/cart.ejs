@@ -1,127 +1,149 @@
-<link rel="stylesheet" href="/CSS/cart.css">
+<link rel="stylesheet" href="/css/cart.css">
 <%- include("./Partials/NavUser.ejs") %>
-    <%- include("./Partials/chat.ejs") %>
-        <div class='container'>
-            <div class='window'>
-                <div class='order-info'>
-                    <div class='order-info-content'>
-                        <h2>Order Summary</h2>
-                        <div class='line'></div>
+<%- include("./Partials/chat.ejs") %>
+<div class="container">
+  <div class="window">
+    <div class="order-info">
+      <div class="order-info-content">
+        <h2>Order Summary</h2>
+        <div class="line"></div>
 
-                        <% if (products.length > 0) { %>
-                            <form id="orderForm" action="/shippingform" method="post" enctype="multipart/form-data">
-                                <table class='order-table'>
-                                    <tbody>
-                                        <% products.forEach((item) => { %>
-                                            <tr>
-                                                <td>
-                                                    <div class="product-wrapper">
-                                                        <div class="image-container">
-                                                            <img src="/uploads/<%= item.images[0] %>" alt="Product Image" style="width: 200px; height: 200px;">
-                                                        </div>
-                                                        <div class="product-details">
-                                                            <div class="product-name">
-                                                                <%= item.itemName %>
-                                                            </div>
-                                                            <div class="product-price">
-                                                                EGP
-                                                                <%= item.price_after %>
-                                                            </div>
-                                                            <div class="product-quantity">
-                                                                <input type="hidden" name="productId[]" value="<%= item._id %>">
-                                                                <input name="quantity[]" class="quantity-select" type="number" min="1" value="1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="delete-button">
-                                                            <a href="/cart/delete/<%= item._id %>">
-                                                                <img class="delete-icon" src="images/delete.png" alt="Delete Product">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="line"></div>
-                                                </td>
-                                            </tr>
-                                            <% }); %>
-                                    </tbody>
-                                </table>
-                                <div class="line"></div>
-                                <div class="total">
-                                    <span class="total-title">Total:</span>
-                                    <span class="total-value">EGP 10.00</span>
-                                    <div class="proceed-checkout">
-                                        <input type="submit" class="pay-btn" value="Proceed to Checkout">
-                                    </div>
-                                </div>
-                            </form>
-                            <% } else { %>
-                                <p class="empty-cart">Your cart is empty.</p>
-                                <% } %>
-                    </div>
-                </div>
+        <% if (products.length > 0) { %>
+          <form id="orderForm" action="/shippingform/checkout" method="post">
+            <table class="order-table">
+              <tbody>
+                <% products.forEach((item, index) => { %>
+                  <tr>
+                    <td>
+                      <div class="product-wrapper">
+                        <div class="image-container">
+                          <img src="/uploads/<%= item.images[0] %>" alt="Product Image" style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="product-details">
+                          <div class="product-name">
+                            <%= item.itemName %>
+                          </div>
+                          <div class="product-price">
+                            EGP <%= item.price_after %>
+                          </div>
+                          <div class="product-quantity">
+                            <input name="quantity[]" class="quantity-select" type="number" min="1" value="1" data-index="<%= index %>">
+                          </div>
+                        </div>
+                        <div class="delete-button">
+                          <a href="/cart/delete/<%= item._id %>">
+                            <img class="delete-icon" src="images/delete.png" alt="Delete Product">
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="line"></div>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <div class="line"></div>
+            <div class="total">
+              <span class="total-title">Total:</span>
+              <span class="total-value">EGP 0.00</span>
             </div>
-        </div>
+            
+            <h2>Shipping Information</h2>
+            <div>
+              <label for="address">Address:</label>
+              <input type="text" name="address" required>
+            </div>
+            
+            <div>
+              <label for="city">City:</label>
+              <input type="text" name="city" required>
+            </div>
+            <div>
+              <label for="phone">Phone:</label>
+              <input type="text" name="phone" required>
+            </div>
+            <input type="submit" class="pay-btn" value="Proceed to Checkout">
+          </form>
+        <% } else { %>
+          <p class="empty-cart">Your cart is empty.</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <footer>
-            <%- include("./Partials/footer.ejs") %>
-        </footer>
+<footer>
+  <%- include("./Partials/footer.ejs") %>
+</footer>
 
-        <script>
-            function updateTotal() {
-                let total = 0;
-                const prices = document.querySelectorAll('.product-price');
-                const quantities = document.querySelectorAll('.quantity-select');
+<script>
+  function updateTotal() {
+    let total = 0;
+    const prices = document.querySelectorAll('.product-price');
+    const quantities = document.querySelectorAll('.quantity-select');
+    
+    for (let i = 0; i < prices.length; i++) {
+      const price = parseFloat(prices[i].textContent.replace('EGP ', ''));
+      const quantity = parseInt(quantities[i].value);
+      total += price * quantity;
+    }
 
-                for (let i = 0; i < prices.length; i++) {
-                    const price = parseFloat(prices[i].textContent.replace('EGP', ''));
-                    const quantity = parseInt(quantities[i].value);
-                    total += price * quantity;
-                }
+    const totalValue = document.querySelector('.total-value');
+    totalValue.textContent = 'EGP ' + total.toFixed(2);
+  }
 
-                const totalElement = document.querySelector('.total-value');
-                totalElement.textContent = 'EGP ' + total.toFixed(2);
-            }
+  const form = document.querySelector('#orderForm');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the form from submitting immediately
 
-            updateTotal();
+    // Gather the required data from the form
+    const products = Array.from(document.querySelectorAll('.product-name')).map((nameElement, index) => ({
+      name: nameElement.textContent.trim(),
+      quantity: parseInt(document.querySelectorAll('.quantity-select')[index].value)
+    }));
+    const total = parseFloat(document.querySelector('.total-value').textContent.replace('EGP ', ''));
+    const address = document.querySelector('input[name="address"]').value;
+    const city = document.querySelector('input[name="city"]').value;
+    const phone = document.querySelector('input[name="phone"]').value;
+  
 
-            const form = document.querySelector('#orderForm');
-            const quantityInputs = document.querySelectorAll('.quantity-select');
+    // Create an object with the data to be sent to the server
+    const data = {
+      products,
+      total,
+      address,
+      city,
+      phone,
+     
+    };
 
-            form.addEventListener('submit', async(event) => {
-                event.preventDefault();
+    // Send a POST request to the server with the order data
+    fetch('/shippingform/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => {
+        // Handle the response from the server
+        // Redirect or display a success message to the user
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the request
+        // Display an error message to the user
+      });
+  });
 
-                const formData = new FormData(form);
-                const productId = formData.getAll('productId[]');
-                const quantity = formData.getAll('quantity[]');
+  const quantityInputs = document.querySelectorAll('.quantity-select');
+  quantityInputs.forEach((input) => {
+    input.addEventListener('change', updateTotal);
+  });
 
-                try {
-                    const response = await fetch('/shippingform', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            productId,
-                            quantity
-                        }),
-                    });
-
-                    if (response.ok) {
-                        const savedOrderItems = await response.json();
-                        // Handle the response as needed
-                    } else {
-                        // Handle the error response
-                    }
-                } catch (error) {
-                    console.error(error);
-                    // Handle any network or server error
-                }
-            });
-
-            quantityInputs.forEach((input) => {
-                input.addEventListener('input', updateTotal);
-            });
-        </script>
+  // Calculate the initial total
+  updateTotal();
+</script>
