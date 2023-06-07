@@ -80,12 +80,11 @@ const credentials = {
   // Set the credentials on the client
   oAuth2Client.setCredentials(credentials);
 
-  // Create an instance of the Google Analytics Reporting API
+
   const analyticsreporting = google.analyticsreporting({
     version: 'v4',
     auth: oAuth2Client
   });
 
-  // Your other code that uses the analyticsreporting object
 
 
