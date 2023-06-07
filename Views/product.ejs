@@ -81,21 +81,28 @@
                     x[slideIndex - 1].style.display = "block";
                 }
 
-                function chooseSize(size) {
-                    // Get all the size buttons
-                    var sizeButtons = document.querySelectorAll('.size-button');
+    function chooseSize(size) {
+    // Get all the size buttons
+    var sizeButtons = document.querySelectorAll('.size-button');
 
-                    var chosenButton = document.getElementById('size-' + size.toLowerCase());
-                    var sizeLabel = document.querySelector('.product-sizes h4');
-                    if (chosenButton.classList.contains('chosen')) {
-                        sizeLabel.innerHTML = 'Size:';
-                        chosenButton.classList.remove('chosen');
-                    } else {
-                        chosenButton.classList.add('chosen');
+    var chosenButton = document.getElementById('size-' + size.toLowerCase());
+    var sizeLabel = document.querySelector('.product-sizes h4');
 
-                        sizeLabel.innerHTML = 'Size: ' + size;
-                    }
-                }
+    // Check if another button is already chosen and revert it
+    for (var i = 0; i < sizeButtons.length; i++) {
+        if (sizeButtons[i].classList.contains('chosen') && sizeButtons[i] !== chosenButton) {
+            sizeButtons[i].classList.remove('chosen');
+        }
+    }
+
+    if (chosenButton.classList.contains('chosen')) {
+        sizeLabel.innerHTML = 'Size:';
+        chosenButton.classList.remove('chosen');
+    } else {
+        chosenButton.classList.add('chosen');
+        sizeLabel.innerHTML = 'Size: ' + size;
+    }
+}
             </script>
 
 </html>
