@@ -41,6 +41,7 @@ import shippingform_router from "./routes/shippingform.js";
 import wishlist_router from "./routes/wishlist.js";
 import OrderItem from "./models/order-item.js";
 import product_search_router from "./routes/productsearch.js";
+import ordertrack_router from "./routes/ordertrack.js"
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -161,7 +162,7 @@ index.use('/help', help_router);
 index.use('/signout', signout_router);
 index.use('/itemdetails', itemdetails_router);
 index.use('/wishlist', wishlist_router);
-
+index.use('/ordertrack',ordertrack_router)
 index.use('/shippingform', shippingform_router);
 //product
 index.use('/add-product', add_product_router);
