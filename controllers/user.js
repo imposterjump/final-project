@@ -196,7 +196,7 @@ const get_order_item = async(req, res) => {
 
 const create_order = async(req, res) => {
     const order = new Order({
-        user: req.body.user,
+        user: req.body.user.username,
         orderItems: req.body.orderItems,
         address: req.body.address,
         city: req.body.city,
