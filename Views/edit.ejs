@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'UA-272764433-1');
-</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-272764433-1');
+  </script>
 
   <title>Edit Product</title>
   
@@ -40,7 +45,7 @@
     <span class="error-message" id="priceBeforeError"></span>
 
     <label for="price_after">Price After:</label>
-    <input type="number" id="price_after" name="price_after"  required>
+    <input type="number" id="price_after" name="price_after" readonly required>
     <span class="price-after-info">This will be calculated automatically based on Price Before and Sales.</span>
 
     <label for="type">Type:</label>
@@ -57,7 +62,7 @@
   <script>
     function validateForm() {
       const itemNameInput = document.getElementById("itemName");
-      const salesInput = document.getElementById("Sales");
+      const salesInput = document.getElementById("sales");
       const descriptionInput = document.getElementById("description");
       const priceBeforeInput = document.getElementById("price_before");
       const priceAfterInput = document.getElementById("price_after");
@@ -87,24 +92,18 @@
       if (itemNameInput.value.trim() === "") {
         itemNameError.textContent = "Item name is required";
         isValid = false;
-      } else if (typeof itemNameInput.value !== "string") {
-        itemNameError.textContent = "Item name must be a string";
-        isValid = false;
       }
 
       if (salesInput.value.trim() === "") {
         salesError.textContent = "Sales value is required";
         isValid = false;
-      } else if (isNaN(salesInput.value)) {
-        salesError.textContent = "Sales must be a number";
+      } else if (isNaN(salesInput.value) || salesInput.value < 0 || salesInput.value > 100) {
+        salesError.textContent = "Sales must be a number between 0 and 100";
         isValid = false;
       }
 
       if (descriptionInput.value.trim() === "") {
         descriptionError.textContent = "Description is required";
-        isValid = false;
-      } else if (typeof descriptionInput.value !== "string") {
-        descriptionError.textContent = "Description must be a string";
         isValid = false;
       }
 
@@ -113,14 +112,6 @@
         isValid = false;
       } else if (isNaN(priceBeforeInput.value)) {
         priceBeforeError.textContent = "Price before must be a number";
-        isValid = false;
-      }
-
-      if (priceAfterInput.value.trim() === "") {
-        priceAfterError.textContent = "Price after is required";
-        isValid = false;
-      } else if (isNaN(priceAfterInput.value)) {
-        priceAfterError.textContent = "Price after must be a number";
         isValid = false;
       }
 
@@ -139,7 +130,7 @@
     }
 
     function calculatePriceAfter() {
-      const salesInput = document.getElementById("Sales");
+      const salesInput = document.getElementById("sales");
       const priceBeforeInput = document.getElementById("price_before");
       const priceAfterInput = document.getElementById("price_after");
 
@@ -150,9 +141,8 @@
       priceAfterInput.value = priceAfter > 0 ? priceAfter : 0;
     }
 
-    const salesInput = document.getElementById("Sales");
+    const salesInput = document.getElementById("sales");
     const priceBeforeInput = document.getElementById("price_before");
-    const priceAfterInput = document.getElementById("price_after");
 
     salesInput.addEventListener("input", calculatePriceAfter);
     priceBeforeInput.addEventListener("input", calculatePriceAfter);
@@ -162,6 +152,7 @@
 </body>
 
 </html>
+
 <style>
   body {
     font-family: Arial, sans-serif;

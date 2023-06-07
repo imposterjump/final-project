@@ -3,16 +3,20 @@
 
 <head>
   <title>Add Product</title>
- 
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'UA-272764433-1');
-</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-272764433-1');
+  </script>
 
 </head>
 
@@ -22,7 +26,7 @@
   <h1>Add Product</h1>
   <form method="POST" action="/add-product" enctype="multipart/form-data" onsubmit="return validateForm()">
     <label for="itemName">Item Name:</label>
-    <input type="text" id="itemName" name="itemName" required>
+    <input type="text" id="itemName" name="itemName" minlength="6" required>
     <span class="error-message" id="itemNameError"></span>
 
     <label for="Sales">Sales:</label>
@@ -51,8 +55,8 @@
     <span class="error-message" id="typeError"></span>
 
     <label for="image">Images:</label>
-<input type="file" id="image" name="image" accept="image/*" multiple required>
-<span class="error-message" id="imageError"></span>
+    <input type="file" id="image" name="image" accept="image/*" required>
+    <span class="error-message" id="imageError"></span>
 
     <button type="submit">Add Photo</button>
   </form>
@@ -90,24 +94,24 @@
       if (itemNameInput.value.trim() === "") {
         itemNameError.textContent = "Item name is required";
         isValid = false;
-      } else if (typeof itemNameInput.value !== "string") {
-        itemNameError.textContent = "Item name must be a string";
+      } else if (itemNameInput.value.trim().length < 6) {
+        itemNameError.textContent = "Item name must be at least 6 characters";
         isValid = false;
       }
 
       if (salesInput.value.trim() === "") {
         salesError.textContent = "Sales value is required";
         isValid = false;
-      } else if (isNaN(salesInput.value)) {
-        salesError.textContent = "Sales must be a number";
+      } else if (isNaN(salesInput.value) || salesInput.value > 100) {
+        salesError.textContent = "Sales must be a number between 0 and 100";
         isValid = false;
       }
 
       if (descriptionInput.value.trim() === "") {
         descriptionError.textContent = "Description is required";
         isValid = false;
-      } else if (typeof descriptionInput.value !== "string") {
-        descriptionError.textContent = "Description must be a string";
+      } else if (descriptionInput.value.trim().split(" ").length < 2) {
+        descriptionError.textContent = "Description must have at least two words";
         isValid = false;
       }
 
@@ -163,6 +167,10 @@
     calculatePriceAfter();
   </script>
 </body>
+
+</html>
+
+
 
 </html>
 <style>
