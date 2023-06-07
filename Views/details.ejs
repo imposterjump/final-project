@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S76C7B42DJ"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-S76C7B42DJ');
+  gtag('config', 'UA-272764433-1');
 </script>
+
   <title>Photo Details</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
     <h1 class="title">Product Details</h1>
     <div class="product">
       <div class="image-container">
-        <img src="/uploads/<%= product.images %>" alt="Product Image" class="image">
+        <img src="/uploads/<%= product.images[0] %>" alt="Product Image" class="image">
       </div>
       <div class="details">
         <p class="name">Item Name: <%= product.itemName %></p>

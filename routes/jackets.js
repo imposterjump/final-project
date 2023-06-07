@@ -1,27 +1,10 @@
 import express from 'express';
 import Product from '../models/Product.js';
 const router = express.Router();
+import bodyParser from 'body-parser';
+import index_functions from "../controllers/index.js"
+router.use(bodyParser.json());
 
-router.get('/', function(req, res, next) {
+router.get('/', index_functions.get_jackets_page);
 
-    Product.find({ type: 'jackets' })
-        .then(result => {
-            console.log(result);
-            res.render('jackets', {
-                Product: result,
-                TITLE: 'PRODUCT PAGE',
-                message: '',
-
-                user: (req.session.user === undefined ? "" : req.session.user)
-
-
-
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-
-});
 export default router;

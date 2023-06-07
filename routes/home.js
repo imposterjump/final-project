@@ -1,33 +1,11 @@
 import { Router } from 'express';
 var router = Router();
 import product from '../models/Product.js';
+import bodyParser from 'body-parser';
+router.use(bodyParser.json());
+import index_functions from "../controllers/index.js"
+router.get('/', index_functions.get_home_page);
 
-router.get('/', function(req, res, next) {
-
-
-    res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
-});
-
-router.post('/search', function(req, res, next) {
-
-    const s = req.body.search_bar;
-    console.log(s);
-    product.find({ itemName: { $regex: s, $options: "i" }, description: { $regex: s, $options: "i" } })
-        .then(result => {
-            console.log(result);
-
-            res.render('productsearch', { Product: result, user: (req.session.user === undefined ? "" : req.session.user) });
-
-
-
-
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-
-
-})
+router.post('/search', index_functions.search_for_product)
 
 export default router;

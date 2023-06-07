@@ -1,7 +1,9 @@
 import express from 'express';
 import Product from '../models/Product.js';
 const router = express.Router();
-
+import bodyParser from 'body-parser';
+router.use(bodyParser.json());
+import admin_functions from "../controllers/admin.js"
 
 router.use((req, res, next) => {
     if (req.session.user !== undefined && req.session.user.type === 'admin') {
@@ -12,27 +14,7 @@ router.use((req, res, next) => {
 });
 
 
-router.get('/', (req, res) => {
-    Product.find()
-        .then((result) => {
-            res.render('vproducts', { arrproduct: result, user: (req.session.user === undefined ? "" : req.session.user) });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
-router.get('/details/:id', (req, res) => {
-    const productId = req.params.id;
-
-    Product.findById(productId)
-        .then((product) => {
-            res.render('details', { product, user: (req.session.user === undefined ? "" : req.session.user) });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
+router.get('/', admin_functions.admin_display_all_products);
+router.get('/details/:id', admin_functions.admin_item_details);
 
 export default router;

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const Schema = mongoose.Schema;
 
@@ -21,11 +22,13 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now,
 },
+usernamee: { type: String, required: true }, 
 status: {
   type: String,
   required: true,
   default: 'Pending',
 },
+
 });
 
 const Order = mongoose.model('Order', orderSchema);

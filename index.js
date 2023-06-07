@@ -10,9 +10,6 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 
-
-
-
 // importing routes from files 
 import home_router from "./routes/home.js";
 import admin_user_management_router from "./routes/admin-user-management.js";
@@ -81,55 +78,6 @@ mongoose.connect('mongodb+srv://boomy:25102002@cluster0.lfldchi.mongodb.net/proj
         console.error('Error connecting to the database:', error);
     });
 //edit ppost 
-index.post('/edit-product/:id', function(req, res, next) {
-
-    let imgFile;
-    let uploadPath;
-    console.log(__dirname + '/public/uploads/');
-    console.log(req.files);
-
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('No files were uploaded.');
-    }
-
-    imgFile = req.files && req.files.image;
-    uploadPath = __dirname + '/public/uploads/' + req.body.title + path.extname(imgFile.name)
-    console.log(uploadPath)
-    console.log(req.body)
-        // Use the mv() method to place the file somewhere on your server
-    imgFile.mv(uploadPath, function(err) {
-        if (err) {
-            return res.status(500).send(err);
-        }
-
-        const id = req.params.id
-
-        const pro = ({
-            itemName: req.body.itemName,
-            Sales: req.body.Sales,
-            description: req.body.description,
-            price_before: req.body.price_before,
-            price_after: req.body.price_after,
-            type: req.body.type,
-            images: req.body.i + path.extname(imgFile.name),
-
-        });
-
-
-
-        Product.findByIdAndUpdate(id, pro)
-            .then(result => {
-
-                console.log(result)
-                res.redirect('/vproducts');
-
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    });
-
-});
 
 
 
@@ -161,7 +109,7 @@ index.use('/help', help_router);
 index.use('/signout', signout_router);
 index.use('/itemdetails', itemdetails_router);
 index.use('/wishlist', wishlist_router);
-index.use('/ordertrack',ordertrack_router)
+index.use('/ordertrack', ordertrack_router)
 index.use('/shippingform', shippingform_router);
 //product
 index.use('/add-product', add_product_router);
