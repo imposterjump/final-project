@@ -176,11 +176,9 @@ index.use((req, res) => {
 
 });
 
-const port = 3000;
 
 
-index.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+
+
 
 export default index;

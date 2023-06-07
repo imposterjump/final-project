@@ -9,7 +9,7 @@ dotenv.config()
  * Get port from environment and store in Express.
  */
 
-const PORT = (process.env.PORT || '8000');
+const PORT = (process.env.PORT || '80');
 const HOST = (process.env.HOST || 'localhost');
 index.set('port', PORT);
 index.set('host', HOST);

@@ -7,4 +7,11 @@ router.get('/', function(req, res, next) {
     res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
+router.post('/search', function(req, res, next) {
+
+
+    res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
+
+})
+
 export default router;
