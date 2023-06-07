@@ -1,85 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
-  
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="\CSS\adminhome.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    
- 
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard Home</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/css/adminhome.css">
 </head>
 
-
-<body style="background-color: white;" >
-  
+<body style="background-color:rgb(214, 214, 214);">
   <%- include("./Partials/navadmin.ejs") %>
  
-    
-  
-    <div class="dashboard">
-      
-      <div class="top">
-        
-        <span class="rectangle2" >
-          <h4>Number Of Orders</h4>
-          <canvas id="donutChart"></canvas>
-          <p style="font-size: 40px;"><%= analyticsdata.numberoforders %></p> <span style="font-size: 40px;"class="green-arrow"><p3 > &#x25B2 </p3></span><p2 style="font-size: 38px;"> <%= analyticsdata.numberofordersch%> </p2>
-        </span>
-       
-        <span class="rectangle2">
-          <h3>Number of Visitors Today</h3>
-          <canvas id="donutChart2"></canvas>
-           <p1 style="font-size: 40px;"><%= analyticsdata.numberofvisitorstoday %></p1> <div style="font-size: 40px;"class="green-arrow2"><p5 style="font-size: 40px;"> &#x25B2 </p5></div><p6 style="font-size: 38px;" ><%= analyticsdata.numberofvisitorsch%> </p6>
-          </span>
-         
-
-      </div>
-
-   
-      <div class="center">
-        <span class="rectangle"><h3>Total Sales</h3>
-          <p style="font-size: 30px;"><%= analyticsdata.totalsales%></p> <span style="font-size: 28px;"class="green-arrow3"><p3 > &#x25B2 </p3></span><p2 ><%= analyticsdata.totalsalesch%></p2>
-        </span> 
-        <span class="rectangle"><h3>Registered Users</h3>
-          <p style="font-size: 30px;"><%= analyticsdata.registeredusers%></p> <span style="font-size: 28px;"class="green-arrow4"><p3 > &#x25B2 </p3></span><p2 > <%=analyticsdata.registeredusersch %> </p2>
-        </span>
-
-        <span class="rectangle"><h3>To Be Fulfilled</h3>
-          <p style="font-size: 30px;"><%= analyticsdata.tobefulfilled%></p> <span style="font-size: 28px;"class="green-arrow5"><p3 > &#x25B2 </p3></span><p2 > <%=analyticsdata.tobefulfilledch %></p2>
-        </span>
-      </div>
-      <div class="bottom">
-        <span class="rectangle3"><h3>Top selling products</h3>
-          <div class="chart-container">
-            <div class="chart-bar" data-value="Product 1"></div>
-            <div class="chart-bar" data-value="product 2"></div>
-            <div class="chart-bar" data-value="product 3"></div>
-            <div class="chart-bar" data-value="Product 4"></div>
-            <div class="chart-bar" data-value="product 5"></div>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="box">
+          <div class="box-title">Total Order</div>
+          <div class="box-content">
+            <span class="number">$1234</span>
+            <div class="indicator">
+              <i class="material-icons">arrow_drop_up</i>
+              <span class="text">+10%</span>
+            </div>
+            <div class="cart four">
+              <i class="bx bxs-cart"></i>
+            </div>
           </div>
+        </div>
+        <div class="box">
+          <div class="box-title">Total Sales</div>
+          <div class="box-content">
+            <span class="number">$5678</span>
+            <div class="indicator">
+              <i class="material-icons">arrow_drop_down</i>
+              <span class="text">-8%</span>
+            </div>
+            <div class="cart">
+              <i class="bx bxs-cart"></i>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-title">Total Profit</div>
+          <div class="box-content">
+            <span class="number">$4567</span>
+            <div class="indicator">
+              <i class="material-icons">arrow_drop_down</i>
+              <span class="text">-5%</span>
+            </div>
+            <div class="cart two">
+              <i class="bx bxs-cart"></i>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-title">Total Return</div>
+          <div class="box-content">
+            <span class="number">$2345</span>
+            <div class="indicator">
+              <i class="material-icons">arrow_drop_up</i>
+              <span class="text">+15%</span>
+            </div>
+            <div class="cart three">
+              <i class="bx bxs-cart"></i>
+            </div>
+          </div>
+        </div>
       </div>
-      
-    </div>   
- 
-
-           
-
-    
-
-
-
-    <script src="/js/adminhome.js"></script>
+      <div class="row2">
+          <div class="recent-sales box">
+            <div class="title">Recent Sales</div>
+            <div class="sales-details">
+              <ul class="details">
+                <li class="topic">Date</li>
+                <li><a href="#">02 Jan 2021</a></li>
+                <li><a href="#">02 Jan 2021</a></li>
+                <li><a href="#">02 Jan 2021</a></li>
+                <li><a href="#">02 Jan 2021</a></li>
+                <li><a href="#">02 Jan 2021</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Product</li>
+                <li><a href="#">Tommy Hilfiger</a></li>
+                <li><a href="#">Rolex Watch</a></li>
+                <li><a href="#">Sunglasses</a></li>
+                <li><a href="#">Hourglass Jeans</a></li>
+                <li><a href="#">Nike Shoes</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Price</li>
+                <li><a href="#">$123</a></li>
+                <li><a href="#">$234</a></li>
+                <li><a href="#">$345</a></li>
+                <li><a href="#">$456</a></li>
+                <li><a href="#">$567</a></li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Profit</li>
+                <li><a href="#">$34</a></li>
+                <li><a href="#">$45</a></li>
+                <li><a href="#">$56</a></li>
+                <li><a href="#">$67</a></li>
+                <li><a href="#">$78</a></li>
+              </ul>
+            </div>
+            
+          </div>
+          <div class="top-sales box">
+            <div class="title">Top Selling Product</div>
+            <ul class="top-sales-details">
+              <li>
+                <a href="#">
+                  <img src="images/sunglasses.jpg" alt="">
+                  <span class="product">Vuitton Sunglasses</span>
+                </a>
+                <span class="price">$1107</span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="images/jeans.jpg" alt="">
+                  <span class="product">Hourglass Jeans</span>
+                </a>
+                <span class="price">$1567</span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="images/nike.jpg" alt="">
+                  <span class="product">Nike Sport Shoe</span>
+                </a>
+                <span class="price">$1234</span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="images/scarves.jpg" alt="">
+                  <span class="product">Hermes Silk Scarves</span>
+                </a>
+                <span class="price">$2312</span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="images/blueBag.jpg" alt="">
+                  <span class="product">Succi Ladies Bag</span>
+                </a>
+                <span class="price">$1456</span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="images/bag.jpg" alt="">
+                  <span class="product">Gucci Women's Bags</span>
+                </a>
+                <span class="price">$2345</span>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="images/addidas.jpg" alt="">
+                  <span class="product">Adidas Running Shoe</span>
+                </a>
+                <span class="price">$2345</span>
+              </li>
+            </ul>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+  <script src="/js/adminhome.js"></script>
 </body>
-
-
-
 
 </html>
