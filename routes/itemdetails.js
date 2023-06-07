@@ -1,16 +1,10 @@
 import { Router } from 'express';
 import Product from '../models/Product.js';
 var router = Router();
-router.get('/:id', (req, res) => {
-    const productId = req.params.id;
+import bodyParser from 'body-parser';
+router.use(bodyParser.json());
+import index_functions from "../controllers/index.js"
 
-    Product.findById(productId)
-        .then((product) => {
-            res.render('item-details', { product, user: (req.session.user === undefined ? "" : req.session.user) });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
+
+router.get('/:id', index_functions.display_product_details);
 export default router;

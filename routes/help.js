@@ -1,9 +1,8 @@
 import { Router } from 'express';
 const router = Router();
+import bodyParser from 'body-parser';
+router.use(bodyParser.json());
+import index_functions from "../controllers/index.js"
 
-router.get('/', function(req, res, next) {
-    res.render('help', {
-        user: (req.session.user === undefined ? "" : req.session.user)
-    });
-});
+router.get('/', index_functions.get_help_page);
 export default router;

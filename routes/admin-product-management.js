@@ -101,40 +101,7 @@ router.get('/edit-product/:id', (req, res) => {
         });
 });
 
-router.post('/edit-product/:id', upload.single('image'), (req, res) => {
-    const productId = req.params.id;
-    const { itemName, Sales, description, price_before, price_after, type, images } = req.body;
 
-    // Update the product information
-    const updatedProduct = {
-        itemName,
-        Sales,
-        description,
-        price_before,
-        price_after,
-        type,
-        images
-    };
-
-    // Check if a new image file was uploaded
-    if (req.file) {
-        // Include the new image path in the updated product
-        updatedProduct.images = req.file.filename;
-    }
-
-    Product.findByIdAndUpdate(
-            productId,
-            updatedProduct, { new: true }
-        )
-        .then((updatedProduct) => {
-            console.log('Product updated:', updatedProduct);
-            res.redirect(`/all-articles/${productId}`);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.redirect('/');
-        });
-});
 
 router.use((err, req, res, next) => {
     console.error(err);

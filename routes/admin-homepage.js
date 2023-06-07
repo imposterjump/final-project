@@ -1,5 +1,8 @@
 import { Router } from 'express';
 var router = Router();
+import bodyParser from 'body-parser';
+router.use(bodyParser.json());
+import admin_functions from "../controllers/admin.js"
 
 
 router.use((req, res, next) => {
@@ -12,15 +15,6 @@ router.use((req, res, next) => {
 });
 
 
-router.get('/', function(req, res, next) {
-    const analyticsdata = {
-        revenue:5000,
-        numberofvisitors:50,
-        totalsales: 125,
-        registered:90
-    };
-
-    res.render('adminhome', { analyticsdata, user: (req.session.user === undefined ? "" : req.session.user) });
-});
+router.get('/', admin_functions.get_admin_home_page);
 
 export default router;

@@ -1,27 +1,8 @@
 import { Router } from 'express';
 import Product from '../models/Product.js';
 var router = Router();
-
-router.get('/', function(req, res, next) {
-
-    Product.find({ type: 'tops' })
-        .then(result => {
-            console.log(result);
-            res.render('tops', {
-                Product: result,
-                TITLE: 'PRODUCT PAGE',
-                message: '',
-
-                user: (req.session.user === undefined ? "" : req.session.user)
-
-
-
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-
-});
+import bodyParser from 'body-parser';
+import index_functions from "../controllers/index.js"
+router.use(bodyParser.json());
+router.get('/', index_functions.get_tops_page);
 export default router;
