@@ -14,20 +14,10 @@ router.use((req, res, next) => {
 
 router.get('/', function(req, res, next) {
     const analyticsdata = {
-        numberoforderschartdata: [10, 20, 30, 5, 35],
-        numberofvisitorschartdata: [5, 10, 15, 20, 25],
-        numberoforders: 550,
-        numberofordersch: 550,
-        numberofvisitorstoday: 600,
-        numberofvisitorsch: 600,
-        registeredusers: 6500,
-        registeredusersch: 6500,
-        tobefulfilled: 26,
-        tobefulfilledch: 26,
-        totalsales: 8125,
-        totalsalesch: 130
-
-
+        revenue:5000,
+        numberofvisitors:50,
+        totalsales: 125,
+        registered:90
     };
 
     res.render('adminhome', { analyticsdata, user: (req.session.user === undefined ? "" : req.session.user) });
