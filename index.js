@@ -177,8 +177,6 @@ index.use((req, res) => {
 
 
 
-index.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+
 
 export default index;
