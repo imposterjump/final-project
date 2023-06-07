@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/ordertrack.css">
+<%- include("./Partials/NavUser.ejs") %>
+<%- include("./Partials/chat.ejs") %>
+<div class="container px-1 px-md-4 py-5 mx-auto">
+    <div class="card">
+        <div class="row d-flex justify-content-center px-3 top"> <!-- Modified: justify-content-center -->
+            <div class="d-flex">
+                <h2 class="text-center">Your Order Has Been Placed <span class="text-primary font-weight-bold"></span></h5> <!-- Added: text-center -->
+            </div>
+        </div>
+        <!-- Add class 'active' to progress -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+            <ul id="progressbar" class="text-center">
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+                <li class="active step0"></li>
+                <li class="step0"></li>
+            </ul>
+            </div>
+        </div>
+        <div class="row justify-content-between top">
+            <div class="row d-flex icon-content">
+                <img class="icon" src="images/9nnc9Et.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>Processed</p>
+                </div>
+            </div>
+            <div class="row d-flex icon-content">
+                <img class="icon" src="images/u1AzR7w.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>Shipped</p>
+                </div>
+            </div>
+            <div class="row d-flex icon-content">
+                <img class="icon" src="images/TkPm63y.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>En Route</p>
+                </div>
+            </div>
+            <div class="row d-flex icon-content">
+                <img class="icon" src="images/HdsziHP.png">
+                <div class="d-flex flex-column">
+                    <p class="font-weight-bold">Order<br>Arrived</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+ <footer>
+                <%- include("./Partials/footer.ejs") %>
+            </footer>

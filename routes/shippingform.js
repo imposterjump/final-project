@@ -25,7 +25,7 @@ router.post('/checkout', (req, res) => {
   order.save()
     .then((savedOrder) => {
       
-      res.redirect('/home'); 
+      res.redirect("ordertrack", { user: (req.session.user === undefined ? "" : req.session.user) });
     })
     .catch((error) => {
     

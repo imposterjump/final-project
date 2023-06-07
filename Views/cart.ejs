@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="/css/cart.css">
 <%- include("./Partials/NavUser.ejs") %>
 <%- include("./Partials/chat.ejs") %>
@@ -116,11 +117,11 @@
       </div>
     </div>
   </div>
+  
 </div>
 
-<footer>
-  <%- include("./Partials/footer.ejs") %>
-</footer>
+    <%- include("./Partials/footer.ejs") %>
+  
 
 <script>
   function updateTotal() {
@@ -180,12 +181,11 @@
       body: JSON.stringify(data)
     })
       .then((response) => {
-        // Handle the response from the server
-        // Redirect or display a success message to the user
+        window.location.href = '/ordertrack';
       })
       .catch((error) => {
         // Handle any errors that occur during the request
-        // Display an error message to the user
+        window.location.href = '/cart';
       });
   });
 
