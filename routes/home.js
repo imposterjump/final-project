@@ -16,7 +16,7 @@ router.post('/search', function(req, res, next) {
         .then(result => {
             console.log(result);
 
-            res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
+            res.render('homepage', { products: result, user: (req.session.user === undefined ? "" : req.session.user) });
 
 
 
