@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
         })
         .catch(err => {
             console.log(err);
-            res.render("cart", { products: [], user: (req.session.user === undefined ? "" : req.session.user) });
+
         });
 });
 

@@ -8,6 +8,7 @@ import fileUpload from "express-fileupload";
 import users from "./models/users.js"
 import mongoose from 'mongoose';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 
 
 
@@ -54,7 +55,8 @@ index.set("view engine", "ejs");
 index.use(logger("common"));
 index.use(express.json());
 index.use(fileUpload());
-
+index.use(bodyParser.json());
+index.use(bodyParser.urlencoded({ extended: false }));
 index.use(session({ secret: 'Your_Secret_Key' }));
 
 //setup cookie parser middleware
