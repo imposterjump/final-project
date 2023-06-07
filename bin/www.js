@@ -2,7 +2,7 @@ import index from '../index.js';
 import { createServer } from 'http';
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
-import fs from module;
+
 
 dotenv.config()
 
@@ -64,29 +64,5 @@ function onListening() {
     var bind = 'Port ' + addr.port;
     console.log('Listening on ' + bind);
 }
-const fs = require('fs');
-const credentialsPath = '/config/credentials.json';
-const credentialsData = fs.readFileSync(credentialsPath, 'utf8');
-const credentials = JSON.parse(credentialsData);
-
-const { google } = require('googleapis');
-const oAuth2Client = new google.auth.OAuth2(
-  credentials.client_id,
-  credentials.client_secret,
-  credentials.redirect_uris[0]
-);
-
-// Set the credentials on the client
-oAuth2Client.setCredentials(credentials);
-
-const { google } = require('googleapis');
-
-// Create the OAuth2 client and set credentials (same as in the previous step)
-
-// Create an instance of the Google Analytics Reporting API
-const analyticsreporting = google.analyticsreporting({
-  version: 'v4',
-  auth: oAuth2Client
-});
 
 
