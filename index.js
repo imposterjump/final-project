@@ -40,6 +40,7 @@ import orders_router from "./routes/orders.js";
 import shippingform_router from "./routes/shippingform.js";
 import wishlist_router from "./routes/wishlist.js";
 import OrderItem from "./models/order-item.js";
+import product_search_router from "./routes/productsearch.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -147,6 +148,7 @@ index.use('/jackets', jackets_router);
 index.use('/tops', tops_router);
 index.use('/bottoms', bottoms_router);
 index.use('/accessories', accessories_router);
+index.use('/productsearch', product_search_router);
 
 
 
