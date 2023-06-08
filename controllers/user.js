@@ -174,13 +174,27 @@ const edit_user_password = function(req, res, next) {
 
 //orders functions 
 
-const get_order_item = async(req, res) => {
-    try {
-        const orders = await Order.find().populate('user', 'name email').populate('orderItems.product', 'name price');
-        res.json(orders);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+const get_order_item = function(req, res, next) {
+
+    Order.find({ usernamee: req.session.user.username })
+        .then(result => {
+            console.log(result);
+            res.render('ordersdisplay', {
+                Order: result,
+                TITLE: 'ORDER DISPLAY PAGE',
+                message: '',
+
+                user: (req.session.user === undefined ? "" : req.session.user)
+
+
+
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+
 }
 
 const create_order = async(req, res) => {
