@@ -166,64 +166,80 @@
 
                                         <% } %>
             </div>
-            <div class=" formcontainer ">
-
-                <br>
-                <p>pls fill the information again </p>
-                <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data" class="myform">
-
-                    <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
-                    <br>
-                    <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-                    <br>
-
-                    <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                    <br>
-
-                    <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                    <br>
-                    <label class="phone_label " for="phone_label">Phone Number:</label>
-
-                    <div class="input-group ">
-
-                        <select id="countrycode " name="countrycode ">
-                             <option value="1 ">United States (+1)</option>
-                             <option value="86 ">China (+86)</option>
-                             <option value="91 ">India (+91)</option>
-                             <option value="81 ">Japan (+81)</option>
-                             <option value="7 ">Russia (+7)</option>
-                             <option value="82 ">South Korea (+82)</option>
-                             <option value="62 ">Indonesia (+62)</option>
-                             <option value="55 ">Brazil (+55)</option>
-                             <option value="92 ">Pakistan (+92)</option>
-                             <option value="234 ">Nigeria (+234)</option>
-                             <option value="880 ">Bangladesh (+880)</option>
-                             <option value="33 ">France (+33)</option>
-                             <option value="49 ">Germany (+49)</option>
-                             <option value="44 ">United Kingdom (+44)</option>
-                             <option value="39 ">Italy (+39)</option>
-                             <option value="90 ">Turkey (+90)</option>
-                             <option value="54 ">Argentina (+54)</option>
-                             <option value="20 ">Egypt (+20)</option>
-                             <option value="81 ">Japan (+81)</option>
-                             <option value="86 ">China (+86)</option>
-                             </select>
-
-                    </div>
-
-                    <input type="text" class="" id="phone " name="phone" required>
-
+            <div class=" container1 ">
+                <div class="content">
 
                     <br>
-                    <select id="type" name="type" required>
+                    <p>pls fill the information again </p>
+                    <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data" class="myform">
+
+                        <div class="user-details ">
+                            <div class="input-box ">
+                                <span class="details ">Username</span>
+                                <input type="text " placeholder="Enter your username" id="username" name="username" minlength="8 " maxlength="16 " required>
+                                <span id="result"></span>
+                            </div>
+                            <div class="input-box ">
+                                <span class="details ">Email</span>
+                                <input type="email " placeholder="Enter your email " id="email" name="email" required>
+                            </div>
+                            <div class="input-box ">
+                                <span class="details ">Country Code</span>
+                                <select class="selector " id="countrycode " name="countrycode ">
+              <option value="1 ">United States (+1)</option>
+              <option value="86 ">China (+86)</option>
+              <option value="91 ">India (+91)</option>
+              <option value="81 ">Japan (+81)</option>
+              <option value="7 ">Russia (+7)</option>
+              <option value="82 ">South Korea (+82)</option>
+              <option value="62 ">Indonesia (+62)</option>
+              <option value="55 ">Brazil (+55)</option>
+              <option value="92 ">Pakistan (+92)</option>
+              <option value="234 ">Nigeria (+234)</option>
+              <option value="880 ">Bangladesh (+880)</option>
+              <option value="33 ">France (+33)</option>
+              <option value="49 ">Germany (+49)</option>
+              <option value="44 ">United Kingdom (+44)</option>
+              <option value="39 ">Italy (+39)</option>
+              <option value="90 ">Turkey (+90)</option>
+              <option value="54 ">Argentina (+54)</option>
+              <option value="20 ">Egypt (+20)</option>
+              <option value="81 ">Japan (+81)</option>
+              <option value="86 ">China (+86)</option>
+            </select>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Phone Number</span>
+                                <input type="text" id="phone" placeholder="Enter your number" name="phone" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Password</span>
+                                <input type="password" placeholder="Enter your password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Confirm Password</span>
+                                <input type="password" placeholder="Confirm your password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                            </div>
+                            <label> <input type="checkbox" class="check" name="agree" required> I agree to the Website's terms and conditions </label>
+                            <br>
+
+                        </div>
+                        <div class="button">
+                            <input type="submit" class="submit" value="Register ">
+                        </div>
+                        <br>
+                        <select id="type" name="type" required>
             <option value="admin">admin</option>
             <option value="user">user</option>
             </select>
 
-                    <br>
-                    <input type="submit" class="submit" value="add user ">
-                </form>
+                        <br>
+                    </form>
+                </div>
             </div>
+
+
+
 </body>
 <!--BODY ENDS HERE -->
 
