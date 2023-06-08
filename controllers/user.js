@@ -197,27 +197,7 @@ const get_order_item = function(req, res, next) {
 
 }
 
-const create_order = async(req, res) => {
-    const order = new Order({
 
-        orderItems: req.body.orderItems,
-        address: req.body.address,
-        city: req.body.city,
-        postalCode: req.body.postalCode,
-        paymentMethod: req.body.paymentMethod,
-        itemsPrice: req.body.itemsPrice,
-        shippingPrice: req.body.shippingPrice,
-        totalPrice: req.body.totalPrice,
-
-    });
-
-    try {
-        const newOrder = await order.save();
-        res.status(201).json(newOrder);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-}
 const track_order = function(req, res, next) {
     res.render('ordertrack', {
         user: (req.session.user === undefined ? "" : req.session.user)
@@ -244,11 +224,12 @@ const shippingform_checkout = (req, res) => {
 
     order.save()
         .then((savedOrder) => {
+            console.log("2");
             req.session.user.cart = new Array();
-            res.redirect("ordertrack", { user: (req.session.user === undefined ? "" : req.session.user) });
+            res.render("ordertrack", { user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((error) => {
-
+            console.log("1" + error);
             res.status(500).json({ error: 'Failed to save the order.' });
         });
 }
@@ -340,7 +321,6 @@ export default {
     edit_user_profile,
     edit_user_password,
     get_order_item,
-    create_order,
     track_order,
     shippingform_checkout,
     display_wishlist,
