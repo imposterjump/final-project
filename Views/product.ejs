@@ -20,7 +20,7 @@
 </script>
 
 </head>
-<script src="/js/product.js"></script>
+
 <body>
     
     <%- include("./Partials/NavUser.ejs") %>
@@ -33,7 +33,7 @@
                             <img src="/uploads/<%= product1.images[0] %>" class="mySlides">
                             <img src="/uploads/<%= product1.images[1] %>" id="alt-img" class="mySlides">
                             <button class="Lbutton" onclick="plusDivs(-1)"><i class="material-icons">keyboard_arrow_left</i></a>
-              <button class="Rbutton" onclick="plusDivs(1)"><i class="material-icons">keyboard_arrow_right</i></a>
+                            <button class="Rbutton" onclick="plusDivs(1)"><i class="material-icons">keyboard_arrow_right</i></a>
           </div>
       </div>
       <div class="col-12 col-md-6">
@@ -70,5 +70,5 @@
                 <%- include("./Partials/footer.ejs") %>
             </footer>
 
-
+<script src="/js/product.js"></script>
 </html>
