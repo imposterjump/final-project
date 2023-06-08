@@ -296,6 +296,28 @@ const delete_from_wishlist = function(req, res, next) {
             res.redirect("/wishlist");
         });
 }
+const display_my_orders = function(req, res, next) {
+
+    Order.find({ usernamee: req.session.user.username })
+        .then(result => {
+            console.log(result);
+            res.render('ordersdisplay', {
+                Order: result,
+                TITLE: 'ORDER DISPLAY PAGE',
+                message: '',
+
+                user: (req.session.user === undefined ? "" : req.session.user)
+
+
+
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+
+}
 export default {
     mycart,
     addtocart,
@@ -309,5 +331,6 @@ export default {
     shippingform_checkout,
     display_wishlist,
     add_to_wishlist,
-    delete_from_wishlist
+    delete_from_wishlist,
+    display_my_orders
 };
