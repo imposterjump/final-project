@@ -35,82 +35,81 @@
     <%- include("./Partials/navadmin.ejs") %>
 
 
-            <h1 class="title">User Details</h1>
-            <br>
-            <div class="searchbar_div">
-                <form action="/admin-user-management/search" method="post">
-                    <input type="text" class="searchbar" id="search_bar_users" name="search_bar_users" placeholder="Search for a user with username..">
-                    <input type="submit" value="search" class="buttons">
-                </form>
+        <h1 class="title">User Details</h1>
+        <br>
+        <div class="searchbar_div">
+            <form action="/admin-user-management/search" method="post">
+                <input type="text" class="searchbar" id="search_bar_users" name="search_bar_users" placeholder="Search for a user with username..">
+                <input type="submit" value="search" class="buttons">
+            </form>
 
-            </div>
+        </div>
 
-            <div class="user-container" id="userscontainer">
-                <% if(message !=''){ %>
+        <div class="user-container" id="userscontainer">
+            <% if(message !=''){ %>
 
-                    <p class="reg_message">
-                        <%= message %>
-                    </p>
-                    <% } %>
+                <p class="reg_message">
+                    <%= message %>
+                </p>
+                <% } %>
 
-                        <% if (users.length > 0) { %>
+                    <% if (users.length > 0) { %>
 
-                            <table class="headers">
-                                <thead>
+                        <table class="headers">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Type</th>
+                                    <th> Edit</th>
+                                    <th>Delete</th>
+                                    <th>View</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <% users.forEach(user=> { %>
+
+                            <div class="user-container">
+                                <table class="customers">
                                     <tr>
-                                        <th>Username</th>
-                                        <th>Type</th>
-                                        <th> Edit</th>
-                                        <th>Delete</th>
-                                        <th>View</th>
+                                        <td class="usernames">
+
+                                            <%= user.username %>
+                                        </td>
+                                        <td>
+
+                                            <%= user.type %>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
+                                        </td>
+                                        <td>
+                                            <button type="button " class="buttons " onclick="edit_user('<%= user.id %>') "> delete </button>
+                                        </td>
+                                        <td>
+                                            <a href="/admin-user-management/viewmore/<%= user.id %>"><button type="button " class="buttons  "  > view more </button></a>
+
+                                        </td>
                                     </tr>
-                                </thead>
-                            </table>
-                            <% users.forEach(user=> { %>
+                                </table>
 
-                                <div class="user-container">
-                                    <table class="customers">
-                                        <tr>
-                                            <td class="usernames">
+                                <div class="formcontainer2" id="<%= user.username %>" hidden>
+                                    <p>pls fill the information again </p>
+                                    <form action="/admin-user-management/edit/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
 
-                                                <%= user.username %>
-                                            </td>
-                                            <td>
 
-                                                <%= user.type %>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="buttons" onclick="edit_user('<%= user.username %>') "> edit </button>
-                                            </td>
-                                            <td>
-                                                <button type="button " class="buttons " onclick="edit_user('<%= user.id %>') "> delete </button>
-                                            </td>
-                                            <td>
-                                                <a href="/admin-user-management/viewmore/<%= user.id %>"><button type="button " class="buttons  "  > view more </button></a>
+                                        <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
+                                        <br>
 
-                                            </td>
-                                        </tr>
-                                    </table>
+                                        <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                                        <br>
 
-                                    <div class="formcontainer2" id="<%= user.username %>" hidden>
-                                        <p>pls fill the information again </p>
-                                        <form action="/admin-user-management/edit/<%= user.id %> " method="POST" enctype="multipart/form-data" class="myform">
+                                        <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                                        <br>
+                                        <label class="phone_label " for="phone_label">Phone Number:</label>
 
-                                            <input type="text " class="inputs " placeholder="enter username " id="username" name="username" minlength="8 " maxlength="16 " required>
-                                            <br>
-                                            <input type="email" class="inputs " placeholder="Enter Your Email " id="email " name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$" required>
-                                            <br>
+                                        <div class="input-group ">
 
-                                            <input type="password" class="inputs " placeholder="Enter Your Password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                                            <br>
-
-                                            <input type="password" class="inputs " placeholder="confirm password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                                            <br>
-                                            <label class="phone_label " for="phone_label">Phone Number:</label>
-
-                                            <div class="input-group ">
-
-                                                <select id="countrycode " name="countrycode ">
+                                            <select id="countrycode " name="countrycode ">
                              <option value="1 ">United States (+1)</option>
                              <option value="86 ">China (+86)</option>
                              <option value="91 ">India (+91)</option>
@@ -133,58 +132,58 @@
                              <option value="86 ">China (+86)</option>
                              </select>
 
-                                            </div>
-                                            <br>
-                                            <input type="text" class="" id="phone " name="phone" required>
+                                        </div>
+                                        <br>
+                                        <input type="text" class="" id="phone " name="phone" required>
 
-                                            <br>
-
-
-                                            <input type="submit" class="submit" value="edit now ">
-                                        </form>
+                                        <br>
 
 
-                                    </div>
-                                    <div class="formcontainer2" id="<%= user.id %>" hidden="hidden">
+                                        <input type="submit" class="submit" value="edit now ">
+                                    </form>
 
-                                        <p>are you sure you want to delete ?</p>
-                                        <form action="/admin-user-management/delete/<%= user.username %>" method="post">
-                                            <input type="submit" class="submit" value="delete">
-                                        </form>
 
-                                    </div>
                                 </div>
-                                <br>
-                                <% }) %>
+                                <div class="formcontainer2" id="<%= user.id %>" hidden="hidden">
 
-                                    <% } 
+                                    <p>are you sure you want to delete ?</p>
+                                    <form action="/admin-user-management/delete/<%= user.username %>" method="post">
+                                        <input type="submit" class="submit" value="delete">
+                                    </form>
+
+                                </div>
+                            </div>
+                            <br>
+                            <% }) %>
+
+                                <% } 
             
             else { %>
 
-                                        <p>There but there is zero users to display ...</p>
+                                    <p>There but there is zero users to display ...</p>
 
-                                        <% } %>
-            </div>
-            <div class=" container1 ">
-                <div class="content">
+                                    <% } %>
+        </div>
+        <div class=" container1 ">
+            <div class="content">
 
-                    <br>
-                    <p>pls fill the information again </p>
-                    <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data">
+                <br>
+                <p>pls fill the information again </p>
+                <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data">
 
-                        <div class="user-details ">
-                            <div class="input-box ">
-                                <span class="details ">Username</span>
-                                <input type="text " placeholder="Enter your username" id="username" name="username" minlength="8 " maxlength="16 " required>
-                                <span id="result"></span>
-                            </div>
-                            <div class="input-box ">
-                                <span class="details ">Email</span>
-                                <input type="email " placeholder="Enter your email " id="email" name="email" required>
-                            </div>
-                            <div class="input-box ">
-                                <span class="details ">Country Code</span>
-                                <select class="selector " id="countrycode " name="countrycode ">
+                    <div class="user-details ">
+                        <div class="input-box ">
+                            <span class="details ">Username</span>
+                            <input type="text " placeholder="Enter your username" id="username" name="username" minlength="8 " maxlength="16 " required>
+                            <span id="result"></span>
+                        </div>
+                        <div class="input-box ">
+                            <span class="details ">Email</span>
+                            <input type="email " placeholder="Enter your email " id="email" name="email" required>
+                        </div>
+                        <div class="input-box ">
+                            <span class="details ">Country Code</span>
+                            <select class="selector " id="countrycode " name="countrycode ">
               <option value="1 ">United States (+1)</option>
               <option value="86 ">China (+86)</option>
               <option value="91 ">India (+91)</option>
@@ -206,41 +205,43 @@
               <option value="81 ">Japan (+81)</option>
               <option value="86 ">China (+86)</option>
             </select>
-                            </div>
-                            <div class="input-box">
-                                <span class="details">Phone Number</span>
-                                <input type="text" id="phone" placeholder="Enter your number" name="phone" required>
-                            </div>
-                            <div class="input-box">
-                                <span class="details">Password</span>
-                                <input type="password" placeholder="Enter your password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                            </div>
-                            <div class="input-box">
-                                <span class="details">Confirm Password</span>
-                                <input type="password" placeholder="Confirm your password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                            </div>
-                            <label> <input type="checkbox" class="check" name="agree" required> I agree to the Website's terms and conditions </label>
-                            <br>
-
                         </div>
+                        <div class="input-box">
+                            <span class="details">Phone Number</span>
+                            <input type="text" id="phone" placeholder="Enter your number" name="phone" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Password</span>
+                            <input type="password" placeholder="Enter your password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Confirm Password</span>
+                            <input type="password" placeholder="Confirm your password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                        </div>
+                        <label> <input type="checkbox" class="check" name="agree" required> I agree to the Website's terms and conditions </label>
                         <br>
-                        <select id="type" name="type" required>
+
+                    </div>
+                    <br>
+                    <select id="type" name="type" required>
             <option value="admin">admin</option>
             <option value="user">user</option>
             </select>
-                        <div class="button">
-                            <input type="submit" class="submit" value="Register ">
-                        </div>
+                    <div class="button">
+                        <input type="submit" class="submit" value="Register ">
+                    </div>
 
 
-                        <br>
-                    </form>
-                </div>
+                    <br>
+                </form>
             </div>
+        </div>
 
 
 
 </body>
-<footer><%- include("./Partials/localiztion.ejs") %></footer>
+<footer>
+    <%- include("./Partials/localiztion.ejs") %>
+</footer>
 
 </html>

@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-272764433-1');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-  <link rel="stylesheet" href="/CSS/details.css">
-  <title>Photo Details</title>
+        gtag('config', 'UA-272764433-1');
+    </script>
+
+    <link rel="stylesheet" href="/CSS/details.css">
+    <title>Photo Details</title>
 </head>
-<script src="/js/details.js"></script>
-<body>
-  <%- include("./Partials/navadmin.ejs") %>
-  <div class="container">
-    <h1 class="title">Product Details</h1>
-    <div class="product">
-      <div class="image-container">
-        <img src="/uploads/<%= product.images[0] %>" alt="Product Image" class="image">
-      </div>
-      <div class="details">
-        <p class="name">Item Name: <%= product.itemName %></p>
-        <p class="description">Description: <%= product.description %></p>
-        <p class="price">Price Before: <%= product.price_before %></p>
-        <p class="price">Price After: <%= product.price_after %></p>
-        <p class="type">Type: <%= product.type %></p>
-      </div>
-    </div>
 
-    <div class="buttons">
-      <button class="delete" data-linkid="<%= product._id %>">Delete this product</button>
-      <button class="edit" data-linkid="<%= product._id %>">Edit this product</button>
-    </div>
-  </div>
+
+<body>
+    <%- include("./Partials/navadmin.ejs") %>
+        <div class="container">
+            <h1 class="title">Product Details</h1>
+            <div class="product">
+                <div class="image-container">
+                    <img src="/uploads/<%= product.images[0] %>" alt="Product Image" class="image">
+                </div>
+                <div class="details">
+                    <p class="name">Item Name:
+                        <%= product.itemName %>
+                    </p>
+                    <p class="description">Description:
+                        <%= product.description %>
+                    </p>
+                    <p class="price">Price Before:
+                        <%= product.price_before %>
+                    </p>
+                    <p class="price">Price After:
+                        <%= product.price_after %>
+                    </p>
+                    <p class="type">Type:
+                        <%= product.type %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="delete" data-linkid="<%= product._id %>">Delete this product</button>
+                <button class="edit" data-linkid="<%= product._id %>">Edit this product</button>
+            </div>
+        </div>
 </body>
 <footer>
-  <%- include("./Partials/localiztion.ejs") %>
+    <%- include("./Partials/localiztion.ejs") %>
 </footer>
+
 </html>
+
+<script>
+    const deleteBtnElement = document.querySelector(".delete");
+    const editBtnElement = document.querySelector(".edit");
+    const productId = deleteBtnElement.getAttribute("data-linkid");
+
+    deleteBtnElement.addEventListener("click", () => {
+        fetch(`/details/${productId}`, {
+                method: "DELETE"
+            })
+            .then((response) => response.json())
+            .then((data) => (window.location.href = data.mylink))
+            .catch((err) => {
+                console.log(err);
+            });
+    });
+
+    editBtnElement.addEventListener("click", () => {
+        window.location.href = `/edit-product/${productId}`;
+    });
+</script>
