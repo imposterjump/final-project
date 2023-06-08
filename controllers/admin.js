@@ -80,14 +80,34 @@ const add_product = (req, res) => {
         });
 }
 const get_admin_home_page = function(req, res, next) {
-    const analyticsdata = {
-        revenue: 5000,
-        numberofvisitors: 50,
-        totalsales: 125,
-        registered: 90
-    };
+    Product.find()
+    .then(products => {
+      users.find()
+        .then(users => {
+          Order.find()
+            .then(orders => {
+              res.render("adminhome", {
+                products: products,
+                users: users,
+                orders: orders,
+                user: req.session.user || ""
+              });
+            })
+            .catch(err => {
+              console.log(err);
+              res.status(500).send("An error occurred while retrieving orders.");
+            });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).send("An error occurred while retrieving users.");
+        });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send("An error occurred while retrieving products.");
+    });
 
-    res.render('adminhome', { analyticsdata, user: (req.session.user === undefined ? "" : req.session.user) });
 }
 
 const get_admin_product_page = (req, res) => {
@@ -310,14 +330,10 @@ const admin_edit_user_infos = function(req, res, next) {
             })
             .then(result => {
                 res.redirect('/admin-user-management');
-
-
             })
             .catch(err => {
                 console.log(err);
             });
-
-
     }
 
 }
