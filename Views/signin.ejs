@@ -22,10 +22,11 @@
 </head>
 
 <body>
-    <%- include("./Partials/localiztion.ejs") %>
+    
     <div class="container">
         <form action="/signin/user" method="post">
             <div class="title">Login</div>
+            <%- include("./Partials/localiztion.ejs") %>
             <% if(message !=''){ %>
 
                 <p class="reg_message">
@@ -52,5 +53,6 @@
         </div>
     </div>
 </body>
+
 
 </html>

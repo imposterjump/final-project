@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <%- include("./Partials/localiztion.ejs") %>
+  
   <%- include("./Partials/navadmin.ejs") %>
   <h1>Add Product</h1>
   <form method="POST" action="/add-product" enctype="multipart/form-data" onsubmit="return validateForm()">
@@ -63,8 +63,8 @@
 
  <script src="/js/addproduct.js"></script>
 </body>
+<footer><%- include("./Partials/localiztion.ejs") %></footer>
 
-</html>
 
 
 
