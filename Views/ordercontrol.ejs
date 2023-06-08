@@ -1,25 +1,52 @@
 <link rel="stylesheet" href="CSS/ordercontrol.css">
-<div class="recent-sales box">
-  <div class="title">Recent Sales</div>
-  <table class="order-table">
-    <tr>
-      <th>Date Created</th>
-      <th>Name</th>
-      <th>Total Price</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-    <% orders.sort((a, b) => b.dateOrdered - a.dateOrdered).forEach(order => { %>
-      <tr>
-        <td><%= order.dateOrdered %></td>
-        <td><%= order.firstName + ' ' + order.lastName %></td>
-        <td><%= order.totalPrice %></td>
-        <td><%= order.status %></td>
-        <td>
-          <a href="/admin-order-control/delete/<%= order._id %>" class="delete-btn">Delete</a>
-        </td>
-      </tr>
-    <% }) %>
-  </table>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include("./Partials/navadmin.ejs") %>
+        <div class="recent-sales box">
+            <div class="title">
+                <h1>Recent Orders</h1>
+            </div>
+            <table class="order-table">
+                <tr>
+                    <th>Date Created</th>
+                    <th>Name</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <% orders.sort((a, b) => b.dateOrdered - a.dateOrdered).forEach(order => { %>
+                    <tr>
+                        <td>
+                            <%= order.dateOrdered %>
+                        </td>
+                        <td>
+                            <%= order.firstName + ' ' + order.lastName %>
+                        </td>
+                        <td>
+                            <%= order.totalPrice %>
+                        </td>
+                        <td>
+                            <%= order.status %>
+                        </td>
+                        <td>
+                            <a href="/admin-order-control/delete/<%= order._id %>" class="delete-btn">Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+        </div>
+</body>
+<footer>
+    <%- include("./Partials/localiztion.ejs") %>
+</footer>
+
+</html>
