@@ -1,7 +1,6 @@
 import Product from '../models/Product.js';
 import bcrypt from "bcrypt";
 import pkg from 'url/util.js';
-
 import users from '../models/users.js';
 import path from "path";
 
@@ -577,3 +576,5 @@ export default {
     admin_display_all_products,
     admin_item_details
 }
+
+  

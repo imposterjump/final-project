@@ -1,7 +1,7 @@
 import Product from '../models/Product.js';
 import users from '../models/users.js';
 import Order from '../models/order.js';
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 
 //function line numbers 
 // mycart 13 , addtocart 28, deletefromcart 51 , display_user_profile 76, edit_user_profile 86 , edit_user_password 135
