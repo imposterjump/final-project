@@ -28,7 +28,7 @@
     <%- include("./Partials/navadmin.ejs") %>
         <%- include("./Partials/localiztion.ejs") %>
             <section>
-      </span>
+      
                 </div>
                 <div class="container">
                     <div class="row">
@@ -78,17 +78,19 @@
                         </div>
                     </div>
                     <div class="row2">
+
+
                       <div class="recent-sales box">
                         <div class="title">Recent Sales</div>
                         <div class="sales-details">
                             <ul class="details">
                                 <li class="topic">Date</li>
                                 <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                    <li>
+                                    <li2>
                                         <a href="#">
                                             <%= order.dateOrdered %>
                                         </a>
-                                    </li>
+                                    </li2>
                                 <% }) %>
                             </ul>
                             <ul class="details">
