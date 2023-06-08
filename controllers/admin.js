@@ -9,16 +9,6 @@ import Order from '../models/order.js';
 const { isNullOrUndefined } = pkg;
 
 
-
-
-
-
-
-
-
-
-
-
 const get_add_product_page = (req, res) => {
     res.render('add-product', {
         user: (req.session.user === undefined ? "" : req.session.user)
@@ -121,8 +111,6 @@ const get_admin_home_page = function(req, res, next) {
 
 
 
-
-
 const get_admin_product_page = (req, res) => {
     res.render('admin-product-management', {
         user: (req.session.user === undefined ? "" : req.session.user)
@@ -175,41 +163,7 @@ const get_product_edit_Page = (req, res) => {
             res.redirect('/');
         });
 }
-const edit_product =
-    (req, res) => {
-        const productId = req.params.id;
-        const { itemName, Sales, description, price_before, price_after, type, images } = req.body;
 
-        // Update the product information
-        const updatedProduct = {
-            itemName,
-            Sales,
-            description,
-            price_before,
-            price_after,
-            type,
-            images
-        };
-
-        // Check if a new image file was uploaded
-        if (req.file) {
-            // Include the new image path in the updated product
-            updatedProduct.images = req.file.filename;
-        }
-
-        Product.findByIdAndUpdate(
-                productId,
-                updatedProduct, { new: true }
-            )
-            .then((updatedProduct) => {
-                console.log('Product updated:', updatedProduct);
-                res.redirect(`/all-articles/${productId}`);
-            })
-            .catch((err) => {
-                console.log(err);
-                res.redirect('/');
-            });
-    };
 const get_admin_user_page = function(req, res, next) {
 
     users.find()
@@ -429,9 +383,6 @@ const admin_add_user = (req, res) => {
                         user: (req.session.user === undefined ? "" : req.session.user)
 
 
-
-
-
                     });
 
 
@@ -594,7 +545,7 @@ export default {
     get_product_details,
     admin_delete_product,
     get_product_edit_Page,
-    edit_product,
+   
     get_admin_user_page,
     admin_user_search,
     admin_edit_user_infos,

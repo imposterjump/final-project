@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="CSS/ordercontrol.css">
+<div class="recent-sales box">
+  <div class="title">Recent Sales</div>
+  <table class="order-table">
+    <tr>
+      <th>Date Created</th>
+      <th>Name</th>
+      <th>Total Price</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    <% orders.sort((a, b) => b.dateOrdered - a.dateOrdered).forEach(order => { %>
+      <tr>
+        <td><%= order.dateOrdered %></td>
+        <td><%= order.firstName + ' ' + order.lastName %></td>
+        <td><%= order.totalPrice %></td>
+        <td><%= order.status %></td>
+        <td>
+          <a href="/admin-order-control/delete/<%= order._id %>" class="delete-btn">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</div>
+
