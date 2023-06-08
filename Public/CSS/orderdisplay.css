@@ -99,9 +99,6 @@
       margin-bottom: 10px;
     }
     
-    table thead {
-      display: none;
-    }
   
     table tbody {
       display: block;
