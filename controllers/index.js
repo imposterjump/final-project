@@ -4,6 +4,7 @@ import pkg from 'url/util.js';
 const { isNullOrUndefined } = pkg;
 const SALT_ROUNDS = 10;
 import users from '../models/users.js';
+import Order from '../models/order.js';
 
 
 const get_about_page = function(req, res, next) {
@@ -196,32 +197,32 @@ const user_sign_in = function(req, res, next) {
                             return true;
                         } else if (mytype == 'admin') {
                             Product.find()
-                            .then(products => {
-                              users.find()
-                                .then(users => {
-                                  Order.find()
-                                    .then(orders => {
-                                      res.render("adminhome", {
-                                        products: products,
-                                        users: users,
-                                        orders: orders,
-                                        user: req.session.user || ""
-                                      });
-                                    })
-                                    .catch(err => {
-                                      console.log(err);
-                                      res.status(500).send("An error occurred while retrieving orders.");
-                                    });
+                                .then(products => {
+                                    users.find()
+                                        .then(users => {
+                                            Order.find()
+                                                .then(orders => {
+                                                    res.render("adminhome", {
+                                                        products: products,
+                                                        users: users,
+                                                        orders: orders,
+                                                        user: req.session.user || ""
+                                                    });
+                                                })
+                                                .catch(err => {
+                                                    console.log(err);
+                                                    res.status(500).send("An error occurred while retrieving orders.");
+                                                });
+                                        })
+                                        .catch(err => {
+                                            console.log(err);
+                                            res.status(500).send("An error occurred while retrieving users.");
+                                        });
                                 })
                                 .catch(err => {
-                                  console.log(err);
-                                  res.status(500).send("An error occurred while retrieving users.");
-                                });
-                            })
-                            .catch(err => {
-                              console.log(err);
-                              res.status(500).send("An error occurred while retrieving products.");
-                            })
+                                    console.log(err);
+                                    res.status(500).send("An error occurred while retrieving products.");    
+                                })
                                 .catch(err => {
                                     console.log(err);
                                     res.status(500).send("An error occurred while retrieving products.");
