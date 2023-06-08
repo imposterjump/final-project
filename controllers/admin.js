@@ -9,16 +9,6 @@ import Order from '../models/order.js';
 const { isNullOrUndefined } = pkg;
 
 
-
-
-
-
-
-
-
-
-
-
 const get_add_product_page = (req, res) => {
     res.render('add-product', {
         user: (req.session.user === undefined ? "" : req.session.user)
@@ -118,8 +108,6 @@ const get_admin_home_page = function(req, res, next) {
             res.status(500).send("An error occurred while retrieving products.");
         });
 }
-
-
 
 
 
@@ -427,9 +415,6 @@ const admin_add_user = (req, res) => {
                         TITLE: 'SIGNUP PAGE',
                         message: 'Username already exists',
                         user: (req.session.user === undefined ? "" : req.session.user)
-
-
-
 
 
                     });

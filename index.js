@@ -39,6 +39,7 @@ import wishlist_router from "./routes/wishlist.js";
 import OrderItem from "./models/order-item.js";
 import ordertrack_router from "./routes/ordertrack.js";
 import orderdisplay_router from "./routes/orders.js";
+import admin_order_control_router from "./routes/admin-order-control.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -91,13 +92,12 @@ index.use('/about', about_router);
 index.use('/admin-homepage', admin_homepage_router);
 index.use('/admin-user-management', admin_user_management_router);
 index.use('/admin-product-management', admin_product_management_router);
-
+index.use('/admin-order-control',admin_order_control_router);
 //categories pages and product pages 
 index.use('/jackets', jackets_router);
 index.use('/tops', tops_router);
 index.use('/bottoms', bottoms_router);
 index.use('/accessories', accessories_router);
-
 
 
 
@@ -119,6 +119,7 @@ index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
 index.use('/product', product_router);
 index.use('/orders', orderdisplay_router);
+
     //port
     // 404 page
 index.use((req, res) => {
