@@ -78,59 +78,52 @@
                         </div>
                     </div>
                     <div class="row2">
-                        <div class="recent-sales box">
-                            <div class="title">Recent Sales</div>
-                            <div class="sales-details">
-                                <ul class="details">
-
-                                    <li class="topic">Date</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%=order.dateOrdered%>
-                                            </a>
-                                        </li>
-
-
-                                        <% }) %>
-
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Name</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%=order.usernamee%>
-                                            </a>
-                                        </li>
-
-                                        <% }) %>
-
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Price</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%= order.totalPrice %>
-                                            </a>
-                                        </li>
-
-                                        <% }) %>
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Status</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%=order.status %>
-                                            </a>
-                                        </li>
-                                        <% }) %>
-                                </ul>
-                            </div>
-
+                      <div class="recent-sales box">
+                        <div class="title">Recent Sales</div>
+                        <div class="sales-details">
+                            <ul class="details">
+                                <li class="topic">Date</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li>
+                                        <a href="#">
+                                            <%= order.dateOrdered %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic">Product</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li>
+                                        <a href="#">
+                                            <%= order.usernamee %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic">Price</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li>
+                                        <a href="#">
+                                            <%= order.totalPrice %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic">Status</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li>
+                                        <a href="#">
+                                            <%= order.status %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
                         </div>
+                    </div>
+                    
                         <div class="top-sales box">
                             <div class="title">Top Selling Products</div>
                             <ul class="top-sales-details">
