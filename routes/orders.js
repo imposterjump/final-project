@@ -9,29 +9,7 @@ import bodyParser from 'body-parser';
 router.use(bodyParser.json());
 
 // Get all orders
-router.get('/', //user_functions.get_order_item
-function(req, res, next) {
-
-    Order.find({usernamee : req.session.user.username })
-        .then(result => {
-            console.log(result);
-            res.render('ordersdisplay', {
-                Order: result,
-                TITLE: 'ORDER DISPLAY PAGE',
-                message: '',
-
-                user: (req.session.user === undefined ? "" : req.session.user)
-
-
-
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-
-});
+router.get('/', user_functions.get_order_item);
 
 
 

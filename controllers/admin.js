@@ -1,9 +1,10 @@
 import Product from '../models/Product.js';
 import bcrypt from "bcrypt";
 import pkg from 'url/util.js';
-
 import users from '../models/users.js';
 import path from "path";
+
+import Order from '../models/order.js';
 
 const { isNullOrUndefined } = pkg;
 
@@ -80,15 +81,47 @@ const add_product = (req, res) => {
         });
 }
 const get_admin_home_page = function(req, res, next) {
-    const analyticsdata = {
-        revenue: 5000,
-        numberofvisitors: 50,
-        totalsales: 125,
-        registered: 90
-    };
 
-    res.render('adminhome', { analyticsdata, user: (req.session.user === undefined ? "" : req.session.user) });
+    Product.find()
+        .then(products => {
+            users.find()
+                .then(users => {
+                    Order.find()
+                        .then(orders => {
+                                // Render your dashboard view and pass the number of visitors
+                                res.render('adminhome', {
+                                    products: products,
+                                    users: users,
+                                    orders: orders,
+                                    user: (req.session.user === undefined ? "" : req.session.user),
+                                    numberOfvisitors: "could not get "
+                                });
+                            }
+
+                        )
+                        .catch(err => {
+                            console.log(err);
+                            res.status(500).send("An error occurred while retrieving orders.");
+                        });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).send("An error occurred while retrieving users.");
+                });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("An error occurred while retrieving products.");    
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("An error occurred while retrieving products.");
+        });
 }
+
+
+
+
 
 const get_admin_product_page = (req, res) => {
     res.render('admin-product-management', {
@@ -310,14 +343,10 @@ const admin_edit_user_infos = function(req, res, next) {
             })
             .then(result => {
                 res.redirect('/admin-user-management');
-
-
             })
             .catch(err => {
                 console.log(err);
             });
-
-
     }
 
 }
@@ -333,6 +362,7 @@ const delete_user = function(req, res, next) {
             console.log(err);
         });
 }
+
 const admin_add_user = (req, res) => {
 
 
