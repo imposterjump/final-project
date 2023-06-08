@@ -150,7 +150,11 @@
 
   .recent-sales.box .details li {
     margin-bottom: 10px; /* Add margin-bottom to create space between each item */
-    margin-left:600px ;
+    margin-left:60px ;
+  }
+  .recent-sales.box .details li2 {
+    margin-bottom: 30px; /* Add margin-bottom to create space between each item */
+    margin-left:40px ;
   }
 
   .recent-sales.box .details .topic {
