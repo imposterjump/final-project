@@ -31,7 +31,9 @@
 
 
         <% if(user === "") { %>
+            <a href='/signup'><button class="signupbutton">Sign Up</button></a>
             <a href='/signin'><button class="loginbutton">Log In</button></a>
+            
             <% } else { %>
                 <a href="/account"><button class="account" style="width:auto;"><i
                     class="material-icons" style="font-size: 33px;">&#xe853;</i></button></a>

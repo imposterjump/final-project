@@ -141,19 +141,7 @@ html,body{
 
   }
 
-  .loginbutton 
-  {
-    float: right;
-    width: 100px;
-    height: 30px;
-    margin-top: 10px;
-    margin-right: 215px;
-    background-color: #0f2130;
-    color: white;
-    font-family: Exo;
-    margin-right: 205px;
-
-  }
+ 
 
   .account
   {
@@ -162,7 +150,7 @@ html,body{
     background-color: whitesmoke;
     border: none;
     padding: 5px 5px;
-    margin-top: 0%;
+    margin-top: 5px;
     float: right;
     margin-right: 63px;
   }
@@ -173,7 +161,8 @@ html,body{
     float: right;
     color: #0f2130;
     border: none;
-    margin-top: 8px;
+    margin-top: 12px;
+    background-color: whitesmoke;
   }
 
   .logoutbutton 
@@ -183,9 +172,37 @@ html,body{
     height: 30px;
     margin-top: 10px;
     margin-left: 10px;
-    background-color: red;
+    background-color: #C70039;
     color: white;
     font-family: Exo;
+
+  }
+
+  .signupbutton
+  {
+    
+    width: 100px;
+    height: 30px;
+    float: right;
+    background-color: #0f2130;
+    color: white;
+    font-family: Exo;
+    margin-right: 90px;
+    margin-top: 10px;
+
+  }
+
+  .loginbutton 
+  {
+    
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left:1215px;
+    background-color: #0f2130;
+    color: white;
+    font-family: Exo;
+    
 
   }
 
