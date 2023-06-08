@@ -230,7 +230,7 @@ const shippingform_checkout = (req, res) => {
 
     order.save()
         .then((savedOrder) => {
-
+            req.session.user.cart = null;
             res.redirect("ordertrack", { user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((error) => {

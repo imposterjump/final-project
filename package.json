@@ -21,6 +21,7 @@
     "homepage": "https://github.com/imposterjump/final-project#readme",
     "dependencies": {
         "ajax": "^0.0.4",
+        "axios": "^1.4.0",
         "bcrypt": "^5.1.0",
         "body-parser": "^1.20.2",
         "cookie-parser": "^1.4.6",
@@ -33,6 +34,7 @@
         "formidable": "^2.1.1",
         "fs": "^0.0.1-security",
         "fs-extra": "^11.1.1",
+        "googleapis": "^118.0.0",
         "http-errors": "^2.0.0",
         "jquery": "^3.7.0",
         "method-override": "^3.0.0",

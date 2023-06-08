@@ -1,98 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'UA-272764433-1');
-</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-272764433-1');
+  </script>
 
   <title>Edit Product</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #333;
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    form {
-      max-width: 500px;
-      margin: 30px auto;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    textarea,
-    input[type="number"],
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-bottom: 10px;
-    }
-
-    textarea {
-      height: 100px;
-    }
-
-    input[type="file"] {
-      display: block;
-      margin-top: 5px;
-    }
-
-    .price-after-info {
-      font-size: 12px;
-      color: #999;
-      margin-top: 5px;
-    }
-
-    .error-message {
-      color: red;
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    button[type="submit"] {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 3px;
-      padding: 10px 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  
 </head>
 
 <body>
+  <%- include("./Partials/localiztion.ejs") %>
   <%- include("./Partials/navadmin.ejs") %>
   <h1>Edit Product</h1>
   <form method="POST" action="/edit-product/<%= product._id %>" enctype="multipart/form-data" onsubmit="return validateForm()">
@@ -116,7 +45,7 @@
     <span class="error-message" id="priceBeforeError"></span>
 
     <label for="price_after">Price After:</label>
-    <input type="number" id="price_after" name="price_after"  required>
+    <input type="number" id="price_after" name="price_after" readonly required>
     <span class="price-after-info">This will be calculated automatically based on Price Before and Sales.</span>
 
     <label for="type">Type:</label>
@@ -133,7 +62,7 @@
   <script>
     function validateForm() {
       const itemNameInput = document.getElementById("itemName");
-      const salesInput = document.getElementById("Sales");
+      const salesInput = document.getElementById("sales");
       const descriptionInput = document.getElementById("description");
       const priceBeforeInput = document.getElementById("price_before");
       const priceAfterInput = document.getElementById("price_after");
@@ -163,24 +92,18 @@
       if (itemNameInput.value.trim() === "") {
         itemNameError.textContent = "Item name is required";
         isValid = false;
-      } else if (typeof itemNameInput.value !== "string") {
-        itemNameError.textContent = "Item name must be a string";
-        isValid = false;
       }
 
       if (salesInput.value.trim() === "") {
         salesError.textContent = "Sales value is required";
         isValid = false;
-      } else if (isNaN(salesInput.value)) {
-        salesError.textContent = "Sales must be a number";
+      } else if (isNaN(salesInput.value) || salesInput.value < 0 || salesInput.value > 100) {
+        salesError.textContent = "Sales must be a number between 0 and 100";
         isValid = false;
       }
 
       if (descriptionInput.value.trim() === "") {
         descriptionError.textContent = "Description is required";
-        isValid = false;
-      } else if (typeof descriptionInput.value !== "string") {
-        descriptionError.textContent = "Description must be a string";
         isValid = false;
       }
 
@@ -189,14 +112,6 @@
         isValid = false;
       } else if (isNaN(priceBeforeInput.value)) {
         priceBeforeError.textContent = "Price before must be a number";
-        isValid = false;
-      }
-
-      if (priceAfterInput.value.trim() === "") {
-        priceAfterError.textContent = "Price after is required";
-        isValid = false;
-      } else if (isNaN(priceAfterInput.value)) {
-        priceAfterError.textContent = "Price after must be a number";
         isValid = false;
       }
 
@@ -215,7 +130,7 @@
     }
 
     function calculatePriceAfter() {
-      const salesInput = document.getElementById("Sales");
+      const salesInput = document.getElementById("sales");
       const priceBeforeInput = document.getElementById("price_before");
       const priceAfterInput = document.getElementById("price_after");
 
@@ -226,9 +141,8 @@
       priceAfterInput.value = priceAfter > 0 ? priceAfter : 0;
     }
 
-    const salesInput = document.getElementById("Sales");
+    const salesInput = document.getElementById("sales");
     const priceBeforeInput = document.getElementById("price_before");
-    const priceAfterInput = document.getElementById("price_after");
 
     salesInput.addEventListener("input", calculatePriceAfter);
     priceBeforeInput.addEventListener("input", calculatePriceAfter);
@@ -238,3 +152,82 @@
 </body>
 
 </html>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  form {
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  input[type="file"] {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .price-after-info {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
