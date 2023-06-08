@@ -92,7 +92,7 @@ router.get('/', admin_functions.get_admin_home_page);
 
 export default router;
 
-  
+
 
 router.get('/', admin_functions.get_admin_home_page);
 

@@ -32,8 +32,12 @@
 <script src="/js/admin_user.js"></script>
 
 <body id="body">
+<<<<<<< HEAD
+    <%- include("./Partials/navadmin.ejs") %>
+=======
     <%- include("./Partials/localiztion.ejs") %>
         <%- include("./Partials/navadmin.ejs") %>
+>>>>>>> 77d2d1b6c81b066a774b0aac1cfbd5c7b5c7be37
 
 
             <h1 class="title">User Details</h1>
@@ -171,7 +175,7 @@
 
                     <br>
                     <p>pls fill the information again </p>
-                    <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data" class="myform">
+                    <form action="/admin-user-management/adduser" method="POST" enctype="multipart/form-data">
 
                         <div class="user-details ">
                             <div class="input-box ">
@@ -224,14 +228,15 @@
                             <br>
 
                         </div>
-                        <div class="button">
-                            <input type="submit" class="submit" value="Register ">
-                        </div>
                         <br>
                         <select id="type" name="type" required>
             <option value="admin">admin</option>
             <option value="user">user</option>
             </select>
+                        <div class="button">
+                            <input type="submit" class="submit" value="Register ">
+                        </div>
+
 
                         <br>
                     </form>
@@ -241,6 +246,6 @@
 
 
 </body>
-<!--BODY ENDS HERE -->
+<footer><%- include("./Partials/localiztion.ejs") %></footer>
 
 </html>

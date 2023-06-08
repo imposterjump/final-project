@@ -4,6 +4,8 @@ import pkg from 'url/util.js';
 import users from '../models/users.js';
 import path from "path";
 
+import Order from '../models/order.js';
+
 const { isNullOrUndefined } = pkg;
 
 
@@ -79,35 +81,47 @@ const add_product = (req, res) => {
         });
 }
 const get_admin_home_page = function(req, res, next) {
+
     Product.find()
-    .then(products => {
-      users.find()
-        .then(users => {
-          Order.find()
-            .then(orders => {
-              res.render("adminhome", {
-                products: products,
-                users: users,
-                orders: orders,
-                user: req.session.user || ""
-              });
-            })
-            .catch(err => {
-              console.log(err);
-              res.status(500).send("An error occurred while retrieving orders.");
-            });
+        .then(products => {
+            users.find()
+                .then(users => {
+                    Order.find()
+                        .then(orders => {
+                                // Render your dashboard view and pass the number of visitors
+                                res.render('adminhome', {
+                                    products: products,
+                                    users: users,
+                                    orders: orders,
+                                    user: (req.session.user === undefined ? "" : req.session.user),
+                                    numberOfvisitors: "could not get "
+                                });
+                            }
+
+                        )
+                        .catch(err => {
+                            console.log(err);
+                            res.status(500).send("An error occurred while retrieving orders.");
+                        });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).send("An error occurred while retrieving users.");
+                });
         })
         .catch(err => {
-          console.log(err);
-          res.status(500).send("An error occurred while retrieving users.");
+            console.log(err);
+            res.status(500).send("An error occurred while retrieving products.");    
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("An error occurred while retrieving products.");
         });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).send("An error occurred while retrieving products.");
-    });
-
 }
+
+
+
+
 
 const get_admin_product_page = (req, res) => {
     res.render('admin-product-management', {
@@ -593,5 +607,3 @@ export default {
     admin_display_all_products,
     admin_item_details
 }
-
-  

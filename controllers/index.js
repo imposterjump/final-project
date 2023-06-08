@@ -1,10 +1,11 @@
 import Product from '../models/Product.js';
+import Order from '../models/order.js';
 import bcrypt from "bcrypt";
 import pkg from 'url/util.js';
 const { isNullOrUndefined } = pkg;
 const SALT_ROUNDS = 10;
 import users from '../models/users.js';
-import Order from '../models/order.js';
+
 
 
 const get_about_page = function(req, res, next) {
@@ -167,7 +168,9 @@ const get_sign_in_page = function(req, res, next) {
         user: (req.session.user === undefined ? "" : req.session.user)
     });
 }
-const user_sign_in = function(req, res, next) {
+const user_sign_in = (req, res, next) => {
+
+    // taking pass from user 
     let temp_password = req.body.password;
     let query = { username: req.body.username };
     console.log("temp username: " + req.body.username + " temp password: " + temp_password);
@@ -196,19 +199,24 @@ const user_sign_in = function(req, res, next) {
                             res.render('homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
                             return true;
                         } else if (mytype == 'admin') {
+                            req.session.user = me;
                             Product.find()
                                 .then(products => {
                                     users.find()
                                         .then(users => {
                                             Order.find()
                                                 .then(orders => {
-                                                    res.render("adminhome", {
-                                                        products: products,
-                                                        users: users,
-                                                        orders: orders,
-                                                        user: req.session.user || ""
-                                                    });
-                                                })
+                                                        // Render your dashboard view and pass the number of visitors
+                                                        res.render('adminhome', {
+                                                            products: products,
+                                                            users: users,
+                                                            orders: orders,
+                                                            user: (req.session.user === undefined ? "" : req.session.user),
+                                                            numberOfvisitors: "could not get "
+                                                        });
+                                                    }
+
+                                                )
                                                 .catch(err => {
                                                     console.log(err);
                                                     res.status(500).send("An error occurred while retrieving orders.");

@@ -3,6 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/CSS/vproduct.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
 <script>
@@ -14,6 +15,7 @@
 </script>
 
 </head>
+<body>
 <%- include("./Partials/navadmin.ejs") %>
 <% const productTypes = ['jackets', 'bottoms', 'tops', 'accessories']; %>
 
@@ -24,7 +26,7 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Image</th>
+          <th>Images</th>
           <th>Price</th>
           <th>Action</th>
         </tr>
@@ -45,54 +47,7 @@
     </table>
   </section>
 <% }); %>
+</body>
+<footer><%- include("./Partials/localiztion.ejs") %></footer>
 
 
-<style>
-  section {
-    margin-bottom: 30px;
-  }
-
-  h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-    text-transform: capitalize;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-  }
-
-  th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-    color: #333;
-  }
-
-  td {
-    color: #555;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-  }
-
-  .btn:hover {
-    background-color: #0056b3;
-  }
-</style>
