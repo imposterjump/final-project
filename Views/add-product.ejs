@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="/CSS/addproduct.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
@@ -61,111 +61,7 @@
     <button type="submit">Add Product</button>
   </form>
 
-  <script>
-    function validateForm() {
-      const itemNameInput = document.getElementById("itemName");
-      const salesInput = document.getElementById("Sales");
-      const descriptionInput = document.getElementById("description");
-      const priceBeforeInput = document.getElementById("price_before");
-      const priceAfterInput = document.getElementById("price_after");
-      const typeInput = document.getElementById("type");
-      const imageInput = document.getElementById("image");
-
-      const itemNameError = document.getElementById("itemNameError");
-      const salesError = document.getElementById("salesError");
-      const descriptionError = document.getElementById("descriptionError");
-      const priceBeforeError = document.getElementById("priceBeforeError");
-      const priceAfterError = document.getElementById("priceAfterError");
-      const typeError = document.getElementById("typeError");
-      const imageError = document.getElementById("imageError");
-
-      // Reset error messages
-      itemNameError.textContent = "";
-      salesError.textContent = "";
-      descriptionError.textContent = "";
-      priceBeforeError.textContent = "";
-      priceAfterError.textContent = "";
-      typeError.textContent = "";
-      imageError.textContent = "";
-
-      // Validate each field
-      let isValid = true;
-
-      if (itemNameInput.value.trim() === "") {
-        itemNameError.textContent = "Item name is required";
-        isValid = false;
-      } else if (itemNameInput.value.trim().length < 6) {
-        itemNameError.textContent = "Item name must be at least 6 characters";
-        isValid = false;
-      }
-
-      if (salesInput.value.trim() === "") {
-        salesError.textContent = "Sales value is required";
-        isValid = false;
-      } else if (isNaN(salesInput.value) || salesInput.value > 100) {
-        salesError.textContent = "Sales must be a number between 0 and 100";
-        isValid = false;
-      }
-
-      if (descriptionInput.value.trim() === "") {
-        descriptionError.textContent = "Description is required";
-        isValid = false;
-      } else if (descriptionInput.value.trim().split(" ").length < 2) {
-        descriptionError.textContent = "Description must have at least two words";
-        isValid = false;
-      }
-
-      if (priceBeforeInput.value.trim() === "") {
-        priceBeforeError.textContent = "Price before is required";
-        isValid = false;
-      } else if (isNaN(priceBeforeInput.value)) {
-        priceBeforeError.textContent = "Price before must be a number";
-        isValid = false;
-      }
-
-      if (priceAfterInput.value.trim() === "") {
-        priceAfterError.textContent = "Price after is required";
-        isValid = false;
-      } else if (isNaN(priceAfterInput.value)) {
-        priceAfterError.textContent = "Price after must be a number";
-        isValid = false;
-      }
-
-      if (typeInput.value === "") {
-        typeError.textContent = "Type is required";
-        isValid = false;
-      }
-
-      if (!imageInput.files || imageInput.files.length === 0) {
-        imageError.textContent = "Image is required";
-        isValid = false;
-      }
-
-      // Return the form's validation status
-      return isValid;
-    }
-
-    function calculatePriceAfter() {
-      const salesInput = document.getElementById("Sales");
-      const priceBeforeInput = document.getElementById("price_before");
-      const priceAfterInput = document.getElementById("price_after");
-
-      const sales = parseInt(salesInput.value) || 0;
-      const priceBefore = parseInt(priceBeforeInput.value) || 0;
-
-      const priceAfter = priceBefore * (100 - sales) / 100;
-      priceAfterInput.value = priceAfter > 0 ? priceAfter : 0;
-    }
-
-    const salesInput = document.getElementById("Sales");
-    const priceBeforeInput = document.getElementById("price_before");
-    const priceAfterInput = document.getElementById("price_after");
-
-    salesInput.addEventListener("input", calculatePriceAfter);
-    priceBeforeInput.addEventListener("input", calculatePriceAfter);
-
-    calculatePriceAfter();
-  </script>
+ <script src="/js/addproduct.js"></script>
 </body>
 
 </html>
@@ -173,75 +69,3 @@
 
 
 </html>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-  }
-
-  h1 {
-    color: #333;
-    text-align: center;
-    margin-top: 30px;
-  }
-
-  form {
-    max-width: 500px;
-    margin: 30px auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  textarea,
-  input[type="number"],
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-
-  textarea {
-    height: 100px;
-  }
-
-  input[type="file"] {
-    display: block;
-    margin-top: 5px;
-  }
-
-  button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-
-  .error-message {
-    color: red;
-    font-size: 0.8em;
-    margin-top: 5px;
-  }
-</style>

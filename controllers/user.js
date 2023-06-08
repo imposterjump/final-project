@@ -185,7 +185,7 @@ const get_order_item = async(req, res) => {
 
 const create_order = async(req, res) => {
     const order = new Order({
-       
+
         orderItems: req.body.orderItems,
         address: req.body.address,
         city: req.body.city,
@@ -194,7 +194,7 @@ const create_order = async(req, res) => {
         itemsPrice: req.body.itemsPrice,
         shippingPrice: req.body.shippingPrice,
         totalPrice: req.body.totalPrice,
-       
+
     });
 
     try {
@@ -223,14 +223,14 @@ const shippingform_checkout = (req, res) => {
         address,
         city,
         paymentMethod,
-        usernamee:req.session.user.username,
+        usernamee: req.session.user.username,
     });
 
     console.log("Order Details:", order);
 
     order.save()
         .then((savedOrder) => {
-            req.session.user.cart = null;
+            req.session.user.cart = [];
             res.redirect("ordertrack", { user: (req.session.user === undefined ? "" : req.session.user) });
         })
         .catch((error) => {
