@@ -28,10 +28,7 @@
     <%- include("./Partials/navadmin.ejs") %>
         <%- include("./Partials/localiztion.ejs") %>
             <section>
-                <div class="stats">
-                    Products: <span class="number"><%= products.length %></span> Users: <span class="number"><%= users.length %></span> Orders: <span class="number"><%= orders.length %></span> Total Sales: <span class="number">
-       
-      </span>
+      
                 </div>
                 <div class="container">
                     <div class="row">
@@ -52,7 +49,7 @@
                         <div class="box">
                             <div class="box-title">Total sales</div>
                             <div class="box-content">
-                                <span class="number"><%= products.length %></span>
+                                <span class="number"><%= orders.length %></span>
 
                                 <div class="cart">
                                     <i class="bx bxs-cart"></i>
@@ -81,108 +78,103 @@
                         </div>
                     </div>
                     <div class="row2">
-                        <div class="recent-sales box">
-                            <div class="title">Recent Sales</div>
-                            <div class="sales-details">
-                                <ul class="details">
-
-                                    <li class="topic">Date</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%=order.dateOrdered%>
-                                            </a>
-                                        </li>
 
 
-                                        <% }) %>
-
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Name</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%=order.usernamee%>
-                                            </a>
-                                        </li>
-
-                                        <% }) %>
-
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Price</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%= order.totalPrice %>
-                                            </a>
-                                        </li>
-
-                                        <% }) %>
-                                </ul>
-                                <ul class="details">
-                                    <li class="topic">Status</li>
-                                    <% orders.slice(0, 5).reverse().forEach(order => { %>
-                                        <li>
-                                            <a href="#">
-                                                <%=order.status %>
-                                            </a>
-                                        </li>
-                                        <% }) %>
-                                </ul>
-                            </div>
-
+                      <div class="recent-sales box">
+                        <div class="title">Recent Sales</div>
+                        <div class="sales-details">
+                            <ul class="details">
+                                <li class="topic1">Date</li>
+                                <% orders.slice(0, 4).reverse().forEach(order => { %>
+                                    <li1>
+                                        <a href="#">
+                                            <%= order.dateOrdered %>
+                                        </a>
+                                    </li1>
+                                <% }) %>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic2">Product</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li>
+                                        <a href="#">
+                                            <%= order.Products %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic3">Price</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li4>
+                                        <a href="#">
+                                            <%= order.totalPrice %>
+                                        </a>
+                                    </li4>
+                                <% }) %>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic4">Status</li>
+                                <% orders.slice(0, 5).reverse().forEach(order => { %>
+                                    <li>
+                                        <a href="#">
+                                            <%= order.status %>
+                                        </a>
+                                    </li>
+                                <% }) %>
+                            </ul>
                         </div>
+                    </div>
+                    
                         <div class="top-sales box">
                             <div class="title">Top Selling Products</div>
                             <ul class="top-sales-details">
                                 <li>
                                     <a href="#">
                                         <img src="images/sunglasses.jpg" alt="">
-                                        <span class="product">Vuitton Sunglasses</span>
+                                        <span class="product">Black Zipper</span>
                                     </a>
                                     <span class="price">$1107</span>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="images/jeans.jpg" alt="">
-                                        <span class="product">Hourglass Jeans</span>
+                                        <span class="product">Hollister Hoodie</span>
                                     </a>
                                     <span class="price">$1567</span>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="images/nike.jpg" alt="">
-                                        <span class="product">Nike Sport Shoe</span>
+                                        <span class="product">Velvet Belt</span>
                                     </a>
                                     <span class="price">$1234</span>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="images/scarves.jpg" alt="">
-                                        <span class="product">Hermes Silk Scarves</span>
+                                        <span class="product">White Short Sleeve</span>
                                     </a>
                                     <span class="price">$2312</span>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="images/blueBag.jpg" alt="">
-                                        <span class="product">Succi Ladies Bag</span>
+                                        <span class="product"> Grey Short Sleeve</span>
                                     </a>
                                     <span class="price">$1456</span>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <img src="images/bag.jpg" alt="">
-                                        <span class="product">Gucci Women's Bags</span>
+                                        <span class="product">Black Belt</span>
                                     </a>
                                     <span class="price">$2345</span>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/addidas.jpg" alt="">
-                                        <span class="product">Adidas Running Shoe</span>
+                                        <img src="Public\images\Tops\Black White Logo2.webp" alt="">
+                                        <span class="product">Hollister T-Shirt</span>
                                     </a>
                                     <span class="price">$2345</span>
                                 </li>
