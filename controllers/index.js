@@ -1,10 +1,11 @@
 import Product from '../models/Product.js';
+import Order from '../models/order.js';
 import bcrypt from "bcrypt";
 import pkg from 'url/util.js';
 const { isNullOrUndefined } = pkg;
 const SALT_ROUNDS = 10;
 import users from '../models/users.js';
-import Order from '../models/order.js';
+
 
 
 const get_about_page = function(req, res, next) {

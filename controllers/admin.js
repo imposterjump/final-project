@@ -4,6 +4,8 @@ import pkg from 'url/util.js';
 import users from '../models/users.js';
 import path from "path";
 
+import Order from '../models/order.js';
+
 const { isNullOrUndefined } = pkg;
 
 
@@ -86,26 +88,6 @@ const get_admin_home_page = function(req, res, next) {
                 .then(users => {
                     Order.find()
                         .then(orders => {
-                            try {
-                                // Fetch number of visitors from Google Analytics
-                                const analyticsData = analyticsreporting.reports.batchGet({
-                                    requestBody: {
-                                        reportRequests: [{
-                                            viewId: '291694088',
-                                            dateRanges: [{
-                                                startDate: '30daysAgo',
-                                                endDate: 'yesterday'
-                                            }],
-                                            metrics: [{
-                                                expression: 'ga:sessions'
-                                            }]
-                                        }]
-                                    }
-                                });
-
-                                // Extract the number of visitors from the API response
-                                const numberOfvisitors = analyticsData.data.reports[0].data.totals[0].values[0];
-
                                 // Render your dashboard view and pass the number of visitors
                                 res.render('adminhome', {
                                     products: products,
@@ -114,19 +96,9 @@ const get_admin_home_page = function(req, res, next) {
                                     user: (req.session.user === undefined ? "" : req.session.user),
                                     numberOfvisitors: "could not get "
                                 });
-                            } catch (error) {
-                                console.error('Error fetching number of visitors:', error);
-                                res.render("adminhome", {
-                                    products: products,
-                                    users: users,
-                                    orders: orders,
-                                    user: (req.session.user === undefined ? "" : req.session.user),
-                                    numberOfvisitors: "could not get "
-                                });
-
                             }
 
-                        })
+                        )
                         .catch(err => {
                             console.log(err);
                             res.status(500).send("An error occurred while retrieving orders.");
@@ -146,6 +118,7 @@ const get_admin_home_page = function(req, res, next) {
             res.status(500).send("An error occurred while retrieving products.");
         });
 }
+
 
 
 
