@@ -6,15 +6,18 @@
     <title>Register</title>
     <link rel="stylesheet" href="/CSS/signup.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-272764433-1');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-272764433-1');
+    </script>
 
 </head>
 <script src="/js/signup.js"></script>
@@ -22,36 +25,36 @@
 <script src="/js/ajax.js"></script>
 
 <body>
-    
+
 
     <div class=" container ">
         <div class="title ">Registration</div>
         <%- include("./Partials/localiztion.ejs") %>
-        <% if(message !=''){ %>
+            <% if(message !=''){ %>
 
-            <p class="reg_message ">
-                <%= message %>
-
-
-            </p>
-            <% } %>
-                <div class="content ">
+                <p class="reg_message ">
+                    <%= message %>
 
 
-                    <form action="/signup" enctype="multipart/form-data " onsubmit="return validate()" method="post">
-                        <div class="user-details ">
-                            <div class="input-box ">
-                                <span class="details ">Username</span>
-                                <input type="text " placeholder="Enter your username" id="username" name="username" minlength="8 " maxlength="16 " required>
-                                <span id="result"></span>
-                            </div>
-                            <div class="input-box ">
-                                <span class="details ">Email</span>
-                                <input type="email " placeholder="Enter your email " id="email" name="email" required>
-                            </div>
-                            <div class="input-box ">
-                                <span class="details ">Country Code</span>
-                                <select class="selector " id="countrycode " name="countrycode ">
+                </p>
+                <% } %>
+                    <div class="content ">
+
+
+                        <form action="/signup" enctype="multipart/form-data " onsubmit="return validate()" method="post">
+                            <div class="user-details ">
+                                <div class="input-box ">
+                                    <span class="details ">Username</span>
+                                    <input type="text " placeholder="Enter your username" id="username" name="username" minlength="8 " maxlength="16 " required>
+                                    <span id="result"></span>
+                                </div>
+                                <div class="input-box ">
+                                    <span class="details ">Email</span>
+                                    <input type="email " placeholder="Enter your email " id="email" name="email" required>
+                                </div>
+                                <div class="input-box ">
+                                    <span class="details ">Country Code</span>
+                                    <select class="selector " id="countrycode " name="countrycode ">
               <option value="1 ">United States (+1)</option>
               <option value="86 ">China (+86)</option>
               <option value="91 ">India (+91)</option>
@@ -73,33 +76,33 @@
               <option value="81 ">Japan (+81)</option>
               <option value="86 ">China (+86)</option>
             </select>
-                            </div>
-                            <div class="input-box">
-                                <span class="details">Phone Number</span>
-                                <input type="text" id="phone" placeholder="Enter your number" name="phone" required>
-                            </div>
-                            <div class="input-box">
-                                <span class="details">Password</span>
-                                <input type="password" placeholder="Enter your password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
-                            </div>
-                            <div class="input-box">
-                                <span class="details">Confirm Password</span>
-                                <input type="password" placeholder="Confirm your password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
-                            </div>
-                            <label> <input type="checkbox" class="check" name="agree" required> I agree to the Website's terms and conditions </label>
-                            <br>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Phone Number</span>
+                                    <input type="text" id="phone" placeholder="Enter your number" name="phone" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Password</span>
+                                    <input type="password" placeholder="Enter your password " id="pw" name="pw" minlength="8 " maxlength="16 " required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Confirm Password</span>
+                                    <input type="password" placeholder="Confirm your password " id="cpw" name="cpw" minlength="8 " maxlength="16 " required>
+                                </div>
 
-                        </div>
-                        <div class="button">
-                            <input type="submit" class="submit" value="Register ">
-                        </div>
-                    </form>
-                    <div class="signup">
-                        <span class="signup ">Already have an account?
+                                <br>
+
+                            </div>
+                            <div class="button">
+                                <input type="submit" class="submit" value="Register ">
+                            </div>
+                        </form>
+                        <div class="signup">
+                            <span class="signup ">Already have an account?
          <a href="/signin "><label for="check ">Login</label></a>
         </span>
+                        </div>
                     </div>
-                </div>
     </div>
 
     <script>
