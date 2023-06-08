@@ -37,7 +37,8 @@ import orders_router from "./routes/orders.js";
 import shippingform_router from "./routes/shippingform.js";
 import wishlist_router from "./routes/wishlist.js";
 import OrderItem from "./models/order-item.js";
-import ordertrack_router from "./routes/ordertrack.js"
+import ordertrack_router from "./routes/ordertrack.js";
+import orderdisplay_router from "./routes/orders.js";
 const index = express();
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -117,7 +118,7 @@ index.use('/edit-product', edit_router);
 index.use('/details', details_router);
 index.use('/vproducts', vproducts_router);
 index.use('/product', product_router);
-index.use('/orders', orders_router)
+index.use('/orders', orderdisplay_router);
     //port
     // 404 page
 index.use((req, res) => {

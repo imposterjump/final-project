@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Orders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/orderdisplay.css">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-272764433-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-272764433-1');
+  </script>
+</head>
+<body>
+  <%- include("./Partials/NavUser.ejs") %>
+  <%- include("./Partials/chat.ejs") %>
+  <div class="container">
+    <div class="text2">
+      <h1>Your Orders</h1>
+      <% if (Order.length === 0) { %>
+        <p>You have not made any orders yet.</p>
+      <% } else { %>
+        <% Order.forEach(order => { %>
+        <table>
+          <thead>
+            <tr>
+              <th class="product-name">Order</th>
+              <th class="product-name">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% order.products.forEach(pro => { %>
+              <tr>
+                <td class="product-name"><%= pro.name %></td>
+                <td class="product-details">
+                  <div>Date Ordered: <%= order.dateOrdered.toLocaleDateString() %></div>
+                  <div>Delivery Address: <%= order.address %></div>
+                  <div>Payment Method: <%= order.paymentMethod %></div>
+                  <div>Status: <%= order.status %></div>
+                  <div>Quantity: <%= pro.quantity %></div>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+  <footer>
+    <%- include("./Partials/footer.ejs") %>
+  </footer>
+</body>
+</html>
