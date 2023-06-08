@@ -1,5 +1,5 @@
 .button-blue {
-    background-color: #1c118f;
+    background-color: #0f2130;
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -21,6 +21,7 @@
     list-style: none;
     display: flex;
     justify-content: center;
+    background: linear-gradient(to right, #0f2130, white);
   }
 
   .container ul li {
@@ -38,5 +39,13 @@
   }
 
   .text-center {
+    text-align: center;
+  }
+
+  body{
+    background: linear-gradient(to right, #0f2130, white);
+  }
+
+  h1{
     text-align: center;
   }
